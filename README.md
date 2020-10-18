@@ -1,1 +1,5 @@
 # LegendOfParkerAuditorium
+
+## Participants
+
+- Haris Skiadas
