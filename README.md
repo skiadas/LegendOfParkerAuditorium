@@ -7,5 +7,5 @@
 - Isaac Bevis
 - Hiroki Nakano
 - Drew Kuerzi
-- Josh Elfers
+- Lauren Dickman
 
