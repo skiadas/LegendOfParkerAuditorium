@@ -10,3 +10,4 @@
 - Lauren Dickman
 - Josh Elfers
 - Zach Martens
+- Chad Vanover
