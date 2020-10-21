@@ -18,6 +18,11 @@ public class BuildingSelectionTests {
     }
 
     @Test
+    public void canCreateLocationOnMap() {
+        Location square = new Location();
+    }
+
+    @Test
     public void canCreateSelectBuildingAction() {
         UserAction playerAction = new SelectBuildingAction(1);
     }
