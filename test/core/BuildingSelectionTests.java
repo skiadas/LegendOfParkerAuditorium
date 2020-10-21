@@ -12,7 +12,10 @@ public class BuildingSelectionTests {
         Game game = new Game();
     }
 
-
+    @Test
+    public void canCreateInteractor() {
+        Interactor user = new Interactor();
+    }
 
     @Test
     public void canCreateSelectBuildingAction() {
