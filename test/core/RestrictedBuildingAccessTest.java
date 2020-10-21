@@ -2,7 +2,7 @@ package core;
 
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class RestrictedBuildingAccessTest {
     @Test
@@ -13,7 +13,7 @@ public class RestrictedBuildingAccessTest {
     public void canLimitBuildingEntrance() {
         Building levelOne = new Building(true);
         Building levelTwo = new Building(false);
-        assertEquals(true, levelOne.canEnter());
-        assertEquals(false, levelTwo.canEnter());
+        assertTrue(levelOne.canEnter());
+        assertFalse(levelTwo.canEnter());
     }
 }
