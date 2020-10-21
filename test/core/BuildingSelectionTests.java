@@ -10,6 +10,7 @@ public class BuildingSelectionTests {
     @Test
     public void canCreateGame() {
         Game game = new Game();
+        //assertEquals("Outside", game.getbuilding());
     }
 
     @Test

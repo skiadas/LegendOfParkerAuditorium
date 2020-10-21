@@ -1,6 +1,12 @@
 package core;
 
-public class Building {
+public class Building{
+    private String name;
+
+    public Building(String name) {
+        this.name = name;
+    }
+
     private boolean permissionToEnter;
 
     public Building(boolean permissionToEnter) {
