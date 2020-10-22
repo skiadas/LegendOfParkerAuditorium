@@ -1,18 +1,25 @@
 package core;
 
 public class MovementAction implements UserAction {
-    public Player player;
-    public MovementAction(Player player) {
-        this.player = player;
+
+    public static final int SPEED = 1;
+
+    public MovementAction() {
     }
 
-    // TODO: move UI element corresponding to player
-    public void moveX(int amount) {
-        player.moveX(amount);
+    public int moveUp() {
+        return SPEED;
     }
 
-    // TODO: move UI element corresponding to player
-    public void moveY(int amount) {
-        player.moveY(amount);
+    public int moveDown() {
+        return -SPEED;
+    }
+
+    public int moveLeft() {
+        return -SPEED;
+    }
+
+    public int moveRight() {
+        return SPEED;
     }
 }
