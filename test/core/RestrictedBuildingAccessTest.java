@@ -21,4 +21,19 @@ public class RestrictedBuildingAccessTest {
         Location currentLocation = new Location(true);
         assertEquals(true, currentLocation.isBuildingEntrance());
     }
+    @Test
+    public void canCreateInventory() {
+        Inventory inventory = new Inventory(0);
+        assertEquals(0, Inventory.numberOfItems());
+    }
+//    @Test
+//    public void canLimitBuildingEntry() {
+//        Building levelOne = new Building(true);
+//        Building levelTwo = new Building(false);
+//        Inventory inventory = new Inventory(0);
+//        Location currentLocation = new Location(true);
+//        inventory.addKey();
+//        assertEquals(true, levelTwo.canEnter());
+//    }
+    // Started but need Building list
 }
