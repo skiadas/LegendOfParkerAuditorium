@@ -12,7 +12,7 @@ public class Location {
 
     public void setCurrentBuilding(Building building){
     }
-    private final boolean isBuildingEnterSquare;
+    private boolean isBuildingEnterSquare;
 
     public Location(boolean isBuildingEnterSquare) {
         this.isBuildingEnterSquare = isBuildingEnterSquare;
