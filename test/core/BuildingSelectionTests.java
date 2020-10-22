@@ -3,7 +3,7 @@ package core;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class BuildingSelectionTests {
 
@@ -25,13 +25,26 @@ public class BuildingSelectionTests {
 
     @Test
     public void canCreateSelectBuildingAction() {
-        UserAction playerAction = new SelectBuildingAction(1);
+        SelectBuildingAction playerAction = new SelectBuildingAction(1);
+        assertEquals(1, playerAction.getNum());
     }
 
-    @Ignore
+    @Test
+    public void canCreateSelectBuildingActionWith0() {
+        SelectBuildingAction playerAction = new SelectBuildingAction(0);
+        assertEquals(0, playerAction.getNum());
+    }
+
     @Test
     public void canSelectBuildingNumberOne() {
-        UserAction playerAction = new SelectBuildingAction(1);
-        //assertEquals("Donner", playerAction.getLocation());
+        SelectBuildingAction selectBuildingAction = new SelectBuildingAction(1);
+    }
+
+    @Test
+    @Ignore
+    public void cannotSelectBuildingWithInvalidNumber() {
+        UserAction playerAction = new SelectBuildingAction(-1);
+        Location location = new Location();
+        assertFalse(location.isBuildingLocation());
     }
 }

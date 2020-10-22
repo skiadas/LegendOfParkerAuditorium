@@ -1,6 +1,12 @@
 package core;
 
 public class SelectBuildingAction implements UserAction {
-    public SelectBuildingAction(int number) {
+    private final int buildingNumber;
+
+    public SelectBuildingAction(int buildingNumber) {
+        this.buildingNumber = buildingNumber;
+    }
+    public int getNum() {
+        return buildingNumber;
     }
 }
