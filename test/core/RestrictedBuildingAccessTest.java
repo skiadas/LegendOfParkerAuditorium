@@ -16,4 +16,9 @@ public class RestrictedBuildingAccessTest {
         assertTrue(levelOne.canEnter());
         assertFalse(levelTwo.canEnter());
     }
+    @Test
+    public void canEnterBuildingFromCurrentLocation() {
+        Location currentLocation = new Location(true);
+        assertEquals(true, currentLocation.isBuildingEntrance());
+    }
 }
