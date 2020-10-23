@@ -35,4 +35,8 @@ public class Game {
         return availableBuildings;
 
     }
+
+    public int sizeOfBuildingList() {
+        return buildings.size();
+    }
 }

@@ -8,18 +8,40 @@ public class MovementAction implements UserAction {
     }
 
     public int moveUp() {
-        return SPEED;
+        // if tile that the player is moving to is a wall throw exception
+        // TODO: make way to check for wall
+        if (false) {
+            throw new InvalidMovement();
+        }
+        else {
+            return SPEED;
+        }
     }
 
     public int moveDown() {
-        return -SPEED;
+        if (false) {
+            throw new InvalidMovement();
+        }
+        else {
+            return -SPEED;
+        }
     }
 
     public int moveLeft() {
-        return -SPEED;
+        if (false) {
+            throw new InvalidMovement();
+        }
+        else {
+            return -SPEED;
+        }
     }
 
     public int moveRight() {
-        return SPEED;
+        if (false) {
+            throw new InvalidMovement();
+        }
+        else {
+            return SPEED;
+        }
     }
 }
