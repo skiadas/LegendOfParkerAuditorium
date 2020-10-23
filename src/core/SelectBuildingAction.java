@@ -1,12 +1,16 @@
 package core;
 
 public class SelectBuildingAction implements UserAction {
-    private final int buildingNumber;
+    private final int index;
 
-    public SelectBuildingAction(int buildingNumber) {
-        this.buildingNumber = buildingNumber;
+    public SelectBuildingAction(int index) {
+        if (index < 0 || index > 10) {
+            throw new RuntimeException("No Such Building index value");
+        }
+        this.index = index;
     }
+
     public int getNum() {
-        return buildingNumber;
+        return index;
     }
 }
