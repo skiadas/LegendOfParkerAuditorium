@@ -6,7 +6,7 @@ public class WithinBuildingLocation extends Location{
     public int yValue;
 
     public WithinBuildingLocation(int xValue, int yValue) {
-        super(true);
+        super();
         this.xValue = xValue;
         this.yValue = yValue;
     }
