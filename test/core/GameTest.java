@@ -11,7 +11,8 @@ public class GameTest {
     @Test
     public void canCreateGame(){
         List<Building> buildings = new ArrayList<>();
-        assertEquals(buildings, Game.buildings);
+        Game game = new Game();
+        assertEquals(buildings, game.getBuildings());
     }
 
     @Test
@@ -19,9 +20,9 @@ public class GameTest {
         Game game = new Game();
         Building building1 = new Building(false);
         game.addBuildings(building1);
-        assertEquals(building1, Game.buildings.get(0));
+        assertEquals(building1, game.getBuildingAtIndex(0));
         Building building2 = new Building(false);
         game.addBuildings(building2);
-        assertEquals(building2, Game.buildings.get(1));
+        assertEquals(building2, game.getBuildingAtIndex(1));
     }
 }
