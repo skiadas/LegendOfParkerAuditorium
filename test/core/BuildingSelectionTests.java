@@ -7,21 +7,13 @@ import static org.junit.Assert.*;
 
 public class BuildingSelectionTests {
 
-    @Test
-    public void canCreateGame() {
-        Game game = new Game();
-        //assertEquals("Outside", game.getbuilding());
-    }
+    private Game game = new Game();
 
     @Test
     public void canCreateInteractor() {
         Interactor user = new Interactor();
     }
 
-    @Test
-    public void canCreateLocationOnMap() {
-        Location square = new Location();
-    }
 
     @Test
     public void canCreateSelectBuildingAction() {
@@ -31,13 +23,37 @@ public class BuildingSelectionTests {
 
     @Test
     public void canCreateSelectBuildingActionWith0() {
-        SelectBuildingAction playerAction = new SelectBuildingAction(0);
-        assertEquals(0, playerAction.getNum());
+        SelectBuildingAction selectBuildingAction = new SelectBuildingAction(0);
+        Building building = new Building("Outside");
+        game.addBuildings(building);
+        assertEquals("Outside", game.getBuildingAtIndex(selectBuildingAction.getNum()).getBuildingName());
     }
 
     @Test
     public void canSelectBuildingNumberOne() {
         SelectBuildingAction selectBuildingAction = new SelectBuildingAction(1);
+        Building building = new Building("Donner");
+        Building building2 = new Building("Outside");
+        game.addBuildings(building2);
+        game.addBuildings(building);
+        assertEquals("Donner", game.getBuildingAtIndex(selectBuildingAction.getNum()).getBuildingName());
+    }
+
+
+    @Test
+    public void canAddBuildingToList() {
+        Building building = new Building("Donner");
+        game.addBuildings(building);
+        assertEquals(1, game.sizeOfBuildingList());
+    }
+
+    @Test
+    public void canAddAnotherBuildingToList() {
+        Building building = new Building("Donner");
+        Building building2 = new Building("Parker");
+        game.addBuildings(building);
+        game.addBuildings(building2);
+        assertEquals(2, game.sizeOfBuildingList());
     }
 
     @Test

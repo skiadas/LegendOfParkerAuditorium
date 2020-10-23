@@ -24,4 +24,8 @@ public class Game {
     public List<Building> getBuildings(){
         return  this.buildings;
     }
+
+    public int sizeOfBuildingList() {
+        return buildings.size();
+    }
 }

@@ -16,4 +16,8 @@ public class Building{
     public boolean canEnter() {
         return permissionToEnter;
     }
+
+    public String getBuildingName() {
+        return name;
+    }
 }
