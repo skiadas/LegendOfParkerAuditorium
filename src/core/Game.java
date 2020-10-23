@@ -24,4 +24,15 @@ public class Game {
     public List<Building> getBuildings(){
         return  this.buildings;
     }
+
+    public List<Building> produceAvailableBuildings() {
+        List<Building> availableBuildings = new ArrayList<>();
+        for (Building building : buildings){
+            if (building.canEnter()){
+                availableBuildings.add(building);
+            }
+        }
+        return availableBuildings;
+
+    }
 }
