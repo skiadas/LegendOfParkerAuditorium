@@ -6,7 +6,7 @@ import java.util.List;
 public class Game {
     private final List<Building> buildings;
     private final Inventory inventory = new Inventory();
-    private final Location location = new Location(true);
+    private final PlayerLocation location = new PlayerLocation(true);
     //fix this later
 
     public Game() {

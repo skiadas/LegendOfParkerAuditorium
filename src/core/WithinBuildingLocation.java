@@ -1,7 +1,7 @@
 package core;
 
 
-public class WithinBuildingLocation extends Location{
+public class WithinBuildingLocation extends PlayerLocation {
     public int xValue;
     public int yValue;
 

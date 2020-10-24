@@ -1,9 +1,9 @@
 package core;
 
 public class Interactor {
-    private Game game;
-
-    public void startNewGame() {
-        game = new Game();
+    public static Game game;
+    public Result preformAction(UserAction start){
+        return start.Action();
     }
+
 }

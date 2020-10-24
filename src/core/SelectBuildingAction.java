@@ -13,4 +13,9 @@ public class SelectBuildingAction implements UserAction {
     public int getNum() {
         return index;
     }
+
+    @Override
+    public Result Action() {
+        return null;
+    }
 }

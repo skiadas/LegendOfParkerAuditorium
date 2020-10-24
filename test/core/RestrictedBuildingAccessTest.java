@@ -18,7 +18,7 @@ public class RestrictedBuildingAccessTest {
     }
     @Test
     public void canEnterBuildingFromCurrentLocation() {
-        Location currentLocation = new Location(true);
+        PlayerLocation currentLocation = new PlayerLocation(true);
         assertEquals(true, currentLocation.isBuildingEntrance());
     }
     // Will Not Need^

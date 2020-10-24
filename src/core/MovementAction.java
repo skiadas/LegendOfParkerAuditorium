@@ -44,4 +44,9 @@ public class MovementAction implements UserAction {
             return SPEED;
         }
     }
+
+    @Override
+    public Result Action() {
+        return null;
+    }
 }

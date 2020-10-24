@@ -8,13 +8,13 @@ import static org.junit.Assert.assertFalse;
 public class LocationTest {
     @Test
     public void canCreateLocation(){
-        Location l = new Location();
+        PlayerLocation l = new PlayerLocation();
     }
 
     @Test
     @Ignore
     public void notInBuilding(){
-        Location location = new Location();
+        PlayerLocation location = new PlayerLocation();
         assertFalse(location.isBuildingLocation());
     }
 
