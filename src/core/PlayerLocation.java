@@ -11,6 +11,7 @@ public class PlayerLocation implements Location {
     public PlayerLocation(boolean isBuildingEnterSquare) {
         this.isBuildingEnterSquare = isBuildingEnterSquare;
     }
+
     @Override
     public boolean isBuildingLocation() {
         return currentBuilding == null;
