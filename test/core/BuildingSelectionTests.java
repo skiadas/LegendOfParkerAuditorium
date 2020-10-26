@@ -57,4 +57,14 @@ public class BuildingSelectionTests {
         Interactor user = new Interactor();
         user.perform(new SelectBuildingAction(-1));
     }
+
+    @Test (expected = RuntimeException.class)
+    public void cannotSelectBuildingWithOutOfRangeNumber() {
+        Interactor user = new Interactor();
+        Building building = new Building("Donner");
+        Building building2 = new Building("Parker");
+        game.addBuildings(building);
+        game.addBuildings(building2);
+        user.perform(new SelectBuildingAction(3));
+    }
 }
