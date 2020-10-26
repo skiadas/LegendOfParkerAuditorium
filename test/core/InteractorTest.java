@@ -10,6 +10,6 @@ public class InteractorTest {
     public void canCreateGame(){
         Interactor i = new Interactor();
         StartGameAction start = new StartGameAction();
-        assertThat(new OkResult(), instanceOf(i.preformAction(start).getClass()));
+        assertThat(new OkResult(), instanceOf(i.performAction(start).getClass()));
     }
 }

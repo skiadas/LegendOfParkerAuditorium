@@ -9,16 +9,11 @@ public class BuildingSelectionTests {
 
     private Game game = new Game();
 
-    @Test
-    public void canCreateInteractor() {
-        Interactor user = new Interactor();
-    }
-
 
     @Test
     public void canCreateSelectBuildingAction() {
         SelectBuildingAction playerAction = new SelectBuildingAction(1);
-        assertEquals(1, playerAction.getNum());
+        assertEquals(1, playerAction.getBuildingNum());
     }
 
     @Test
@@ -26,7 +21,7 @@ public class BuildingSelectionTests {
         SelectBuildingAction selectBuildingAction = new SelectBuildingAction(0);
         Building building = new Building("Outside");
         game.addBuildings(building);
-        assertEquals("Outside", game.getBuildingAtIndex(selectBuildingAction.getNum()).getBuildingName());
+        assertEquals("Outside", game.getBuildingAtIndex(selectBuildingAction.getBuildingNum()).getBuildingName());
     }
 
     @Test
@@ -36,7 +31,7 @@ public class BuildingSelectionTests {
         Building building2 = new Building("Outside");
         game.addBuildings(building2);
         game.addBuildings(building);
-        assertEquals("Donner", game.getBuildingAtIndex(selectBuildingAction.getNum()).getBuildingName());
+        assertEquals("Donner", game.getBuildingAtIndex(selectBuildingAction.getBuildingNum()).getBuildingName());
     }
 
 
@@ -56,11 +51,10 @@ public class BuildingSelectionTests {
         assertEquals(2, game.sizeOfBuildingList());
     }
 
-    @Test
-    @Ignore
+
+    @Test (expected = RuntimeException.class)
     public void cannotSelectBuildingWithInvalidNumber() {
-        UserAction playerAction = new SelectBuildingAction(-1);
-        PlayerLocation location = new PlayerLocation();
-        assertFalse(location.isBuildingLocation());
+        Interactor user = new Interactor();
+        user.perform(new SelectBuildingAction(-1));
     }
 }
