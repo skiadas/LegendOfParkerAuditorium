@@ -2,6 +2,8 @@ package core;
 
 import core.boundary.ActionHandler;
 import core.boundary.Presenter;
+import core.movement.DownwardsMovementAction;
+import core.movement.UpwardsMovementAction;
 
 public class Interactor implements ActionHandler {
     public static Game game;
@@ -21,6 +23,22 @@ public class Interactor implements ActionHandler {
         // if yes, then call suitable presenter method and change game state to have enter the building
         // if no, call presenter method to display error message
     }
+
+    public void perform(UpwardsMovementAction action) {
+        // TODO: check if tile is movable
+        game.updateY(UpwardsMovementAction.SPEED);
+        // check if tile is a movable tile
+        // if yes, update player location
+        // if no, throw exception
+    }
+
+//    public void perform(DownwardsMovementAction action) {
+//        // TODO: check if tile is movable
+//        game.updateY(UpwardsMovementAction.SPEED);
+//        // check if tile is a movable tile
+//        // if yes, update player location
+//        // if no, throw exception
+//    }
 
     public void setPresenter(Presenter presenter) {
         this.presenter = presenter;

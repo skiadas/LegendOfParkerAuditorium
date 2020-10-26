@@ -8,9 +8,22 @@ public class Game {
     private final Inventory inventory = new Inventory();
     private final PlayerLocation location = new PlayerLocation(true);
     //fix this later
+    private final WithinBuildingLocation insideLocation = new WithinBuildingLocation(0, 0);
 
     public Game() {
         this.buildings = new ArrayList<>();
+    }
+
+    public WithinBuildingLocation getInsideLocation() {
+        return insideLocation;
+    }
+
+    public void updateY(int amount) {
+        int current = insideLocation.getyValue();
+        System.out.println("\nbefore " + current);
+        current += amount;
+        System.out.println("\nafter " + current);
+        insideLocation.setyValue(current);
     }
 
     public void addBuildings(Building building){
