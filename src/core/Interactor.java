@@ -15,10 +15,14 @@ public class Interactor implements ActionHandler {
         if (game == null){
             throw new RuntimeException("Game Already Started");
         }
-        System.out.print("Game Started");
+        System.out.print("Game Started\nOn a dark and spooky night...\nSomething tragic happened that closed Parker Auditorium forever..." +
+                "A student wondered into Parker after hours and never made it out. Their spirit haunts anyone who dares to enter. ");
         Interactor.game = new Game();
-        Interactor.game.gameStarted = true;
-        //Need to show building menu and show backstory
+        List<MenuOption> menuOptions = List.of(
+                new MenuOption("New Game", new NewGameAction()),
+                new MenuOption("Save Game", new SaveGameAction()));
+        presenter.showMainMenu(menuOptions);
+
     }
 
     public void perform(SelectBuildingAction action){
@@ -26,9 +30,6 @@ public class Interactor implements ActionHandler {
             throw new RuntimeException("No Such Building index value");
         }
         //handle case of no-game-started
-        if (Interactor.game.gameStarted.equals(false)){
-
-        }
         // ask game about building with id action.id/name
         // check if player has access to that building
         // if yes, then call suitable presenter method and change game state to have enter the building
@@ -83,6 +84,9 @@ public class Interactor implements ActionHandler {
     // For test
     public Game getGame() {
         return game;
+    }
+    public List<Building> getBuildings(){
+        return game.getBuildings();
     }
 }
 
