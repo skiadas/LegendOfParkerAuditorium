@@ -8,10 +8,13 @@ import core.movement.UpwardsMovementAction;
 import java.util.List;
 
 public class Interactor implements ActionHandler {
-    private static Game game;
+    private static Game game = null;
     private Presenter presenter;
 
     public void perform(StartGameAction action){
+        if (game == null){
+            throw new RuntimeException("Game Already Started");
+        }
         System.out.print("Game Started");
         Interactor.game = new Game();
         //Need to show building menu and show backstory
@@ -81,3 +84,4 @@ public class Interactor implements ActionHandler {
         return game.getBuildings();
     }
 }
+
