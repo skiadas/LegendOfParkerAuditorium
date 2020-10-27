@@ -1,7 +1,7 @@
 package core;
 
 public class Inventory {
-    private static int numberOfKeys;
+    private int numberOfKeys;
 
     public Inventory() {
 
@@ -10,7 +10,7 @@ public class Inventory {
         this.numberOfKeys = numberOfKeys;
     }
 
-    public static int numberOfItems() {
+    public int numberOfItems() {
         return numberOfKeys;
     }
 

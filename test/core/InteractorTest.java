@@ -1,5 +1,6 @@
 package core;
 
+import core.action.EnterTheBuilding;
 import core.action.StartGameAction;
 import core.movement.UpwardsMovementAction;
 import org.junit.Ignore;
@@ -14,7 +15,7 @@ public class InteractorTest {
     public void canCreateGame(){
         Interactor i = new Interactor();
         StartGameAction start = new StartGameAction();
-        assertThat(new OkResult(), instanceOf(i.performAction(start).getClass()));
+        assertThat(new OkResult(), instanceOf(i.perform(start).getClass()));
     }
 
     @Test
@@ -38,5 +39,12 @@ public class InteractorTest {
 
     private int getyValue(Interactor i) {
         return i.getGame().getInsideLocation().yValue;
+    }
+
+    @Test
+    public void canEnterTheBuilding() {
+        Interactor i = new Interactor();
+        i.perform(new StartGameAction());
+        assertThat(new OkResult(), instanceOf(i.perform(new EnterTheBuilding()).getClass()));
     }
 }

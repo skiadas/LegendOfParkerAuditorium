@@ -11,7 +11,7 @@ public class Interactor implements ActionHandler {
     private static Game game;
     private Presenter presenter;
 
-    public Result performAction(StartGameAction action){
+    public Result perform(StartGameAction action){
         System.out.print("Game Started");
         Interactor.game = new Game();
         return new OkResult();
@@ -57,8 +57,28 @@ public class Interactor implements ActionHandler {
         this.presenter = presenter;
     }
 
+    public Result perform(EnterTheBuilding action){
+        // See the building select menu
+        // player choose one
+        int indexOfBuilding = showBuildingSelector(game.getBuildings());
+        // if player has enough key
+        if (game.canEnterTheBuilding(indexOfBuilding)) {
+            return new OkResult();
+        }else{
+            return new NegativeResult();
+        }
+
+    }
+
+    private int showBuildingSelector(List<Building> buildings) {
+        return 0;
+    }
+
     // For test
     public Game getGame() {
         return game;
+    }
+    public List<Building> getBuildings(){
+        return game.getBuildings();
     }
 }

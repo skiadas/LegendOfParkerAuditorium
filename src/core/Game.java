@@ -12,6 +12,8 @@ public class Game {
 
     public Game() {
         this.buildings = new ArrayList<>();
+        buildings.add(new AlphaBuilding());
+        buildings.add(new BetaBuilding());
     }
 
     public WithinBuildingLocation getInsideLocation() {
@@ -51,5 +53,17 @@ public class Game {
 
     public int sizeOfBuildingList() {
         return buildings.size();
+    }
+
+    public void setLocation(Building building){
+        location.setCurrentBuilding(building);
+    }
+
+    public boolean canEnterTheBuilding(int i){
+        return i <= getNumOfKeysInInventory();
+    }
+
+    private int getNumOfKeysInInventory(){
+        return inventory.numberOfItems();
     }
 }
