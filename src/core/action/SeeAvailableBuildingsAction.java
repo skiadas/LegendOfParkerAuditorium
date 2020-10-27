@@ -1,4 +1,8 @@
 package core.action;
 
-public class SeeAvailableBuildingsAction {
+import core.Building;
+import core.Game;
+
+import java.util.List;
+public class SeeAvailableBuildingsAction implements UserAction {
 }
