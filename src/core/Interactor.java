@@ -3,7 +3,7 @@ package core;
 import core.action.*;
 import core.boundary.ActionHandler;
 import core.boundary.Presenter;
-import core.movement.UpwardsMovementAction;
+import core.action.MovementAction;
 
 import java.util.List;
 
@@ -36,21 +36,13 @@ public class Interactor implements ActionHandler {
         // if no, call presenter method to display error message
     }
 
-    public void perform(UpwardsMovementAction action) {
+    public void perform(MovementAction action) {
         // TODO: check if tile is movable
-        game.updateY(UpwardsMovementAction.SPEED);
+        game.updateY(MovementAction.SPEED);
         // check if tile is a movable tile
         // if yes, update player location
         // if no, throw exception
     }
-
-//    public void perform(DownwardsMovementAction action) {
-//        // TODO: check if tile is movable
-//        game.updateY(UpwardsMovementAction.SPEED);
-//        // check if tile is a movable tile
-//        // if yes, update player location
-//        // if no, throw exception
-//    }
 
     public void perform(AppLoadAction action) {
         // TODO: Should really not hard-code the actions like that
