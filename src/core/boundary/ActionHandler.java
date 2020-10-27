@@ -1,3 +1,7 @@
 package core.boundary;
 
-public interface ActionHandler {}
+import core.AppLoadAction;
+
+public interface ActionHandler {
+    void perform(AppLoadAction action);
+}

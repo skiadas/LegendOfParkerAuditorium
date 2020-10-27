@@ -5,6 +5,8 @@ import core.boundary.Presenter;
 import core.movement.DownwardsMovementAction;
 import core.movement.UpwardsMovementAction;
 
+import java.util.List;
+
 public class Interactor implements ActionHandler {
     public static Game game;
     private Presenter presenter;
@@ -39,6 +41,14 @@ public class Interactor implements ActionHandler {
 //        // if yes, update player location
 //        // if no, throw exception
 //    }
+
+    public void perform(AppLoadAction action) {
+        // TODO: Should really not hard-code the actions like that
+        List<MenuOption> menuOptions = List.of(
+                new MenuOption("New Game", new NewGameAction()),
+                new MenuOption("Save Game", new SaveGameAction()));
+        presenter.showMainMenu(menuOptions);
+    }
 
     public void setPresenter(Presenter presenter) {
         this.presenter = presenter;
