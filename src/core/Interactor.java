@@ -11,12 +11,11 @@ public class Interactor implements ActionHandler {
     private static Game game;
     private Presenter presenter;
 
-    public Result perform(StartGameAction action){
+    public void perform(StartGameAction action){
         System.out.print("Game Started");
         Interactor.game = new Game();
-        return new OkResult();
+        //Need to show building menu and show backstory
     }
-
 
     public void perform(SelectBuildingAction action){
         if (game.isInvalidIndex(action.getBuildingNum())){
