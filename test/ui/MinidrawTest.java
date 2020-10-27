@@ -1,6 +1,6 @@
 package ui;
 
-import core.AppLoadAction;
+import core.action.AppLoadAction;
 import core.boundary.ActionHandler;
 import minidraw.standard.MiniDrawApplication;
 import org.junit.Test;

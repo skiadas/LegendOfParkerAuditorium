@@ -2,7 +2,7 @@ package core.movement;
 
 import core.InvalidMovement;
 import core.Result;
-import core.UserAction;
+import core.action.UserAction;
 
 public class LeftMovementAction implements UserAction {
     public int moveLeft() {

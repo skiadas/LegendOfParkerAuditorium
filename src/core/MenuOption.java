@@ -1,5 +1,7 @@
 package core;
 
+import core.action.UserAction;
+
 import java.util.Objects;
 
 public class MenuOption {

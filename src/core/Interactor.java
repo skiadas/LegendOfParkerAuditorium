@@ -1,8 +1,8 @@
 package core;
 
+import core.action.*;
 import core.boundary.ActionHandler;
 import core.boundary.Presenter;
-import core.movement.DownwardsMovementAction;
 import core.movement.UpwardsMovementAction;
 
 import java.util.List;

@@ -1,7 +1,7 @@
 package core.movement;
 
 import core.InvalidMovement;
-import core.UserAction;
+import core.action.UserAction;
 
 public class DownwardsMovementAction extends UpwardsMovementAction implements UserAction {
     public int moveDown() {

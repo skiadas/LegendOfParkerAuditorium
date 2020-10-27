@@ -1,5 +1,6 @@
 package core;
 
+import core.action.StartGameAction;
 import core.movement.UpwardsMovementAction;
 import org.junit.Ignore;
 import org.junit.Test;

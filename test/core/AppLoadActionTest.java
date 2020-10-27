@@ -1,5 +1,8 @@
 package core;
 
+import core.action.AppLoadAction;
+import core.action.NewGameAction;
+import core.action.SaveGameAction;
 import mocks.AppLoadPresenterSpy;
 import org.junit.Test;
 

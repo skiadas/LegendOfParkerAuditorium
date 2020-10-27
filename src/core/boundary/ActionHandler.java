@@ -1,6 +1,6 @@
 package core.boundary;
 
-import core.AppLoadAction;
+import core.action.AppLoadAction;
 
 public interface ActionHandler {
     void perform(AppLoadAction action);

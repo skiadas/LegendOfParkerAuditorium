@@ -1,4 +1,6 @@
-package core;
+package core.action;
+
+import core.Result;
 
 public class NewGameAction implements UserAction {
     public Result Action() {
