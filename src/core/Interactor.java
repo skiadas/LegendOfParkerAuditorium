@@ -17,6 +17,7 @@ public class Interactor implements ActionHandler {
         }
         System.out.print("Game Started");
         Interactor.game = new Game();
+        Interactor.game.gameStarted = true;
         //Need to show building menu and show backstory
     }
 
@@ -25,6 +26,9 @@ public class Interactor implements ActionHandler {
             throw new RuntimeException("No Such Building index value");
         }
         //handle case of no-game-started
+        if (Interactor.game.gameStarted.equals(false)){
+
+        }
         // ask game about building with id action.id/name
         // check if player has access to that building
         // if yes, then call suitable presenter method and change game state to have enter the building

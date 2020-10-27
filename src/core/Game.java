@@ -9,11 +9,13 @@ public class Game {
     private final List<Building> buildings;
     private final Inventory inventory = new Inventory();
     private final PlayerLocation location = new PlayerLocation(true);
+    public  Boolean gameStarted = false;
     //fix this later
     private final WithinBuildingLocation insideLocation = new WithinBuildingLocation(0, 0);
 
     public Game() {
         this.buildings = new ArrayList<>();
+        this.gameStarted = false;
     }
 
     public WithinBuildingLocation getInsideLocation() {

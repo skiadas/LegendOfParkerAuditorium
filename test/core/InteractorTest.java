@@ -15,6 +15,8 @@ public class InteractorTest {
     public void canCreateGame(){
         Interactor i = new Interactor();
         StartGameAction start = new StartGameAction();
+        i.perform(start);
+        assertEquals(true ,i.getGame().gameStarted);
     }
 
     @Test
