@@ -1,5 +1,7 @@
 package core;
 
+import core.action.SelectBuildingAction;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,5 +67,9 @@ public class Game {
 
     private int getNumOfKeysInInventory(){
         return inventory.numberOfItems();
+    }
+
+    boolean isInvalidIndex(int index) {
+        return index < 0 || index > sizeOfBuildingList();
     }
 }

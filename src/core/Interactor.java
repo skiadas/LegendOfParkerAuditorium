@@ -19,7 +19,7 @@ public class Interactor implements ActionHandler {
 
 
     public void perform(SelectBuildingAction action){
-        if (action.getBuildingNum() < 0 || action.getBuildingNum() > game.sizeOfBuildingList()){
+        if (game.isInvalidIndex(action.getBuildingNum())){
             throw new RuntimeException("No Such Building index value");
         }
         //handle case of no-game-started
