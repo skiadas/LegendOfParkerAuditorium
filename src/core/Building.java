@@ -13,12 +13,15 @@ public class Building{
         this.permissionToEnter = permissionToEnter;
     }
 
-
     public boolean canEnter() {
         return permissionToEnter;
     }
 
     public String getBuildingName() {
         return name;
+    }
+
+    public void setPermissionToEnter(boolean permissionToEnter) {
+        this.permissionToEnter = permissionToEnter;
     }
 }

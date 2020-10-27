@@ -1,7 +1,5 @@
 package core;
 
-import core.action.SelectBuildingAction;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +40,10 @@ public class Game {
         return  this.buildings;
     }
 
+    public Inventory getInventory(){
+        return inventory;
+    }
+
     public List<Building> produceAvailableBuildings() {
         List<Building> availableBuildings = new ArrayList<>();
         for (Building building : buildings){
@@ -57,19 +59,24 @@ public class Game {
         return buildings.size();
     }
 
-    public void setLocation(Building building){
-        location.setCurrentBuilding(building);
+    public Result setLocation(Building building){
+        if(building.canEnter()) {
+            location.setCurrentBuilding(building);
+            return new OkResult();
+        }else{
+            return new NegativeResult();
+        }
     }
 
-    public boolean canEnterTheBuilding(int i){
-        return i <= getNumOfKeysInInventory();
-    }
-
-    private int getNumOfKeysInInventory(){
-        return inventory.numberOfItems();
-    }
 
     boolean isInvalidIndex(int index) {
         return index < 0 || index > sizeOfBuildingList();
+    }
+
+    public void unlockBuildingsByCurrentKeysInInventory() {
+        int numOfKeys = inventory.numberOfItems();
+        for (int i = 0; i < numOfKeys; i++) {
+            buildings.get(i).setPermissionToEnter(true);
+        }
     }
 }

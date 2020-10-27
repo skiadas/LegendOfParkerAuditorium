@@ -7,16 +7,10 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.instanceOf;
+import static org.junit.Assert.*;
 
 public class GameTest {
-    @Test
-    public void canCreateGame(){
-        Interactor i = new Interactor();
-        i.perform(new StartGameAction());
-    }
 
     @Ignore
     @Test
@@ -48,5 +42,35 @@ public class GameTest {
         assertEquals(availableBuildings1, game.produceAvailableBuildings());
 
 
+    }
+
+    @Test
+    public void canSetLocationWithPermission() {
+        Game game = new Game();
+        Building building = new Building(true);
+        game.addBuildings(building);
+        assertThat(new OkResult(), instanceOf(game.setLocation(building).getClass()));
+    }
+
+    @Test
+    public void canSetLocationWithoutPermission() {
+        Game game = new Game();
+        Building building = new Building(false);
+        game.addBuildings(building);
+        assertThat(new NegativeResult(), instanceOf(game.setLocation(building).getClass()));
+    }
+
+    @Test
+    public void canUnlockBuildingsByCurrentKeysInInventory() {
+        Game game = new Game();
+        Building building1 = new Building(true);
+        Building building2 = new Building(false);
+        game.addBuildings(building1);
+        game.addBuildings(building2);
+        game.getInventory().addKey();
+        game.getInventory().addKey();
+        game.unlockBuildingsByCurrentKeysInInventory();
+        assertTrue(game.getBuildingAtIndex(0).canEnter());
+        assertTrue(game.getBuildingAtIndex(1).canEnter());
     }
 }

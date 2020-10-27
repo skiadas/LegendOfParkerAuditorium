@@ -7,11 +7,11 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.*;
 
 public class InteractorTest {
 
+    @Ignore
     @Test
     public void canCreateGame(){
         Interactor i = new Interactor();
@@ -46,8 +46,13 @@ public class InteractorTest {
 
     @Test
     public void canEnterTheBuilding() {
-        Interactor i = new Interactor();
-        i.perform(new StartGameAction());
-        assertThat(new OkResult(), instanceOf(i.perform(new EnterTheBuilding()).getClass()));
+        // delegation.
+        // See canSetLocationWithPermission() and canSetLocationWithoutPermission() test in GameTest
+    }
+
+    @Test
+    public void unlockBuildingTest() {
+        // delegation.
+        // See canUnlockBuildingsByCurrentKeysInInventory() test in GameTest
     }
 }

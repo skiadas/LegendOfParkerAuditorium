@@ -57,20 +57,12 @@ public class Interactor implements ActionHandler {
     }
 
     public Result perform(EnterTheBuilding action){
-        // See the building select menu
-        // player choose one
-        int indexOfBuilding = showBuildingSelector(game.getBuildings());
-        // if player has enough key
-        if (game.canEnterTheBuilding(indexOfBuilding)) {
-            return new OkResult();
-        }else{
-            return new NegativeResult();
-        }
-
+        Building building = action.getBuilding();
+        return game.setLocation(building);
     }
 
-    private int showBuildingSelector(List<Building> buildings) {
-        return 0;
+    public void perform(UnlockBuildings action){
+        game.unlockBuildingsByCurrentKeysInInventory();
     }
 
     // For test
