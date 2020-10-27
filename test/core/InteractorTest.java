@@ -37,6 +37,6 @@ public class InteractorTest {
     }
 
     private int getyValue(Interactor i) {
-        return i.game.getInsideLocation().yValue;
+        return i.getGame().getInsideLocation().yValue;
     }
 }

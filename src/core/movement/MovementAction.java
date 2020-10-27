@@ -9,9 +9,4 @@ public class MovementAction extends RightMovementAction {
 
     public MovementAction() {
     }
-
-    @Override
-    public Result Action() {
-        return null;
-    }
 }

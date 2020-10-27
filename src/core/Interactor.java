@@ -8,12 +8,15 @@ import core.movement.UpwardsMovementAction;
 import java.util.List;
 
 public class Interactor implements ActionHandler {
-    public static Game game;
+    private static Game game;
     private Presenter presenter;
 
-    public Result performAction(UserAction start){
-        return start.Action();
+    public Result performAction(StartGameAction action){
+        System.out.print("Game Started");
+        Interactor.game = new Game();
+        return new OkResult();
     }
+
 
     public void perform(SelectBuildingAction action){
         if (action.getBuildingNum() < 0 || action.getBuildingNum() > game.sizeOfBuildingList()){
@@ -52,5 +55,10 @@ public class Interactor implements ActionHandler {
 
     public void setPresenter(Presenter presenter) {
         this.presenter = presenter;
+    }
+
+    // For test
+    public Game getGame() {
+        return game;
     }
 }

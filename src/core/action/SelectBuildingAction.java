@@ -1,7 +1,5 @@
 package core.action;
 
-import core.Result;
-
 public class SelectBuildingAction implements UserAction {
     private final int index;
 
@@ -13,8 +11,4 @@ public class SelectBuildingAction implements UserAction {
         return index;
     }
 
-    @Override
-    public Result Action() {
-        return null;
-    }
 }

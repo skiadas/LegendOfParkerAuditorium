@@ -17,9 +17,4 @@ public class UpwardsMovementAction implements UserAction {
             return MovementAction.SPEED;
         }
     }
-
-    @Override
-    public Result Action() {
-        return null;
-    }
 }

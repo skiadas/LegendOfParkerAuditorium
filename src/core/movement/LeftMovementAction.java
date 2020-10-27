@@ -14,8 +14,4 @@ public class LeftMovementAction implements UserAction {
         }
     }
 
-    @Override
-    public Result Action() {
-        return null;
-    }
 }

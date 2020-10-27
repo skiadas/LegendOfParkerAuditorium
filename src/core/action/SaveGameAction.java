@@ -1,11 +1,6 @@
 package core.action;
 
-import core.Result;
-
 public class SaveGameAction implements UserAction {
-    public Result Action() {
-        return null;
-    }
 
     public String toString() {
         return "SaveGameAction";
