@@ -80,8 +80,5 @@ public class Interactor implements ActionHandler {
     public Game getGame() {
         return game;
     }
-    public List<Building> getBuildings(){
-        return game.getBuildings();
-    }
 }
 

@@ -14,8 +14,6 @@ public class Game {
 
     public Game() {
         this.buildings = new ArrayList<>();
-        buildings.add(new AlphaBuilding());
-        buildings.add(new BetaBuilding());
     }
 
     public WithinBuildingLocation getInsideLocation() {
