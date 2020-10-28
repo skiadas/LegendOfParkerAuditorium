@@ -27,11 +27,4 @@ public class WithinBuildingLocation extends PlayerLocation {
         this.yValue = yValue;
     }
 
-    public void moveX(int amount) {
-        xValue += amount;
-    }
-
-    public void moveY(int amount) {
-        yValue += amount;
-    }
 }

@@ -22,10 +22,14 @@ public class Game {
 
     public void updateY(int amount) {
         int current = insideLocation.getyValue();
-        System.out.println("\nbefore " + current);
         current += amount;
-        System.out.println("\nafter " + current);
         insideLocation.setyValue(current);
+    }
+
+    public void updateX(int amount) {
+        int current = insideLocation.getxValue();
+        current += amount;
+        insideLocation.setxValue(current);
     }
 
     public void addBuildings(Building building){

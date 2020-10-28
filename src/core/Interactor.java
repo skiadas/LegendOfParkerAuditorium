@@ -8,7 +8,7 @@ import core.action.MovementAction;
 import java.util.List;
 
 public class Interactor implements ActionHandler {
-    private static Game game = null;
+    private Game game = null;
     private Presenter presenter;
 
     public void perform(StartGameAction action){
@@ -17,7 +17,7 @@ public class Interactor implements ActionHandler {
         }
         System.out.print("Game Started\nOn a dark and spooky night...\nSomething tragic happened that closed Parker Auditorium forever..." +
                 "A student wondered into Parker after hours and never made it out. Their spirit haunts anyone who dares to enter. ");
-        Interactor.game = new Game();
+        this.game = new Game();
         List<MenuOption> menuOptions = List.of(
                 new MenuOption("New Game", new NewGameAction()),
                 new MenuOption("Save Game", new SaveGameAction()));
@@ -49,7 +49,23 @@ public class Interactor implements ActionHandler {
 
     public void perform(MovementAction action) {
         // TODO: check if tile is movable
-        game.updateY(MovementAction.SPEED);
+
+        switch (action.direction) {
+            case up:
+                game.updateY(MovementAction.SPEED);
+                break;
+            case down:
+                game.updateY(-MovementAction.SPEED);
+                break;
+            case left:
+                game.updateX(-MovementAction.SPEED);
+                break;
+            case right:
+                game.updateX(MovementAction.SPEED);
+                break;
+            default:
+                break;
+        }
         // check if tile is a movable tile
         // if yes, update player location
         // if no, throw exception
@@ -79,6 +95,9 @@ public class Interactor implements ActionHandler {
     // For test
     public Game getGame() {
         return game;
+    }
+    public void setGame(Game game) {
+        this.game = game;
     }
     public List<Building> getBuildings(){
         return game.getBuildings();
