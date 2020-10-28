@@ -1,5 +1,6 @@
 package ui;
 
+import core.Building;
 import core.MenuOption;
 import core.boundary.ActionHandler;
 import core.boundary.Presenter;
@@ -17,5 +18,10 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
 
     public void showMainMenu(List<MenuOption> options) {
         // TODO: Show the options, allow for option to be chosen
+    }
+
+    @Override
+    public void showAvailableBuildings(List<Building> availableBuildings) {
+
     }
 }

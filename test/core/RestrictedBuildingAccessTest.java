@@ -1,6 +1,5 @@
 package core;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -9,13 +8,13 @@ public class RestrictedBuildingAccessTest {
 
     @Test
     public void canCreateBuilding() {
-        Building levelOne = new Building(true);
+        Building levelOne = new Building("building1", true);
     }
 
     @Test
     public void canLimitBuildingEntrance() {
-        Building levelOne = new Building(true);
-        Building levelTwo = new Building(false);
+        Building levelOne = new Building("building1", true);
+        Building levelTwo = new Building("building2", false);
         assertTrue(levelOne.canEnter());
         assertFalse(levelTwo.canEnter());
     }
@@ -36,8 +35,8 @@ public class RestrictedBuildingAccessTest {
     @Test
     public void canLimitBuildingEntry() {
         Game game = new Game();
-        Building levelOne = new Building(true);
-        Building levelTwo = new Building(false);
+        Building levelOne = new Building("building1", true);
+        Building levelTwo = new Building("building2", false);
         Inventory inventory = new Inventory();
         game.addBuildings(levelOne);
         game.addBuildings(levelTwo);

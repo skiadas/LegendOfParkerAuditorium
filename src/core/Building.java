@@ -9,8 +9,9 @@ public class Building{
         this.name = name;
     }
 
-    public Building(boolean permissionToEnter) {
+    public Building(String name, boolean permissionToEnter) {
         this.permissionToEnter = permissionToEnter;
+        this.name = name;
     }
 
     public boolean canEnter() {

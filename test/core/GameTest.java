@@ -1,7 +1,5 @@
 package core;
 
-import core.action.StartGameAction;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -12,26 +10,26 @@ import static org.junit.Assert.*;
 
 public class GameTest {
 
-    @Ignore
+
     @Test
     public void canAddBuildings() {
         Game game = new Game();
-        Building building1 = new Building(false);
+        Building building1 = new Building("building1", false);
         game.addBuildings(building1);
         assertEquals(building1, game.getBuildingAtIndex(0));
-        Building building2 = new Building(false);
+        Building building2 = new Building("building1", false);
         game.addBuildings(building2);
         assertEquals(building2, game.getBuildingAtIndex(1));
     }
 
-    @Ignore
+
     @Test
     public void createAvailableBuildings(){
         Game game = new Game();
-        Building building1 = new Building(true);
-        Building building2 = new Building(false);
-        Building building3 = new Building(false);
-        Building building4 = new Building(true);
+        Building building1 = new Building("building1", true);
+        Building building2 = new Building("building2", false);
+        Building building3 = new Building("building3", false);
+        Building building4 = new Building("building4", true);
         game.addBuildings(building1);
         game.addBuildings(building2);
         game.addBuildings(building3);
@@ -47,7 +45,7 @@ public class GameTest {
     @Test
     public void canSetLocationWithPermission() {
         Game game = new Game();
-        Building building = new Building(true);
+        Building building = new Building("building1", true);
         game.addBuildings(building);
         assertThat(new OkResult(), instanceOf(game.setLocation(building).getClass()));
     }
@@ -55,7 +53,7 @@ public class GameTest {
     @Test
     public void canSetLocationWithoutPermission() {
         Game game = new Game();
-        Building building = new Building(false);
+        Building building = new Building("building1", false);
         game.addBuildings(building);
         assertThat(new NegativeResult(), instanceOf(game.setLocation(building).getClass()));
     }
@@ -63,8 +61,8 @@ public class GameTest {
     @Test
     public void canUnlockBuildingsByCurrentKeysInInventory() {
         Game game = new Game();
-        Building building1 = new Building(true);
-        Building building2 = new Building(false);
+        Building building1 = new Building("building1", true);
+        Building building2 = new Building("building2", false);
         game.addBuildings(building1);
         game.addBuildings(building2);
         game.getInventory().addKey();

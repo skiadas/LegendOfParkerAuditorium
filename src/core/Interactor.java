@@ -102,5 +102,11 @@ public class Interactor implements ActionHandler {
     public List<Building> getBuildings(){
         return game.getBuildings();
     }
+
+    public void perform(SeeAvailableBuildingsAction action){
+        List<Building> availableBuildings = action.viewAvailableBuildings(game);
+        presenter.showAvailableBuildings(availableBuildings);
+    }
+
 }
 
