@@ -14,11 +14,9 @@ public class Interactor implements ActionHandler {
     public void perform(StartGameAction action){
         if (game != null){
             throw new RuntimeException("Game Already Started");
-        }
-        System.out.print("Game Started\nOn a dark and spooky night...\nSomething tragic happened that closed Parker Auditorium forever..." +
-                "A student wondered into Parker after hours and never made it out. Their spirit haunts anyone who dares to enter. ");
-        this.game = new Game();
-        //TODO: Add menu opener
+        }this.game = new Game();
+        presenter.transitionScreen("Game Started\nOn a dark and spooky night...\nSomething tragic happened that closed Parker Auditorium forever..." +
+                "A student wondered into Parker after hours and never made it out. Their spirit haunts anyone who dares to enter. ", new SeeAvailableBuildingsAction());
     }
 
     public void perform(SelectBuildingAction action){

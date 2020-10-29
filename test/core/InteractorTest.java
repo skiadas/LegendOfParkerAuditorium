@@ -17,6 +17,11 @@ public class InteractorTest {
     }
 
     @Test
+    public void cannotStartGameInProgress(){
+
+    }
+
+    @Test
     public void canMoveUp() {
         Interactor i = new Interactor();
         MovementAction moveUp = MovementAction.up();
