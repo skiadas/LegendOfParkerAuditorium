@@ -7,10 +7,7 @@ public class SelectBuildingAction implements UserAction {
     public SelectBuildingAction(int index) {
         this.index = index;
     }
-
-    public SelectBuildingAction() {
-
-    }
+    
 
     public int getSelectedBuildingNum() {
         return index;
