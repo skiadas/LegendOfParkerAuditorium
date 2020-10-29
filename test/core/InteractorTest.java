@@ -9,16 +9,19 @@ import static org.junit.Assert.assertEquals;
 public class InteractorTest {
 
     @Test
-    public void canCreateGame(){
+    public void canCreateGame() throws Interactor.GameAlreadyStartedException {
         Interactor i = new Interactor();
         StartGameAction start = new StartGameAction();
         i.perform(start);
         assertEquals(true ,i.getGame().gameStarted);
     }
 
-    @Test
-    public void cannotStartGameInProgress(){
-
+    @Test (expected = Interactor.GameAlreadyStartedException.class)
+    public void cannotStartGameInProgress() throws Interactor.GameAlreadyStartedException {
+        Interactor i = new Interactor();
+        i.game = new Game();
+        StartGameAction start = new StartGameAction();
+        i.perform(start);
     }
 
     @Test
