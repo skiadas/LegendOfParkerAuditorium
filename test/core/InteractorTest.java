@@ -1,17 +1,13 @@
 package core;
 
-import core.action.EnterTheBuilding;
-import core.action.StartGameAction;
 import core.action.MovementAction;
-import org.junit.Ignore;
+import core.action.StartGameAction;
 import org.junit.Test;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class InteractorTest {
 
-    @Ignore
     @Test
     public void canCreateGame(){
         Interactor i = new Interactor();

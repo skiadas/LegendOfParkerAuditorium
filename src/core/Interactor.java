@@ -12,17 +12,13 @@ public class Interactor implements ActionHandler {
     private Presenter presenter;
 
     public void perform(StartGameAction action){
-        if (game == null){
+        if (game != null){
             throw new RuntimeException("Game Already Started");
         }
         System.out.print("Game Started\nOn a dark and spooky night...\nSomething tragic happened that closed Parker Auditorium forever..." +
                 "A student wondered into Parker after hours and never made it out. Their spirit haunts anyone who dares to enter. ");
         this.game = new Game();
-        List<MenuOption> menuOptions = List.of(
-                new MenuOption("New Game", new NewGameAction()),
-                new MenuOption("Save Game", new SaveGameAction()));
-        presenter.showMainMenu(menuOptions);
-
+        //TODO: Add menu opener
     }
 
     public void perform(SelectBuildingAction action){
@@ -35,10 +31,9 @@ public class Interactor implements ActionHandler {
         {
             System.out.print("Oh, sorry you are unable to access this building!");
             throw new RuntimeException("Oh, sorry you are unable to access this building!");
-        } else {
-            // stub
-            // possible presenter method - presenter.showUnrestrictedBuildings();
-        }
+        }  // stub
+        // possible presenter method - presenter.showUnrestrictedBuildings();
+
         if (game.isInvalidIndex(action.getBuildingNum())){
             System.out.print("No Such Building index value");
             throw new RuntimeException("No Such Building index value");
