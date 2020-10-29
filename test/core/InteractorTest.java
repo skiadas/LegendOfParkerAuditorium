@@ -2,6 +2,7 @@ package core;
 
 import core.action.MovementAction;
 import core.action.StartGameAction;
+import mocks.PresenterStub;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -11,6 +12,8 @@ public class InteractorTest {
     @Test
     public void canCreateGame() throws Interactor.GameAlreadyStartedException {
         Interactor i = new Interactor();
+        PresenterStub mocks = new PresenterStub();
+        i.setPresenter(mocks);
         StartGameAction start = new StartGameAction();
         i.perform(start);
         assertEquals(true ,i.getGame().gameStarted);

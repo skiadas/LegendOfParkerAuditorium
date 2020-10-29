@@ -12,9 +12,9 @@ public class Interactor implements ActionHandler {
     private Presenter presenter;
 
     public void perform(StartGameAction action) throws GameAlreadyStartedException {
-                if(game != null) {
-                    throw new GameAlreadyStartedException("Game Already Started");
-                }
+        if(game != null) {
+            throw new GameAlreadyStartedException("Game Already Started");
+        }
         this.game = new Game();
         presenter.transitionScreen("Game Started\nOn a dark and spooky night at Hanover College, something tragic happened that closed Parker Auditorium forever...\n" +
                 "A student was dared to break into Parker Auditorium and stay the whole night inside.\n " +
@@ -32,15 +32,16 @@ public class Interactor implements ActionHandler {
         // if no, call presenter method to display error message
         if (!game.getBuildingAtIndex(action.getBuildingNum()).canEnter())
         {
-            System.out.print("Oh, sorry you are unable to access this building!");
-            throw new RuntimeException("Oh, sorry you are unable to access this building!");
-        }  // stub
-        // possible presenter method - presenter.showUnrestrictedBuildings();
+            presenter.showErrorForRestrictedBuilding("Oh, sorry you are unable to access this building!");
+            presenter.showAvailableBuildings(game.produceAvailableBuildings());
+        }
+        else if (game.getBuildingAtIndex(action.getBuildingNum()).canEnter()){
+            presenter.showChoiceOfBuilding(game.getBuildingAtIndex(action.getBuildingNum()));
+            game.setLocation(game.getBuildingAtIndex(action.getBuildingNum()));
+        }
 
         if (game.isInvalidIndex(action.getBuildingNum())){
-            System.out.print("No Such Building index value");
-            throw new RuntimeException("No Such Building index value");
-            // Do not use RuntimeException
+            presenter.showErrorForInvalidIndex("No Such Building index value");
         }
         //presenter.showChoiceOfBuilding(game.getChosenBuilding());
     }

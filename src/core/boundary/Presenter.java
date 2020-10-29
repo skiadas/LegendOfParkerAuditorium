@@ -2,6 +2,7 @@ package core.boundary;
 
 import core.Building;
 import core.MenuOption;
+import core.action.SeeAvailableBuildingsAction;
 import core.action.UserAction;
 
 import java.util.ArrayList;
@@ -12,5 +13,11 @@ public interface Presenter {
 
     void showAvailableBuildings(List<Building> availableBuildings);
 
-    void transitionScreen(String words, UserAction action);
+    void transitionScreen(String words, SeeAvailableBuildingsAction action);
+
+    void showErrorForRestrictedBuilding(String errorMessage);
+
+    void showErrorForInvalidIndex(String errorMessage);
+
+    void showChoiceOfBuilding(Building chosenBuilding);
 }
