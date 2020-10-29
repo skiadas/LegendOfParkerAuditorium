@@ -12,9 +12,9 @@ public class Interactor implements ActionHandler {
     private Presenter presenter;
 
     public void perform(StartGameAction action) throws GameAlreadyStartedException {
-                if(game != null) {
-                    throw new GameAlreadyStartedException("Game Already Started");
-                }
+        if(game != null) {
+            throw new GameAlreadyStartedException("Game Already Started");
+        }
         this.game = new Game();
         presenter.transitionScreen("Game Started\nOn a dark and spooky night...\nSomething tragic happened that closed Parker Auditorium forever..." +
                 "A student wondered into Parker after hours and never made it out. Their spirit haunts anyone who dares to enter. ", new SeeAvailableBuildingsAction());
