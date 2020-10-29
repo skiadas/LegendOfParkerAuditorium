@@ -69,13 +69,4 @@ public class BuildingSelectionTests {
         user.perform(new SelectBuildingAction(3));
     }
 
-    @Ignore
-    @Test
-    public void choosingBuilding() {
-        SelectBuildingAction selectBuildingAction = new SelectBuildingAction();
-        Building building = new Building("Donner");
-        Building building2 = new Building("Outside");
-        game.addBuildings(building2);
-        game.addBuildings(building);
-    }
 }
