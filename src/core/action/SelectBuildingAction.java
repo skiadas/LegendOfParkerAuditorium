@@ -12,9 +12,11 @@ public class SelectBuildingAction implements UserAction {
         return index;
     }
 
+
     public SelectBuildingAction(String buildingName) {
         this.buildingName = buildingName;
     }
+
 
     public String getSelectedBuildingName() {
         return buildingName;

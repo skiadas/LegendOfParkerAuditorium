@@ -47,4 +47,9 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
     public void showChoiceOfBuilding(Building chosenBuilding) {
 
     }
+
+    @Override
+    public void showErrorForNotBeingAtExist(String errorMessage) {
+
+    }
 }

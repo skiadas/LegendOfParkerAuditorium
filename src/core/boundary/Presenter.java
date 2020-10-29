@@ -20,4 +20,8 @@ public interface Presenter {
     void showErrorForInvalidIndex(String errorMessage);
 
     void showChoiceOfBuilding(Building chosenBuilding);
+
+    void showErrorForNotBeingAtExist(String errorMessage);
+
+    void showErrorForGameNotStarted(String errorMessage);
 }

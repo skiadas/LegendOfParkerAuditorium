@@ -1,6 +1,7 @@
 package core;
 
 import core.action.SelectBuildingAction;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -66,5 +67,15 @@ public class BuildingSelectionTests {
         game.addBuildings(building);
         game.addBuildings(building2);
         user.perform(new SelectBuildingAction(3));
+    }
+
+    @Ignore
+    @Test
+    public void choosingBuilding() {
+        SelectBuildingAction selectBuildingAction = new SelectBuildingAction();
+        Building building = new Building("Donner");
+        Building building2 = new Building("Outside");
+        game.addBuildings(building2);
+        game.addBuildings(building);
     }
 }

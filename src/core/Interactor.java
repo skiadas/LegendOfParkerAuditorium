@@ -26,11 +26,13 @@ public class Interactor implements ActionHandler {
 
     public void perform(SelectBuildingAction action){
         //handle case of no-game-started
+        if (game == null) {
+            presenter.showErrorForGameNotStarted("Sorry game has yet to start!");
+        }
         // ask game about building with id action.id/name
-        presenter.showChoiceOfBuilding(game.getBuildingAtIndex(action.getSelectedBuildingNum()));
         // check if a player into already inside a building
         if (!game.getInsideLocation().isBuildingEntrance()) {
-            //presenter.showErrorForNotBeing("Oh, sorry you are unable to access this building!");
+            presenter.showErrorForNotBeingAtExist("Oh, sorry you cannot select a new building until you are at exist of THIS building!");
         }
         // check if player has access to that building
         // if yes, then call suitable presenter method and change game state to have enter the building
@@ -47,6 +49,7 @@ public class Interactor implements ActionHandler {
         if (game.isInvalidIndex(action.getSelectedBuildingNum())){
             presenter.showErrorForInvalidIndex("No Such Building index value");
         }
+        presenter.showChoiceOfBuilding(game.getBuildingAtIndex(action.getSelectedBuildingNum()));
     }
 
     public void perform(MovementAction action) {

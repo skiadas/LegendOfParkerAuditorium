@@ -37,4 +37,9 @@ public class PresenterStub implements Presenter {
     public void showChoiceOfBuilding(Building chosenBuilding) {
 
     }
+
+    @Override
+    public void showErrorForNotBeingAtExist(String errorMessage) {
+
+    }
 }
