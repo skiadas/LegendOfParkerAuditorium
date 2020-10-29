@@ -17,4 +17,6 @@ public interface Presenter {
     void showErrorForRestrictedBuilding(String errorMessage);
 
     void showErrorForInvalidIndex(String errorMessage);
+
+    void showChoiceOfBuilding(Building chosenBuilding);
 }

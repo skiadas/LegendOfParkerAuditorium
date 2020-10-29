@@ -37,6 +37,11 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
     }
 
     @Override
+    public void showChoiceOfBuilding(Building chosenBuilding) {
+
+    }
+
+    @Override
     public void transitionScreen(String words, UserAction action) {
 
     }

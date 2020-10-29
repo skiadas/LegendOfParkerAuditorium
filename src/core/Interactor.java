@@ -29,9 +29,11 @@ public class Interactor implements ActionHandler {
         if (!game.getBuildingAtIndex(action.getBuildingNum()).canEnter())
         {
             presenter.showErrorForRestrictedBuilding("Oh, sorry you are unable to access this building!");
+            presenter.showAvailableBuildings(game.produceAvailableBuildings());
         }
         else if (game.getBuildingAtIndex(action.getBuildingNum()).canEnter()){
-            presenter.showAvailableBuildings(game.produceAvailableBuildings());
+            presenter.showChoiceOfBuilding(game.getBuildingAtIndex(action.getBuildingNum()));
+            game.setLocation(game.getBuildingAtIndex(action.getBuildingNum()));
         }
 
         if (game.isInvalidIndex(action.getBuildingNum())){
