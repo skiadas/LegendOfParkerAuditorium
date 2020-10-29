@@ -3,8 +3,6 @@ package core;
 import core.action.SelectBuildingAction;
 import org.junit.Test;
 
-import java.util.List;
-
 import static org.junit.Assert.*;
 
 public class BuildingSelectionTests {
@@ -15,7 +13,7 @@ public class BuildingSelectionTests {
     @Test
     public void canCreateSelectBuildingAction() {
         SelectBuildingAction playerAction = new SelectBuildingAction(1);
-        assertEquals(1, playerAction.getBuildingNum());
+        assertEquals(1, playerAction.getSelectedBuildingNum());
     }
 
     @Test
@@ -23,7 +21,7 @@ public class BuildingSelectionTests {
         SelectBuildingAction selectBuildingAction = new SelectBuildingAction(0);
         Building building = new Building("Outside");
         game.addBuildings(building);
-        assertEquals("Outside", game.getBuildingAtIndex(selectBuildingAction.getBuildingNum()).getBuildingName());
+        assertEquals("Outside", game.getBuildingAtIndex(selectBuildingAction.getSelectedBuildingNum()).getBuildingName());
     }
 
     @Test
@@ -33,7 +31,7 @@ public class BuildingSelectionTests {
         Building building2 = new Building("Outside");
         game.addBuildings(building2);
         game.addBuildings(building);
-        assertEquals("Donner", game.getBuildingAtIndex(selectBuildingAction.getBuildingNum()).getBuildingName());
+        assertEquals("Donner", game.getBuildingAtIndex(selectBuildingAction.getSelectedBuildingNum()).getBuildingName());
     }
 
 

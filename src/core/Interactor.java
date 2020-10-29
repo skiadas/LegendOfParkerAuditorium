@@ -27,23 +27,26 @@ public class Interactor implements ActionHandler {
     public void perform(SelectBuildingAction action){
         //handle case of no-game-started
         // ask game about building with id action.id/name
+        presenter.showChoiceOfBuilding(game.getBuildingAtIndex(action.getSelectedBuildingNum()));
+        // check if a player into already inside a building
+        if (!game.getInsideLocation().isBuildingEntrance()) {
+            //presenter.showErrorForNotBeing("Oh, sorry you are unable to access this building!");
+        }
         // check if player has access to that building
         // if yes, then call suitable presenter method and change game state to have enter the building
         // if no, call presenter method to display error message
-        if (!game.getBuildingAtIndex(action.getBuildingNum()).canEnter())
+        if (!game.isValidIndex(action, this))
         {
             presenter.showErrorForRestrictedBuilding("Oh, sorry you are unable to access this building!");
             presenter.showAvailableBuildings(game.produceAvailableBuildings());
         }
-        else if (game.getBuildingAtIndex(action.getBuildingNum()).canEnter()){
-            presenter.showChoiceOfBuilding(game.getBuildingAtIndex(action.getBuildingNum()));
-            game.setLocation(game.getBuildingAtIndex(action.getBuildingNum()));
+        else if (game.isValidIndex(action, this)){
+            presenter.showChoiceOfBuilding(game.getBuildingAtIndex(action.getSelectedBuildingNum()));
+            game.setLocation(game.getBuildingAtIndex(action.getSelectedBuildingNum()));
         }
-
-        if (game.isInvalidIndex(action.getBuildingNum())){
+        if (game.isInvalidIndex(action.getSelectedBuildingNum())){
             presenter.showErrorForInvalidIndex("No Such Building index value");
         }
-        //presenter.showChoiceOfBuilding(game.getChosenBuilding());
     }
 
     public void perform(MovementAction action) {
