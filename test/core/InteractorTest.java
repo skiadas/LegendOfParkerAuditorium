@@ -22,7 +22,7 @@ public class InteractorTest {
         MovementAction moveUp = MovementAction.up();
         i.setGame(new Game());
         i.perform(moveUp);
-        assertEquals(1, getyValue(i));
+        assertEquals(1, getYValue(i));
     }
 
     @Test
@@ -33,7 +33,7 @@ public class InteractorTest {
         i.perform(moveUp);
         i.perform(moveUp);
         i.perform(moveUp);
-        assertEquals(3, getyValue(i));
+        assertEquals(3, getYValue(i));
     }
 
     @Test
@@ -42,7 +42,7 @@ public class InteractorTest {
         MovementAction moveDown = MovementAction.down();
         i.setGame(new Game());
         i.perform(moveDown);
-        assertEquals(-1, getyValue(i));
+        assertEquals(-1, getYValue(i));
     }
 
     @Test
@@ -53,7 +53,7 @@ public class InteractorTest {
         i.perform(moveDown);
         i.perform(moveDown);
         i.perform(moveDown);
-        assertEquals(-3, getyValue(i));
+        assertEquals(-3, getYValue(i));
     }
 
     @Test
@@ -62,7 +62,7 @@ public class InteractorTest {
         MovementAction moveLeft = MovementAction.left();
         i.setGame(new Game());
         i.perform(moveLeft);
-        assertEquals(-1, getxValue(i));
+        assertEquals(-1, getXValue(i));
     }
 
     @Test
@@ -73,7 +73,7 @@ public class InteractorTest {
         i.perform(moveLeft);
         i.perform(moveLeft);
         i.perform(moveLeft);
-        assertEquals(-3, getxValue(i));
+        assertEquals(-3, getXValue(i));
     }
 
     @Test
@@ -82,7 +82,7 @@ public class InteractorTest {
         MovementAction moveRight = MovementAction.right();
         i.setGame(new Game());
         i.perform(moveRight);
-        assertEquals(1, getxValue(i));
+        assertEquals(1, getXValue(i));
     }
 
     @Test
@@ -93,14 +93,14 @@ public class InteractorTest {
         i.perform(moveLeft);
         i.perform(moveLeft);
         i.perform(moveLeft);
-        assertEquals(-3, getxValue(i));
+        assertEquals(-3, getXValue(i));
     }
 
-    private int getxValue(Interactor i) {
+    private int getXValue(Interactor i) {
         return i.getGame().getInsideLocation().xValue;
     }
 
-    private int getyValue(Interactor i) {
+    private int getYValue(Interactor i) {
         return i.getGame().getInsideLocation().yValue;
     }
 
