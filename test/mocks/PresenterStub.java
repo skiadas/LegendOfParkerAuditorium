@@ -18,6 +18,16 @@ public class PresenterStub implements Presenter {
     }
 
     @Override
+    public void showErrorForRestrictedBuilding(String errorMessage) {
+
+    }
+
+    @Override
+    public void showErrorForInvalidIndex(String errorMessage) {
+
+    }
+
+    @Override
     public void transitionScreen(String words, UserAction action) {
 
     }

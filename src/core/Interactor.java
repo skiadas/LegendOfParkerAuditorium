@@ -28,15 +28,14 @@ public class Interactor implements ActionHandler {
         // if no, call presenter method to display error message
         if (!game.getBuildingAtIndex(action.getBuildingNum()).canEnter())
         {
-            System.out.print("Oh, sorry you are unable to access this building!");
-            throw new RuntimeException("Oh, sorry you are unable to access this building!");
-        }  // stub
-        // possible presenter method - presenter.showUnrestrictedBuildings();
+            presenter.showErrorForRestrictedBuilding("Oh, sorry you are unable to access this building!");
+        }
+        else if (game.getBuildingAtIndex(action.getBuildingNum()).canEnter()){
+            presenter.showAvailableBuildings(game.produceAvailableBuildings());
+        }
 
         if (game.isInvalidIndex(action.getBuildingNum())){
-            System.out.print("No Such Building index value");
-            throw new RuntimeException("No Such Building index value");
-            // Do not use RuntimeException
+            presenter.showErrorForInvalidIndex("No Such Building index value");
         }
         //presenter.showChoiceOfBuilding(game.getChosenBuilding());
     }

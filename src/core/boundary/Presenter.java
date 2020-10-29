@@ -13,4 +13,8 @@ public interface Presenter {
     void showAvailableBuildings(List<Building> availableBuildings);
 
     void transitionScreen(String words, UserAction action);
+
+    void showErrorForRestrictedBuilding(String errorMessage);
+
+    void showErrorForInvalidIndex(String errorMessage);
 }
