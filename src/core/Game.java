@@ -1,5 +1,7 @@
 package core;
 
+import core.action.SelectBuildingAction;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,4 +86,7 @@ public class Game {
         }
     }
 
+    boolean isValidIndex(SelectBuildingAction action, Interactor interactor) {
+        return getBuildingAtIndex(action.getSelectedBuildingNum()).canEnter();
+    }
 }
