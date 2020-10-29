@@ -2,6 +2,7 @@ package core.boundary;
 
 import core.Building;
 import core.MenuOption;
+import core.WithinBuildingLocation;
 import core.action.SeeAvailableBuildingsAction;
 import core.action.UserAction;
 
@@ -12,6 +13,9 @@ public interface Presenter {
     void showMainMenu(List<MenuOption> options);
 
     void showAvailableBuildings(List<Building> availableBuildings);
+
+    void showUpdatedInsideLocation(WithinBuildingLocation insideLocation);
+
 
     void transitionScreen(String words, SeeAvailableBuildingsAction action);
 

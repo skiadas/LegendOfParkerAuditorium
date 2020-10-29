@@ -2,6 +2,7 @@ package mocks;
 
 import core.Building;
 import core.MenuOption;
+import core.WithinBuildingLocation;
 import core.action.SeeAvailableBuildingsAction;
 import core.action.UserAction;
 import core.boundary.Presenter;
@@ -9,12 +10,18 @@ import core.boundary.Presenter;
 import java.util.List;
 
 public class PresenterStub implements Presenter {
+
     public void showMainMenu(List<MenuOption> options) {
 
     }
 
     @Override
     public void showAvailableBuildings(List<Building> availableBuildings) {
+
+    }
+
+    @Override
+    public void showUpdatedInsideLocation(WithinBuildingLocation insideLocation) {
 
     }
 
@@ -40,6 +47,11 @@ public class PresenterStub implements Presenter {
 
     @Override
     public void showErrorForNotBeingAtExist(String errorMessage) {
+
+    }
+
+    @Override
+    public void showErrorForGameNotStarted(String errorMessage) {
 
     }
 }

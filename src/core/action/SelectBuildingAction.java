@@ -8,6 +8,10 @@ public class SelectBuildingAction implements UserAction {
         this.index = index;
     }
 
+    public SelectBuildingAction() {
+
+    }
+
     public int getSelectedBuildingNum() {
         return index;
     }

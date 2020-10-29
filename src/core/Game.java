@@ -1,5 +1,7 @@
 package core;
 
+import core.action.MovementAction;
+
 import core.action.SelectBuildingAction;
 
 import java.util.ArrayList;
@@ -9,9 +11,9 @@ public class Game {
     private final List<Building> buildings;
     private final Inventory inventory = new Inventory();
     private final PlayerLocation location = new PlayerLocation(true);
+    private final WithinBuildingLocation insideLocation = new WithinBuildingLocation(0, 0);
     public Boolean gameStarted;
     //fix this later
-    private final WithinBuildingLocation insideLocation = new WithinBuildingLocation(0, 0);
 
     public Game() {
         this.buildings = new ArrayList<>();
@@ -88,5 +90,23 @@ public class Game {
 
     boolean isValidIndex(SelectBuildingAction action, Interactor interactor) {
         return getBuildingAtIndex(action.getSelectedBuildingNum()).canEnter();
+    }
+    public void updatePosition(MovementAction action) {
+        switch (action.direction) {
+            case up:
+                updateY(MovementAction.SPEED);
+                break;
+            case down:
+                updateY(-MovementAction.SPEED);
+                break;
+            case left:
+                updateX(-MovementAction.SPEED);
+                break;
+            case right:
+                updateX(MovementAction.SPEED);
+                break;
+            default:
+                break;
+        }
     }
 }

@@ -3,6 +3,7 @@ package ui;
 import core.Building;
 import core.Interactor;
 import core.MenuOption;
+import core.WithinBuildingLocation;
 import core.action.SeeAvailableBuildingsAction;
 import core.boundary.ActionHandler;
 import core.boundary.Presenter;
@@ -24,6 +25,11 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
 
     @Override
     public void showAvailableBuildings(List<Building> availableBuildings) {
+
+    }
+
+    @Override
+    public void showUpdatedInsideLocation(WithinBuildingLocation insideLocation) {
 
     }
 
@@ -50,6 +56,11 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
 
     @Override
     public void showErrorForNotBeingAtExist(String errorMessage) {
+
+    }
+
+    @Override
+    public void showErrorForGameNotStarted(String errorMessage) {
 
     }
 }

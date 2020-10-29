@@ -54,26 +54,11 @@ public class Interactor implements ActionHandler {
 
     public void perform(MovementAction action) {
         // TODO: check if tile is movable
-
-        switch (action.direction) {
-            case up:
-                game.updateY(MovementAction.SPEED);
-                break;
-            case down:
-                game.updateY(-MovementAction.SPEED);
-                break;
-            case left:
-                game.updateX(-MovementAction.SPEED);
-                break;
-            case right:
-                game.updateX(MovementAction.SPEED);
-                break;
-            default:
-                break;
-        }
         // check if tile is a movable tile
         // if yes, update player location
         // if no, throw exception
+        game.updatePosition(action);
+        presenter.showUpdatedInsideLocation(game.getInsideLocation());
     }
 
     public void perform(AppLoadAction action) {
@@ -86,6 +71,10 @@ public class Interactor implements ActionHandler {
 
     public void setPresenter(Presenter presenter) {
         this.presenter = presenter;
+    }
+
+    public Presenter getPresenter() {
+        return presenter;
     }
 
     public Result perform(EnterTheBuilding action){
