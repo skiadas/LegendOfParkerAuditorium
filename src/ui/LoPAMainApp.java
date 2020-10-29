@@ -1,7 +1,9 @@
 package ui;
 
 import core.Building;
+import core.Interactor;
 import core.MenuOption;
+import core.action.SeeAvailableBuildingsAction;
 import core.action.UserAction;
 import core.boundary.ActionHandler;
 import core.boundary.Presenter;
@@ -28,6 +30,5 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
 
     @Override
     public void transitionScreen(String words, UserAction action) {
-
     }
 }
