@@ -29,6 +29,8 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
 
     @Override
     public void transitionScreen(String words, SeeAvailableBuildingsAction action) {
+        Interactor i = new Interactor();
+        i.perform(action);
     }
 
     @Override
