@@ -1,14 +1,15 @@
 package mocks;
 
 import core.Building;
+import core.MenuOption;
 
 import java.util.List;
 
 public class AvailableBuildingsPresenterSpy extends PresenterStub {
     public boolean showAvailableBuildingsWasCalled = false;
-    public List<Building> availableBuildings;
+    public List<MenuOption> availableBuildings;
 
-    public void showAvailableBuildings(List<Building> availableBuildings){
+    public void showAvailableBuildings(List<MenuOption> availableBuildings){
         showAvailableBuildingsWasCalled = true;
         this.availableBuildings = availableBuildings;
     }

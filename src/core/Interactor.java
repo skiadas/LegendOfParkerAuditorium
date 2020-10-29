@@ -5,6 +5,7 @@ import core.boundary.ActionHandler;
 import core.boundary.Presenter;
 import core.action.MovementAction;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Interactor implements ActionHandler {
@@ -40,7 +41,8 @@ public class Interactor implements ActionHandler {
         if (!game.isValidIndex(action, this))
         {
             presenter.showErrorForRestrictedBuilding("Oh, sorry you are unable to access this building!");
-            presenter.showAvailableBuildings(game.produceAvailableBuildings());
+            List<MenuOption> menuOptions = convertBuildingsToMenuOptions(game.produceAvailableBuildings());
+            presenter.showAvailableBuildings(menuOptions);
         }
         else if (game.isValidIndex(action, this)){
             presenter.showChoiceOfBuilding(game.getBuildingAtIndex(action.getSelectedBuildingNum()));
@@ -98,14 +100,24 @@ public class Interactor implements ActionHandler {
     }
 
     public void perform(SeeAvailableBuildingsAction action){
-        List<Building> availableBuildings = action.viewAvailableBuildings(game);
-        presenter.showAvailableBuildings(availableBuildings);
+        List<Building> availableBuildings = game.produceAvailableBuildings();
+        List<MenuOption> menuOptions = convertBuildingsToMenuOptions(availableBuildings);
+        presenter.showAvailableBuildings(menuOptions);
     }
 
     static class GameAlreadyStartedException extends Exception {
         public GameAlreadyStartedException(String message) {
             super(message);
         }
+    }
+
+    public List<MenuOption> convertBuildingsToMenuOptions(List<Building> buildings) {
+        List<MenuOption> menuOptions = new ArrayList<>();
+        for (Building building : buildings) {
+            MenuOption m = new MenuOption(building.getBuildingName(), new SelectBuildingAction(building.getBuildingName()));
+            menuOptions.add(m);
+        }
+        return menuOptions;
     }
 }
 

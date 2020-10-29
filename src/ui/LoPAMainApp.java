@@ -24,7 +24,7 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
     }
 
     @Override
-    public void showAvailableBuildings(List<Building> availableBuildings) {
+    public void showAvailableBuildings(List<MenuOption> availableBuildings) {
 
     }
 

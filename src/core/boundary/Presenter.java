@@ -12,7 +12,7 @@ import java.util.List;
 public interface Presenter {
     void showMainMenu(List<MenuOption> options);
 
-    void showAvailableBuildings(List<Building> availableBuildings);
+    void showAvailableBuildings(List<MenuOption> availableBuildings);
 
     void showUpdatedInsideLocation(WithinBuildingLocation insideLocation);
 

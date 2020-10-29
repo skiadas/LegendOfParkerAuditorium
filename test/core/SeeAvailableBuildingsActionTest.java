@@ -1,9 +1,11 @@
 package core;
 
 import core.action.SeeAvailableBuildingsAction;
+import core.action.SelectBuildingAction;
 import mocks.AvailableBuildingsPresenterSpy;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -26,8 +28,10 @@ public class SeeAvailableBuildingsActionTest {
         i.perform(action);
         List<Building> availableBuildings2 = game.produceAvailableBuildings();
         assertTrue(mockPresenter.showAvailableBuildingsWasCalled);
-        assertEquals(availableBuildings2, mockPresenter.availableBuildings);
+        List<MenuOption> menuOptions = i.convertBuildingsToMenuOptions(availableBuildings2);
+        assertEquals(menuOptions, mockPresenter.availableBuildings);
     }
+
 
 }
 
