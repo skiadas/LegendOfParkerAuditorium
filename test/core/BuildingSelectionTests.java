@@ -13,8 +13,8 @@ public class BuildingSelectionTests {
 
     @Test
     public void canCreateSelectBuildingAction() {
-        SelectBuildingAction playerAction = new SelectBuildingAction(1);
-        assertEquals(1, playerAction.getSelectedBuildingNum());
+        SelectBuildingAction playerAction = new SelectBuildingAction("Donner");
+        assertEquals("Donner", playerAction.getSelectedBuildingName());
     }
 
     @Test

@@ -61,11 +61,6 @@ public class Game {
         }
     }
 
-
-    boolean isInvalidIndex(int index) {
-        return index < 0 || index > sizeOfBuildingList();
-    }
-
     public void unlockBuildingsByCurrentKeysInInventory() {
         int numOfKeys = inventory.numberOfItems();
         for (int i = 0; i < numOfKeys; i++) {
@@ -73,12 +68,13 @@ public class Game {
         }
     }
 
-    boolean isValidIndex(SelectBuildingAction action, Interactor interactor) {
-        return getBuildingAtIndex(action.getSelectedBuildingNum()).canEnter();
-    }
 
     boolean isNotWithinABuilding() {
         return !location.isBuildingLocation();
+    }
+
+    boolean isWithinABuilding() {
+        return location.isBuildingLocation();
     }
 
     int getYValue() {
@@ -91,5 +87,18 @@ public class Game {
 
     void updatePosition(Direction direction) {
         getCoords().updatePosition(direction);
+    }
+
+    public boolean isSelectedBuildingInBuildingList(SelectBuildingAction action) {
+        if (buildings.contains(action.getSelectedBuildingName())) return true;
+        return false;
+    }
+
+    public Building getBuildingBasedOnName(String selectedBuildingName) {
+        for (Building chosenBuilding: buildings) {
+            if(chosenBuilding.getBuildingName().equals(selectedBuildingName))
+                return chosenBuilding;
+        }
+        throw new RuntimeException("Sorry Building is not Listed");
     }
 }

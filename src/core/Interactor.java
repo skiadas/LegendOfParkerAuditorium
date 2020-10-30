@@ -11,6 +11,7 @@ import java.util.List;
 public class Interactor implements ActionHandler {
     public Game game = null;
     private Presenter presenter;
+    private Building chosenBuilding = null;
 
     public void perform(StartGameAction action) throws GameAlreadyStartedException {
         if(game != null) {
@@ -38,20 +39,21 @@ public class Interactor implements ActionHandler {
         // check if player has access to that building
         // if yes, then call suitable presenter method and change game state to have enter the building
         // if no, call presenter method to display error message
-        if (!game.isValidIndex(action, this))
+        if (game.isWithinABuilding())
         {
             presenter.showErrorForRestrictedBuilding("Oh, sorry you are unable to access this building!");
+        }
+        else if (game.isNotWithinABuilding()){
             List<MenuOption> menuOptions = convertBuildingsToMenuOptions(game.produceAvailableBuildings());
             presenter.showAvailableBuildings(menuOptions);
+            presenter.showChoiceOfBuilding(game.getBuildingBasedOnName(action.getSelectedBuildingName()));
+            game.enterBuilding(game.getBuildingBasedOnName(action.getSelectedBuildingName()));
         }
-        else if (game.isValidIndex(action, this)){
-            presenter.showChoiceOfBuilding(game.getBuildingAtIndex(action.getSelectedBuildingNum()));
-            game.enterBuilding(game.getBuildingAtIndex(action.getSelectedBuildingNum()));
+        if (!game.isSelectedBuildingInBuildingList(action))
+        {
+            presenter.showErrorForInvalidBuilding("No Such Building");;
         }
-        if (game.isInvalidIndex(action.getSelectedBuildingNum())){
-            presenter.showErrorForInvalidIndex("No Such Building index value");
-        }
-        presenter.showChoiceOfBuilding(game.getBuildingAtIndex(action.getSelectedBuildingNum()));
+        presenter.showChoiceOfBuilding(game.getBuildingBasedOnName(action.getSelectedBuildingName()));
     }
 
     public void perform(MovementAction action) {

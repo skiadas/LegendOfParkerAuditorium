@@ -35,7 +35,7 @@ public class PresenterStub implements Presenter {
     }
 
     @Override
-    public void showErrorForInvalidIndex(String errorMessage) {
+    public void showErrorForInvalidBuilding(String errorMessage) {
 
     }
 
