@@ -18,21 +18,21 @@ public class BuildingSelectionTests {
     }
 
     @Test
-    public void canCreateSelectBuildingActionWith0() {
-        SelectBuildingAction selectBuildingAction = new SelectBuildingAction(0);
-        Building building = new Building("Outside");
+    public void canSelectBuilding() {
+        SelectBuildingAction selectBuildingAction = new SelectBuildingAction("Donner");
+        Building building = new Building("Donner");
         game.addBuildings(building);
-        assertEquals("Outside", game.getBuildingAtIndex(selectBuildingAction.getSelectedBuildingNum()).getBuildingName());
+        assertEquals(building, game.getBuildingBasedOnName(selectBuildingAction.getSelectedBuildingName()));
     }
 
     @Test
-    public void canSelectBuildingNumberOne() {
-        SelectBuildingAction selectBuildingAction = new SelectBuildingAction(1);
+    public void canSelectBuildingNumberOutOfMoreBuildings() {
+        SelectBuildingAction selectBuildingAction = new SelectBuildingAction("Outside");
         Building building = new Building("Donner");
         Building building2 = new Building("Outside");
         game.addBuildings(building2);
         game.addBuildings(building);
-        assertEquals("Donner", game.getBuildingAtIndex(selectBuildingAction.getSelectedBuildingNum()).getBuildingName());
+        assertEquals(building2, game.getBuildingBasedOnName(selectBuildingAction.getSelectedBuildingName()));
     }
 
 
@@ -53,20 +53,20 @@ public class BuildingSelectionTests {
     }
 
 
-    @Test (expected = RuntimeException.class)
+    @Test (expected = RuntimeException.class) //// WHY DOES THIS WORK??? SINCE METHODS DO NOT EXIST NO MORE
     public void cannotSelectBuildingWithInvalidNumber() {
         Interactor user = new Interactor();
-        user.perform(new SelectBuildingAction(-1));
+        user.perform(new SelectBuildingAction("Parker"));
     }
 
-    @Test (expected = RuntimeException.class)
+    @Test (expected = RuntimeException.class) //// WHY DOES THIS WORK??? SINCE METHODS DO NOT EXIST NO MORE
     public void cannotSelectBuildingWithOutOfRangeNumber() {
         Interactor user = new Interactor();
         Building building = new Building("Donner");
         Building building2 = new Building("Parker");
         game.addBuildings(building);
         game.addBuildings(building2);
-        user.perform(new SelectBuildingAction(3));
+        user.perform(new SelectBuildingAction("WAC"));
     }
 
 }
