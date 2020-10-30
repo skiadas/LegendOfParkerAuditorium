@@ -38,6 +38,22 @@ public class BuildingSelectionTests {
 
     @Test
     public void canAddBuildingToList() {
+        SelectBuildingAction selectBuildingAction = new SelectBuildingAction("Outside");
+        Building building = new Building("Donner");
+        game.addBuildings(building);
+        assertFalse(game.isSelectedBuildingInBuildingList(selectBuildingAction.getSelectedBuildingName()));
+    }
+
+    @Test
+    public void checkingIfSelectedBuildingIsInList() {
+        SelectBuildingAction selectBuildingAction = new SelectBuildingAction("Donner");
+        Building building = new Building("Donner");
+        game.addBuildings(building);
+        assertTrue(game.isSelectedBuildingInBuildingList(selectBuildingAction.getSelectedBuildingName()));
+    }
+
+    @Test
+    public void isBuildingWithinList() {
         Building building = new Building("Donner");
         game.addBuildings(building);
         assertEquals(1, game.sizeOfBuildingList());

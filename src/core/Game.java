@@ -89,8 +89,11 @@ public class Game {
         getCoords().updatePosition(direction);
     }
 
-    public boolean isSelectedBuildingInBuildingList(SelectBuildingAction action) {
-        if (buildings.contains(action.getSelectedBuildingName())) return true;
+    public boolean isSelectedBuildingInBuildingList(String SelectBuildingName) {
+        for (Building chosenBuilding: buildings) {
+            if(chosenBuilding.getBuildingName().equals(SelectBuildingName))
+                return true;
+        }
         return false;
     }
 

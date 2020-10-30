@@ -49,7 +49,7 @@ public class Interactor implements ActionHandler {
             presenter.showChoiceOfBuilding(game.getBuildingBasedOnName(action.getSelectedBuildingName()));
             game.enterBuilding(game.getBuildingBasedOnName(action.getSelectedBuildingName()));
         }
-        if (!game.isSelectedBuildingInBuildingList(action))
+        if (!game.isSelectedBuildingInBuildingList(action.getSelectedBuildingName()))
         {
             presenter.showErrorForInvalidBuilding("No Such Building");;
         }
