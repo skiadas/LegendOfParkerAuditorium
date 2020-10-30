@@ -2,11 +2,9 @@ package core.boundary;
 
 import core.Building;
 import core.MenuOption;
-import core.WithinBuildingLocation;
+import core.Coordinates;
 import core.action.SeeAvailableBuildingsAction;
-import core.action.UserAction;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface Presenter {
@@ -14,7 +12,7 @@ public interface Presenter {
 
     void showAvailableBuildings(List<MenuOption> availableBuildings);
 
-    void showUpdatedInsideLocation(WithinBuildingLocation insideLocation);
+    void showUpdatedInsideLocation(Coordinates insideLocation);
 
 
     void transitionScreen(String words, SeeAvailableBuildingsAction action);

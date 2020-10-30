@@ -3,7 +3,7 @@ package ui;
 import core.Building;
 import core.Interactor;
 import core.MenuOption;
-import core.WithinBuildingLocation;
+import core.Coordinates;
 import core.action.SeeAvailableBuildingsAction;
 import core.boundary.ActionHandler;
 import core.boundary.Presenter;
@@ -29,7 +29,7 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
     }
 
     @Override
-    public void showUpdatedInsideLocation(WithinBuildingLocation insideLocation) {
+    public void showUpdatedInsideLocation(Coordinates insideLocation) {
 
     }
 

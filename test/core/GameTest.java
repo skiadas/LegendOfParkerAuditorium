@@ -47,7 +47,7 @@ public class GameTest {
         Game game = new Game();
         Building building = new Building("building1", true);
         game.addBuildings(building);
-        assertThat(new OkResult(), instanceOf(game.setLocation(building).getClass()));
+        assertThat(new OkResult(), instanceOf(game.enterBuilding(building).getClass()));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class GameTest {
         Game game = new Game();
         Building building = new Building("building1", false);
         game.addBuildings(building);
-        assertThat(new NegativeResult(), instanceOf(game.setLocation(building).getClass()));
+        assertThat(new NegativeResult(), instanceOf(game.enterBuilding(building).getClass()));
     }
 
     @Test

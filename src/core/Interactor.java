@@ -32,7 +32,7 @@ public class Interactor implements ActionHandler {
         }
         // ask game about building with id action.id/name
         // check if a player into already inside a building
-        if (!game.getInsideLocation().isBuildingEntrance()) {
+        if (game.isNotWithinABuilding()) {
             presenter.showErrorForNotBeingAtExist("Oh, sorry you cannot select a new building until you are at exist of THIS building!");
         }
         // check if player has access to that building
@@ -46,7 +46,7 @@ public class Interactor implements ActionHandler {
         }
         else if (game.isValidIndex(action, this)){
             presenter.showChoiceOfBuilding(game.getBuildingAtIndex(action.getSelectedBuildingNum()));
-            game.setLocation(game.getBuildingAtIndex(action.getSelectedBuildingNum()));
+            game.enterBuilding(game.getBuildingAtIndex(action.getSelectedBuildingNum()));
         }
         if (game.isInvalidIndex(action.getSelectedBuildingNum())){
             presenter.showErrorForInvalidIndex("No Such Building index value");
@@ -59,8 +59,8 @@ public class Interactor implements ActionHandler {
         // check if tile is a movable tile
         // if yes, update player location
         // if no, throw exception
-        game.updatePosition(action);
-        presenter.showUpdatedInsideLocation(game.getInsideLocation());
+        game.updatePosition(action.direction);
+        presenter.showUpdatedInsideLocation(game.getCoords());
     }
 
     public void perform(AppLoadAction action) {
@@ -81,7 +81,7 @@ public class Interactor implements ActionHandler {
 
     public Result perform(EnterTheBuilding action){
         Building building = action.getBuilding();
-        return game.setLocation(building);
+        return game.enterBuilding(building);
     }
 
     public void perform(UnlockBuildings action){

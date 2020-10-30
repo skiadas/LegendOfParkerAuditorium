@@ -1,8 +1,9 @@
 package core.action;
 
+import core.Direction;
+
 public class MovementAction implements UserAction {
 
-    public static final int SPEED = 1;
     public final Direction direction;
 
     public static MovementAction up() {
@@ -25,7 +26,4 @@ public class MovementAction implements UserAction {
         this.direction = direction;
     }
 
-    public enum Direction {
-        down, left, right, up
-    }
 }

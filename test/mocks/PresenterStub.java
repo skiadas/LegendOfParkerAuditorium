@@ -2,9 +2,8 @@ package mocks;
 
 import core.Building;
 import core.MenuOption;
-import core.WithinBuildingLocation;
+import core.Coordinates;
 import core.action.SeeAvailableBuildingsAction;
-import core.action.UserAction;
 import core.boundary.Presenter;
 
 import java.util.List;
@@ -21,7 +20,7 @@ public class PresenterStub implements Presenter {
     }
 
     @Override
-    public void showUpdatedInsideLocation(WithinBuildingLocation insideLocation) {
+    public void showUpdatedInsideLocation(Coordinates insideLocation) {
 
     }
 

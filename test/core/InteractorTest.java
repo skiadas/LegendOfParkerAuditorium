@@ -4,8 +4,6 @@ import core.action.MovementAction;
 import core.action.StartGameAction;
 import mocks.PresenterStub;
 import mocks.UpdateWithinBuildingLocationSpy;
-import org.junit.Ignore;
-import mocks.PresenterStub;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -34,10 +32,13 @@ public class InteractorTest {
     public void canMoveUp() {
         Interactor i = new Interactor();
         MovementAction moveUp = MovementAction.up();
-        i.setGame(new Game());
+        Game game = new Game();
+        i.setGame(game);
+        Building building = new Building("building1");
+        game.enterBuilding(building);
         i.setPresenter(new PresenterStub());
         i.perform(moveUp);
-        assertEquals(1, getYValue(i));
+        assertEquals(1, game.getYValue());
     }
 
     @Test
@@ -49,7 +50,7 @@ public class InteractorTest {
         i.perform(moveUp);
         i.perform(moveUp);
         i.perform(moveUp);
-        assertEquals(3, getYValue(i));
+        assertEquals(3, i.getGame().getYValue());
     }
 
     @Test
@@ -59,7 +60,7 @@ public class InteractorTest {
         i.setGame(new Game());
         i.setPresenter(new PresenterStub());
         i.perform(moveDown);
-        assertEquals(-1, getYValue(i));
+        assertEquals(-1, i.getGame().getYValue());
     }
 
     @Test
@@ -71,7 +72,7 @@ public class InteractorTest {
         i.perform(moveDown);
         i.perform(moveDown);
         i.perform(moveDown);
-        assertEquals(-3, getYValue(i));
+        assertEquals(-3, i.getGame().getYValue());
     }
 
     @Test
@@ -81,7 +82,7 @@ public class InteractorTest {
         i.setGame(new Game());
         i.setPresenter(new PresenterStub());
         i.perform(moveLeft);
-        assertEquals(-1, getXValue(i));
+        assertEquals(-1, i.getGame().getXValue());
     }
 
     @Test
@@ -93,7 +94,7 @@ public class InteractorTest {
         i.perform(moveLeft);
         i.perform(moveLeft);
         i.perform(moveLeft);
-        assertEquals(-3, getXValue(i));
+        assertEquals(-3, i.getGame().getXValue());
     }
 
     @Test
@@ -103,7 +104,7 @@ public class InteractorTest {
         i.setGame(new Game());
         i.setPresenter(new PresenterStub());
         i.perform(moveRight);
-        assertEquals(1, getXValue(i));
+        assertEquals(1, i.getGame().getXValue());
     }
 
     @Test
@@ -115,7 +116,7 @@ public class InteractorTest {
         i.perform(moveLeft);
         i.perform(moveLeft);
         i.perform(moveLeft);
-        assertEquals(-3, getXValue(i));
+        assertEquals(-3, i.getGame().getXValue());
     }
 
     @Test
@@ -128,24 +129,24 @@ public class InteractorTest {
         i.perform(moveLeft);
         assertTrue(mockPresenter.showUpdatePositionWasCalled);
         assertNotNull(mockPresenter.providedLocation);
-        WithinBuildingLocation expectedInsideLocation = new WithinBuildingLocation(-1, 0);
+        Coordinates expectedInsideLocation = new Coordinates(-1, 0);
         assertEquals(expectedInsideLocation, mockPresenter.providedLocation);
     }
 
-    @Ignore
     @Test
     public void cannotMoveWhenNotInsideBuilding() {
         Interactor i = new Interactor();
         MovementAction moveLeft = MovementAction.left();
         i.setGame(new Game());
+        // TODO: set location to MapLocation
         i.setPresenter(new PresenterStub());
-
+        // TODO: Take the action
+        // TODO: Should test something
     }
 
-    @Ignore
     @Test
     public void cannotMoveWhenNoGameIsStarted() {
-
+        // TODO: Implement
     }
 
     @Test
@@ -160,11 +161,4 @@ public class InteractorTest {
         // See canUnlockBuildingsByCurrentKeysInInventory() test in GameTest
     }
 
-    private int getYValue(Interactor i) {
-        return i.getGame().getInsideLocation().yValue;
-    }
-
-    private int getXValue(Interactor i) {
-        return i.getGame().getInsideLocation().xValue;
-    }
 }

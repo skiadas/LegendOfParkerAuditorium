@@ -1,13 +1,13 @@
 package mocks;
 
-import core.WithinBuildingLocation;
+import core.Coordinates;
 
 public class UpdateWithinBuildingLocationSpy extends PresenterStub {
 
     public boolean showUpdatePositionWasCalled = false;
-    public WithinBuildingLocation providedLocation;
+    public Coordinates providedLocation;
 
-    public void showUpdatedInsideLocation(WithinBuildingLocation insideLocation) {
+    public void showUpdatedInsideLocation(Coordinates insideLocation) {
         showUpdatePositionWasCalled = true;
         providedLocation = insideLocation;
     }

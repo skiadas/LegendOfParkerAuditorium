@@ -3,22 +3,23 @@ package core.action;
 import java.util.Objects;
 
 public class SelectBuildingAction implements UserAction {
-    private int index;
+    private int index;  // TODO: Remove
     private String buildingName;
 
+    public SelectBuildingAction(String buildingName) {
+        this.buildingName = buildingName;
+    }
+
     public SelectBuildingAction(int index) {
+        // TODO: Remove
         this.index = index;
     }
-    
+
 
     public int getSelectedBuildingNum() {
         return index;
     }
 
-
-    public SelectBuildingAction(String buildingName) {
-        this.buildingName = buildingName;
-    }
 
 
     public String getSelectedBuildingName() {

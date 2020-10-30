@@ -25,4 +25,8 @@ public class Building{
     public void setPermissionToEnter(boolean permissionToEnter) {
         this.permissionToEnter = permissionToEnter;
     }
+
+    Coordinates getEntranceCoordinates() {
+        return new Coordinates(0, 0);
+    }
 }

@@ -1,6 +1,9 @@
 package core;
 
 
-public abstract class MapLocation implements Location {
+public class MapLocation implements Location {
+    public boolean isBuildingLocation() {
+        return false;
+    }
 
 }
