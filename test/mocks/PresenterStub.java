@@ -25,7 +25,7 @@ public class PresenterStub implements Presenter {
     }
 
     @Override
-    public void transitionScreen(String words, SeeAvailableBuildingsAction action) {
+    public void transitionScreen() {
 
     }
 

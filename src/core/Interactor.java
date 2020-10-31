@@ -18,12 +18,8 @@ public class Interactor implements ActionHandler {
             throw new GameAlreadyStartedException("Game Already Started");
         }
         this.game = new Game();
-        presenter.transitionScreen("Game Started\nOn a dark and spooky night at Hanover College, something tragic happened that closed Parker Auditorium forever...\n" +
-                "A student was dared to break into Parker Auditorium and stay the whole night inside.\n " +
-                "While inside weird things started happening, the student started to hear suspicious noises like voices and doors started closing on their own.\n" +
-                "As scared as he was he was determined to stay in Parker all night.\n" +
-                "The student never made it out and eas never heard from again, closing Parker Auditorium forever!" +
-                "No one dares to enter Parker and it is said that the student along with the other spirits haunt anyone who dares to enter.", new SeeAvailableBuildingsAction());
+        presenter.transitionScreen();
+        perform(new SeeAvailableBuildingsAction());
     }
 
     public void perform(SelectBuildingAction action){

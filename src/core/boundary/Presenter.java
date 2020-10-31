@@ -15,7 +15,7 @@ public interface Presenter {
     void showUpdatedInsideLocation(Coordinates insideLocation);
 
 
-    void transitionScreen(String words, SeeAvailableBuildingsAction action);
+    void transitionScreen();
 
     void showErrorForRestrictedBuilding(String errorMessage);
 
