@@ -4,25 +4,31 @@ import core.action.MovementAction;
 import core.action.StartGameAction;
 import mocks.PresenterStub;
 import mocks.UpdateWithinBuildingLocationSpy;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class InteractorTest {
 
+    private Interactor i;
+
+    @Before
+    public void setUp() throws Exception {
+        i = new Interactor();
+    }
+
     @Test
     public void canCreateGame() throws Interactor.GameAlreadyStartedException {
-        Interactor i = new Interactor();
         PresenterStub mocks = new PresenterStub();
         i.setPresenter(mocks);
         StartGameAction start = new StartGameAction();
         i.perform(start);
-        assertEquals(true ,i.getGame().gameStarted);
+        assertEquals(true , i.getGame().gameStarted);
     }
 
     @Test (expected = Interactor.GameAlreadyStartedException.class)
     public void cannotStartGameInProgress() throws Interactor.GameAlreadyStartedException {
-        Interactor i = new Interactor();
         i.game = new Game();
         StartGameAction start = new StartGameAction();
         i.perform(start);
@@ -30,22 +36,18 @@ public class InteractorTest {
 
     @Test
     public void canMoveUp() {
-        Interactor i = new Interactor();
-        MovementAction moveUp = MovementAction.up();
-        Game game = new Game();
+        Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
         i.setGame(game);
-        Building building = new Building("building1");
-        game.enterBuilding(building);
         i.setPresenter(new PresenterStub());
-        i.perform(moveUp);
+        i.perform(MovementAction.up());
         assertEquals(1, game.getYValue());
     }
 
     @Test
     public void canMoveUpMultipleTimes() {
-        Interactor i = new Interactor();
         MovementAction moveUp = MovementAction.up();
-        i.setGame(new Game());
+        Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
+        i.setGame(game);
         i.setPresenter(new PresenterStub());
         i.perform(moveUp);
         i.perform(moveUp);
@@ -55,19 +57,18 @@ public class InteractorTest {
 
     @Test
     public void canMoveDown() {
-        Interactor i = new Interactor();
-        MovementAction moveDown = MovementAction.down();
-        i.setGame(new Game());
+        Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
+        i.setGame(game);
         i.setPresenter(new PresenterStub());
-        i.perform(moveDown);
+        i.perform(MovementAction.down());
         assertEquals(-1, i.getGame().getYValue());
     }
 
     @Test
     public void canMoveDownMultipleTimes() {
-        Interactor i = new Interactor();
         MovementAction moveDown = MovementAction.down();
-        i.setGame(new Game());
+        Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
+        i.setGame(game);
         i.setPresenter(new PresenterStub());
         i.perform(moveDown);
         i.perform(moveDown);
@@ -77,19 +78,18 @@ public class InteractorTest {
 
     @Test
     public void canMoveLeft() {
-        Interactor i = new Interactor();
-        MovementAction moveLeft = MovementAction.left();
-        i.setGame(new Game());
+        Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
+        i.setGame(game);
         i.setPresenter(new PresenterStub());
-        i.perform(moveLeft);
+        i.perform(MovementAction.left());
         assertEquals(-1, i.getGame().getXValue());
     }
 
     @Test
     public void canMoveLeftMultipleTimes() {
-        Interactor i = new Interactor();
         MovementAction moveLeft = MovementAction.left();
-        i.setGame(new Game());
+        Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
+        i.setGame(game);
         i.setPresenter(new PresenterStub());
         i.perform(moveLeft);
         i.perform(moveLeft);
@@ -99,9 +99,9 @@ public class InteractorTest {
 
     @Test
     public void canMoveRight() {
-        Interactor i = new Interactor();
         MovementAction moveRight = MovementAction.right();
-        i.setGame(new Game());
+        Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
+        i.setGame(game);
         i.setPresenter(new PresenterStub());
         i.perform(moveRight);
         assertEquals(1, i.getGame().getXValue());
@@ -109,9 +109,9 @@ public class InteractorTest {
 
     @Test
     public void canMoveRightMultipleTimes() {
-        Interactor i = new Interactor();
         MovementAction moveLeft = MovementAction.left();
-        i.setGame(new Game());
+        Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
+        i.setGame(game);
         i.setPresenter(new PresenterStub());
         i.perform(moveLeft);
         i.perform(moveLeft);
@@ -121,10 +121,10 @@ public class InteractorTest {
 
     @Test
     public void whenMovementActionIsPerformed_UpdatePositionWasCalled() {
-        Interactor i = new Interactor();
         MovementAction moveLeft = MovementAction.left();
         UpdateWithinBuildingLocationSpy mockPresenter = new UpdateWithinBuildingLocationSpy();
-        i.setGame(new Game());
+        Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
+        i.setGame(game);
         i.setPresenter(mockPresenter);
         i.perform(moveLeft);
         assertTrue(mockPresenter.showUpdatePositionWasCalled);
@@ -135,7 +135,6 @@ public class InteractorTest {
 
     @Test
     public void cannotMoveWhenNotInsideBuilding() {
-        Interactor i = new Interactor();
         MovementAction moveLeft = MovementAction.left();
         i.setGame(new Game());
         // TODO: set location to MapLocation
@@ -161,4 +160,12 @@ public class InteractorTest {
         // See canUnlockBuildingsByCurrentKeysInInventory() test in GameTest
     }
 
+
+    private Game getGameWithOneBuildingAndLocationAtItsEntrance() {
+        Game game = new Game();
+        Building b = new Building("building1");
+        game.addBuildings(b);
+        game.setLocation(WithinBuildingLocation.atEntranceOf(b));
+        return game;
+    }
 }

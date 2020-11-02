@@ -3,7 +3,6 @@ package core;
 public class WithinBuildingLocation implements Location {
     private Building currentBuilding;
     private Coordinates coordinates;
-    private boolean isBuildingEnterSquare;
 
     public WithinBuildingLocation(Building building, Coordinates coordinates) {
         currentBuilding = building;
@@ -15,9 +14,12 @@ public class WithinBuildingLocation implements Location {
                                           building.getEntranceCoordinates());
     }
 
-    @Override
-    public boolean isBuildingLocation() {
-        return currentBuilding == null;
+    Coordinates getCoords() {
+        return coordinates;
     }
 
+    @Override
+    public boolean isBuildingLocation() {
+        return true;
+    }
 }

@@ -9,7 +9,6 @@ public class Game {
     private final List<Building> buildings;
     private final Inventory inventory = new Inventory();
     private Location location = new MapLocation();
-    private Coordinates coords = new Coordinates(0, 0);
     public Boolean gameStarted;
 
     public Game() {
@@ -17,8 +16,16 @@ public class Game {
         this.gameStarted = true;
     }
 
+    void setLocation(Location location) {
+        this.location = location;
+    }
+
     public Coordinates getCoords() {
-        return coords;
+        if (location.isBuildingLocation()) {
+            return ((WithinBuildingLocation) location).getCoords();
+        } else {
+            throw new RuntimeException("Should not access coords for non-building");
+        }
     }
 
     public void addBuildings(Building building) {
