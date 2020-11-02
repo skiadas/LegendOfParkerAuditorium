@@ -26,4 +26,6 @@ public interface Presenter {
     void showErrorForNotBeingAtExist(String errorMessage);
 
     void showErrorForGameNotStarted(String errorMessage);
+
+    void showErrorForUnavailableBuildings(String s);
 }

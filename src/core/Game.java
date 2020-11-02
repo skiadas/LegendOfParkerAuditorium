@@ -104,4 +104,12 @@ public class Game {
         }
         throw new RuntimeException("Sorry Building is not Listed");
     }
+
+    public boolean isSelectedBuildingInAvailableBuildingsList(String selectedBuildingName) {
+        for (Building chosenBuilding: buildings) {
+            if(chosenBuilding.getBuildingName().equals(selectedBuildingName) && chosenBuilding.canEnter())
+                return true;
+        }
+        return false;
+    }
 }

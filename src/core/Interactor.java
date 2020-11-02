@@ -28,28 +28,23 @@ public class Interactor implements ActionHandler {
             presenter.showErrorForGameNotStarted("Sorry game has yet to start!");
         }
         // ask game about building with id action.id/name
-        // check if a player into already inside a building
-        if (game.isNotWithinABuilding()) {
-            presenter.showErrorForNotBeingAtExist("Oh, sorry you cannot select a new building until you are at exist of THIS building!");
-        }
-        // check if player has access to that building
-        // if yes, then call suitable presenter method and change game state to have enter the building
-        // if no, call presenter method to display error message
-        if (game.isWithinABuilding())
-        {
-            presenter.showErrorForRestrictedBuilding("Oh, sorry you are unable to access this building!");
-        }
-        else if (game.isNotWithinABuilding()){
-            List<MenuOption> menuOptions = convertBuildingsToMenuOptions(game.produceAvailableBuildings());
-            presenter.showAvailableBuildings(menuOptions);
-            presenter.showChoiceOfBuilding(game.getBuildingBasedOnName(action.getSelectedBuildingName()));
-            game.enterBuilding(game.getBuildingBasedOnName(action.getSelectedBuildingName()));
-        }
-        if (!game.isSelectedBuildingInBuildingList(action.getSelectedBuildingName()))
+        else if (!game.isSelectedBuildingInBuildingList(action.getSelectedBuildingName()))
         {
             presenter.showErrorForInvalidBuilding("No Such Building");;
         }
+        // check if player has access to that building
+        else if (!game.isSelectedBuildingInAvailableBuildingsList(action.getSelectedBuildingName())){
+            presenter.showErrorForUnavailableBuildings("You do not have access to enter this building");
+        }
+        // check if a player into already inside a building
+            // if yes, then call suitable presenter method and change game state to have enter the building
+            // if no, call presenter method to display error message
+        else if (game.isWithinABuilding())
+        {
+            presenter.showErrorForRestrictedBuilding("Oh, sorry you are unable to access this building!");
+        }
         presenter.showChoiceOfBuilding(game.getBuildingBasedOnName(action.getSelectedBuildingName()));
+        game.enterBuilding(game.getBuildingBasedOnName(action.getSelectedBuildingName()));
     }
 
     public void perform(MovementAction action) {

@@ -53,4 +53,9 @@ public class PresenterStub implements Presenter {
     public void showErrorForGameNotStarted(String errorMessage) {
 
     }
+
+    @Override
+    public void showErrorForUnavailableBuildings(String s) {
+
+    }
 }

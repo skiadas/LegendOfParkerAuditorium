@@ -68,6 +68,25 @@ public class BuildingSelectionTests {
         assertEquals(2, game.sizeOfBuildingList());
     }
 
+    @Test
+    public void checkingSelectedBuildingIsWithinAvailableBuildingsList() {
+        SelectBuildingAction selectBuildingAction = new SelectBuildingAction("building1");
+        Building building1 = new Building("building1", true);
+        Building building2 = new Building("building2", false);
+        game.addBuildings(building1);
+        game.addBuildings(building2);
+        assertTrue(game.isSelectedBuildingInAvailableBuildingsList((selectBuildingAction.getSelectedBuildingName())));
+    }
+
+    @Test
+    public void checkingSelectedBuildingIsNotWithinAvailableBuildingsList() {
+        SelectBuildingAction selectBuildingAction = new SelectBuildingAction("building2");
+        Building building1 = new Building("building1", true);
+        Building building2 = new Building("building2", false);
+        game.addBuildings(building1);
+        game.addBuildings(building2);
+        assertFalse(game.isSelectedBuildingInAvailableBuildingsList((selectBuildingAction.getSelectedBuildingName())));
+    }
 
     @Test (expected = RuntimeException.class) //// WHY DOES THIS WORK??? SINCE METHODS DO NOT EXIST NO MORE
     public void cannotSelectBuildingWithInvalidNumber() {

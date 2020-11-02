@@ -62,4 +62,9 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
     public void showErrorForGameNotStarted(String errorMessage) {
 
     }
+
+    @Override
+    public void showErrorForUnavailableBuildings(String s) {
+
+    }
 }
