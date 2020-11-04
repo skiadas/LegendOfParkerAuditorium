@@ -1,9 +1,8 @@
 package core.boundary;
 
 import core.Building;
-import core.MenuOption;
 import core.Coordinates;
-import core.action.SeeAvailableBuildingsAction;
+import core.MenuOption;
 
 import java.util.List;
 
@@ -13,7 +12,6 @@ public interface Presenter {
     void showAvailableBuildings(List<MenuOption> availableBuildings);
 
     void showUpdatedInsideLocation(Coordinates insideLocation);
-
 
     void transitionScreen();
 

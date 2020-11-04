@@ -15,10 +15,10 @@ public class GameTest {
     public void canAddBuildings() {
         Game game = new Game();
         Building building1 = new Building("building1", 1);
-        game.addBuildings(building1);
+        game.addBuilding(building1);
         assertEquals(building1, game.getBuildingAtIndex(0));
         Building building2 = new Building("building1", 1);
-        game.addBuildings(building2);
+        game.addBuilding(building2);
         assertEquals(building2, game.getBuildingAtIndex(1));
     }
 
@@ -30,10 +30,10 @@ public class GameTest {
         Building building2 = new Building("building2", 1);
         Building building3 = new Building("building3", 1);
         Building building4 = new Building("building4", 0);
-        game.addBuildings(building1);
-        game.addBuildings(building2);
-        game.addBuildings(building3);
-        game.addBuildings(building4);
+        game.addBuilding(building1);
+        game.addBuilding(building2);
+        game.addBuilding(building3);
+        game.addBuilding(building4);
         List <Building> availableBuildings1 = new ArrayList<>();
         availableBuildings1.add(building1);
         availableBuildings1.add(building4);
@@ -46,7 +46,7 @@ public class GameTest {
     public void canSetLocationWithEnoughKeys() {
         Game game = new Game();
         Building building = new Building("building1", 3);
-        game.addBuildings(building);
+        game.addBuilding(building);
         game.getInventory().addKeys(3);
         assertThat(new OkResult(), instanceOf(game.enterBuilding(building).getClass()));
     }
@@ -55,7 +55,7 @@ public class GameTest {
     public void cannotSetLocationWithoutKeys() {
         Game game = new Game();
         Building building = new Building("building1", 1);
-        game.addBuildings(building);
+        game.addBuilding(building);
         assertThat(new NegativeResult(), instanceOf(game.enterBuilding(building).getClass()));
     }
 }

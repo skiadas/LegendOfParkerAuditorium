@@ -152,7 +152,7 @@ public class InteractorTest {
     private Game getGameWithOneBuildingAndLocationAtItsEntrance() {
         Game game = new Game();
         Building b = new Building("building1");
-        game.addBuildings(b);
+        game.addBuilding(b);
         game.setLocation(WithinBuildingLocation.atEntranceOf(b));
         return game;
     }

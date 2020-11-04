@@ -24,16 +24,17 @@ public class Interactor implements ActionHandler {
 
     public void perform(SelectBuildingAction action){
         //handle case of no-game-started
+        String buildingName = action.buildingName;
         if (game == null) {
             presenter.showErrorForGameNotStarted("Sorry game has yet to start!");
         }
         // ask game about building with id action.id/name
-        else if (!game.isSelectedBuildingInBuildingList(action.getSelectedBuildingName()))
+        else if (!game.hasBuildingNamed(buildingName))
         {
             presenter.showErrorForInvalidBuilding("No Such Building");
         }
         // check if player has access to that building
-        else if (!game.isSelectedBuildingInAvailableBuildingsList(action.getSelectedBuildingName())){
+        else if (!game.isSelectedBuildingInAvailableBuildingsList(buildingName)){
             presenter.showErrorForUnavailableBuildings("You do not have access to enter this building");
         }
         // check if a player into already inside a building
@@ -43,8 +44,9 @@ public class Interactor implements ActionHandler {
         {
             presenter.showErrorForRestrictedBuilding("Oh, sorry you are unable to access this building!");
         }
-        presenter.showChoiceOfBuilding(game.getBuildingBasedOnName(action.getSelectedBuildingName()));
-        game.enterBuilding(game.getBuildingBasedOnName(action.getSelectedBuildingName()));
+        Building building = game.getBuildingNamed(buildingName);
+        presenter.showChoiceOfBuilding(building);
+        game.enterBuilding(building);
     }
 
     public void perform(MovementAction action) {

@@ -6,14 +6,10 @@ import java.util.List;
 import java.util.Objects;
 
 public class SelectBuildingAction implements UserAction {
-    private String buildingName;
+    public final String buildingName;
 
     public SelectBuildingAction(String buildingName) {
         this.buildingName = buildingName;
-    }
-
-    public String getSelectedBuildingName() {
-        return buildingName;
     }
 
     @Override

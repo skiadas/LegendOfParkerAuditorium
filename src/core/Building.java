@@ -1,28 +1,23 @@
 package core;
 
-public class Building{
+public class Building {
     private String name;
     private int requiredNumOfKeys;
 
-
-    public Building(String name) {
-        this.name = name;
+    Building(String name) {
+        this(name, 0);
     }
 
-    public Building(int requiredNumOfKeys) {
-        this.requiredNumOfKeys = requiredNumOfKeys;
-    }
-
-    public Building(String name, int requiredNumOfKeys) {
+    Building(String name, int requiredNumOfKeys) {
         this.name = name;
         this.requiredNumOfKeys = requiredNumOfKeys;
     }
 
-    public String getBuildingName() {
+    String getBuildingName() {
         return name;
     }
 
-    public int getRequiredNumOfKeys() {
+    int getRequiredNumOfKeys() {
         return requiredNumOfKeys;
     }
 

@@ -1,11 +1,9 @@
 package core;
 
 import core.action.SeeAvailableBuildingsAction;
-import core.action.SelectBuildingAction;
 import mocks.AvailableBuildingsPresenterSpy;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
@@ -23,8 +21,8 @@ public class SeeAvailableBuildingsActionTest {
         i.setGame(game);
         Building building1 = new Building("building1", 0);
         Building building2 = new Building("building2", 1);
-        game.addBuildings(building1);
-        game.addBuildings(building2);
+        game.addBuilding(building1);
+        game.addBuilding(building2);
         i.perform(action);
         List<Building> availableBuildings2 = game.produceAvailableBuildings();
         assertTrue(mockPresenter.showAvailableBuildingsWasCalled);

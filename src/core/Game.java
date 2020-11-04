@@ -26,7 +26,7 @@ public class Game {
         }
     }
 
-    public void addBuildings(Building building) {
+    public void addBuilding(Building building) {
         this.buildings.add(building);
     }
 
@@ -45,7 +45,7 @@ public class Game {
     public List<Building> produceAvailableBuildings() {
         List<Building> availableBuildings = new ArrayList<>();
         for (Building building : buildings) {
-            if (hasEnoughKeysToEnterTheBuilding(building)) {
+            if (canEnterBuilding(building)) {
                 availableBuildings.add(building);
             }
         }
@@ -58,7 +58,7 @@ public class Game {
     }
 
     public Result enterBuilding(Building building) {
-        if (hasEnoughKeysToEnterTheBuilding(building)) {
+        if (canEnterBuilding(building)) {
             location = WithinBuildingLocation.atEntranceOf(building);
             return new OkResult();
         } else {
@@ -86,17 +86,17 @@ public class Game {
         getCoords().updatePosition(direction);
     }
 
-    public boolean isSelectedBuildingInBuildingList(String SelectBuildingName) {
+    public boolean hasBuildingNamed(String name) {
         for (Building chosenBuilding: buildings) {
-            if(chosenBuilding.getBuildingName().equals(SelectBuildingName))
+            if(chosenBuilding.getBuildingName().equals(name))
                 return true;
         }
         return false;
     }
 
-    public Building getBuildingBasedOnName(String selectedBuildingName) {
+    public Building getBuildingNamed(String name) {
         for (Building chosenBuilding: buildings) {
-            if(chosenBuilding.getBuildingName().equals(selectedBuildingName))
+            if(chosenBuilding.getBuildingName().equals(name))
                 return chosenBuilding;
         }
         throw new RuntimeException("Sorry Building is not Listed");
@@ -104,13 +104,13 @@ public class Game {
 
     public boolean isSelectedBuildingInAvailableBuildingsList(String selectedBuildingName) {
         for (Building chosenBuilding: buildings) {
-            if(chosenBuilding.getBuildingName().equals(selectedBuildingName) && hasEnoughKeysToEnterTheBuilding(chosenBuilding))
+            if(chosenBuilding.getBuildingName().equals(selectedBuildingName) && canEnterBuilding(chosenBuilding))
                 return true;
         }
         return false;
     }
 
-    private boolean hasEnoughKeysToEnterTheBuilding(Building b){
+    private boolean canEnterBuilding(Building b){
         return inventory.numberOfItems() >= b.getRequiredNumOfKeys();
     }
 }
