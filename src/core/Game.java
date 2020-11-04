@@ -1,7 +1,5 @@
 package core;
 
-import core.action.SelectBuildingAction;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -47,7 +45,7 @@ public class Game {
     public List<Building> produceAvailableBuildings() {
         List<Building> availableBuildings = new ArrayList<>();
         for (Building building : buildings) {
-            if (building.canEnter()) {
+            if (hasEnoughKeysToEnterTheBuilding(building)) {
                 availableBuildings.add(building);
             }
         }
@@ -60,21 +58,13 @@ public class Game {
     }
 
     public Result enterBuilding(Building building) {
-        if (building.canEnter()) {
+        if (hasEnoughKeysToEnterTheBuilding(building)) {
             location = WithinBuildingLocation.atEntranceOf(building);
             return new OkResult();
         } else {
             return new NegativeResult();
         }
     }
-
-    public void unlockBuildingsByCurrentKeysInInventory() {
-        int numOfKeys = inventory.numberOfItems();
-        for (int i = 0; i < numOfKeys; i++) {
-            buildings.get(i).setPermissionToEnter(true);
-        }
-    }
-
 
     boolean isNotWithinABuilding() {
         return !location.isBuildingLocation();
@@ -114,9 +104,13 @@ public class Game {
 
     public boolean isSelectedBuildingInAvailableBuildingsList(String selectedBuildingName) {
         for (Building chosenBuilding: buildings) {
-            if(chosenBuilding.getBuildingName().equals(selectedBuildingName) && chosenBuilding.canEnter())
+            if(chosenBuilding.getBuildingName().equals(selectedBuildingName) && hasEnoughKeysToEnterTheBuilding(chosenBuilding))
                 return true;
         }
         return false;
+    }
+
+    private boolean hasEnoughKeysToEnterTheBuilding(Building b){
+        return inventory.numberOfItems() >= b.getRequiredNumOfKeys();
     }
 }

@@ -71,8 +71,8 @@ public class BuildingSelectionTests {
     @Test
     public void checkingSelectedBuildingIsWithinAvailableBuildingsList() {
         SelectBuildingAction selectBuildingAction = new SelectBuildingAction("building1");
-        Building building1 = new Building("building1", true);
-        Building building2 = new Building("building2", false);
+        Building building1 = new Building("building1", 0);
+        Building building2 = new Building("building2", 1);
         game.addBuildings(building1);
         game.addBuildings(building2);
         assertTrue(game.isSelectedBuildingInAvailableBuildingsList((selectBuildingAction.getSelectedBuildingName())));
@@ -81,8 +81,8 @@ public class BuildingSelectionTests {
     @Test
     public void checkingSelectedBuildingIsNotWithinAvailableBuildingsList() {
         SelectBuildingAction selectBuildingAction = new SelectBuildingAction("building2");
-        Building building1 = new Building("building1", true);
-        Building building2 = new Building("building2", false);
+        Building building1 = new Building("building1", 0);
+        Building building2 = new Building("building2", 1);
         game.addBuildings(building1);
         game.addBuildings(building2);
         assertFalse(game.isSelectedBuildingInAvailableBuildingsList((selectBuildingAction.getSelectedBuildingName())));

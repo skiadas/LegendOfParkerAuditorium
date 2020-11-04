@@ -17,4 +17,8 @@ public class Inventory {
     public void addKey() {
         numberOfKeys += 1;
     }
+
+    public void addKeys(int i) {
+        numberOfKeys += i;
+    }
 }

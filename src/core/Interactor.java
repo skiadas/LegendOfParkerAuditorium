@@ -30,7 +30,7 @@ public class Interactor implements ActionHandler {
         // ask game about building with id action.id/name
         else if (!game.isSelectedBuildingInBuildingList(action.getSelectedBuildingName()))
         {
-            presenter.showErrorForInvalidBuilding("No Such Building");;
+            presenter.showErrorForInvalidBuilding("No Such Building");
         }
         // check if player has access to that building
         else if (!game.isSelectedBuildingInAvailableBuildingsList(action.getSelectedBuildingName())){
@@ -70,15 +70,6 @@ public class Interactor implements ActionHandler {
 
     public Presenter getPresenter() {
         return presenter;
-    }
-
-    public Result perform(EnterTheBuilding action){
-        Building building = action.getBuilding();
-        return game.enterBuilding(building);
-    }
-
-    public void perform(UnlockBuildings action){
-        game.unlockBuildingsByCurrentKeysInInventory();
     }
 
     // For test

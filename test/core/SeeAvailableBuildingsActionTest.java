@@ -21,8 +21,8 @@ public class SeeAvailableBuildingsActionTest {
         i.setPresenter(mockPresenter);
         Game game = new Game();
         i.setGame(game);
-        Building building1 = new Building("building1", true);
-        Building building2 = new Building("building2", false);
+        Building building1 = new Building("building1", 0);
+        Building building2 = new Building("building2", 1);
         game.addBuildings(building1);
         game.addBuildings(building2);
         i.perform(action);

@@ -14,7 +14,7 @@ public class InteractorTest {
     private Interactor i;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp(){
         i = new Interactor();
     }
 
@@ -146,18 +146,6 @@ public class InteractorTest {
     @Test
     public void cannotMoveWhenNoGameIsStarted() {
         // TODO: Implement
-    }
-
-    @Test
-    public void canEnterTheBuilding() {
-        // delegation.
-        // See canSetLocationWithPermission() and canSetLocationWithoutPermission() test in GameTest
-    }
-
-    @Test
-    public void unlockBuildingTest() {
-        // delegation.
-        // See canUnlockBuildingsByCurrentKeysInInventory() test in GameTest
     }
 
 
