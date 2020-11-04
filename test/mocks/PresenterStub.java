@@ -40,7 +40,7 @@ public class PresenterStub implements Presenter {
     }
 
     @Override
-    public void showChoiceOfBuilding(Building chosenBuilding) {
+    public void showChoiceOfBuilding(String chosenBuilding) {
 
     }
 

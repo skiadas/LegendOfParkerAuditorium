@@ -19,7 +19,7 @@ public interface Presenter {
 
     void showErrorForInvalidBuilding(String errorMessage);
 
-    void showChoiceOfBuilding(Building chosenBuilding);
+    void showChoiceOfBuilding(String chosenBuilding);
 
     void showErrorForNotBeingAtExist(String errorMessage);
 

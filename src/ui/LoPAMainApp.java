@@ -49,7 +49,7 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
     }
 
     @Override
-    public void showChoiceOfBuilding(Building chosenBuilding) {
+    public void showChoiceOfBuilding(String chosenBuilding) {
 
     }
 

@@ -27,8 +27,7 @@ public class BuildingSelectionTests {
     public void canSelectBuildingNumberOutOfMoreBuildings() {
         game.addBuilding(new Building("Outside"));
         game.addBuilding(new Building("Donner"));
-        assertEquals("Outside", game.getBuildingNamed("Outside")
-                .getBuildingName());
+        assertEquals("Outside", game.getBuildingNamed("Outside").getBuildingName());
     }
 
 
@@ -59,21 +58,17 @@ public class BuildingSelectionTests {
     }
 
     @Test
-    public void checkingSelectedBuildingIsWithinAvailableBuildingsList() {
-        SelectBuildingAction selectBuildingAction = new SelectBuildingAction("building1");
+    public void checkingIfBuildingIsWithinAvailableBuildingsList() {
         game.addBuilding(new Building("building1", 0));
         game.addBuilding(new Building("building2", 1));
-        assertTrue(game.isSelectedBuildingInAvailableBuildingsList((selectBuildingAction.buildingName)));
+        assertTrue(game.isSelectedBuildingInAvailableBuildingsList(("building1")));
     }
 
     @Test
-    public void checkingSelectedBuildingIsNotWithinAvailableBuildingsList() {
-        SelectBuildingAction selectBuildingAction = new SelectBuildingAction("building2");
-        Building building1 = new Building("building1", 0);
-        Building building2 = new Building("building2", 1);
-        game.addBuilding(building1);
-        game.addBuilding(building2);
-        assertFalse(game.isSelectedBuildingInAvailableBuildingsList((selectBuildingAction.buildingName)));
+    public void checkingIfBuildingIsNotWithinAvailableBuildingsList() {
+        game.addBuilding(new Building("building1", 0));
+        game.addBuilding(new Building("building2", 1));
+        assertFalse(game.isSelectedBuildingInAvailableBuildingsList(("building2")));
     }
 
     @Test(expected = RuntimeException.class) //// WHY DOES THIS WORK??? SINCE METHODS DO NOT EXIST NO MORE

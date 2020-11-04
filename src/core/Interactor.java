@@ -45,7 +45,7 @@ public class Interactor implements ActionHandler {
             presenter.showErrorForRestrictedBuilding("Oh, sorry you are unable to access this building!");
         }
         Building building = game.getBuildingNamed(buildingName);
-        presenter.showChoiceOfBuilding(building);
+        presenter.showChoiceOfBuilding(buildingName);
         game.enterBuilding(building);
     }
 

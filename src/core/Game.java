@@ -96,15 +96,15 @@ public class Game {
 
     public Building getBuildingNamed(String name) {
         for (Building chosenBuilding: buildings) {
-            if(chosenBuilding.getBuildingName().equals(name))
+            if(isSelectedBuildingInAvailableBuildingsList(name))
                 return chosenBuilding;
         }
-        throw new RuntimeException("Sorry Building is not Listed");
+        throw new RuntimeException("Building does not exist!");
     }
 
-    public boolean isSelectedBuildingInAvailableBuildingsList(String selectedBuildingName) {
+    public boolean isSelectedBuildingInAvailableBuildingsList(String name) {
         for (Building chosenBuilding: buildings) {
-            if(chosenBuilding.getBuildingName().equals(selectedBuildingName) && canEnterBuilding(chosenBuilding))
+            if(chosenBuilding.getBuildingName().equals(name) && canEnterBuilding(chosenBuilding))
                 return true;
         }
         return false;
