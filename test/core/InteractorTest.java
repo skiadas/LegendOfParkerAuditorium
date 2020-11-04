@@ -1,7 +1,9 @@
 package core;
 
 import core.action.MovementAction;
+import core.action.SeeAvailableBuildingsAction;
 import core.action.StartGameAction;
+import mocks.AvailableBuildingsPresenterSpy;
 import mocks.PresenterStub;
 import mocks.UpdateWithinBuildingLocationSpy;
 import org.junit.Before;
@@ -167,5 +169,14 @@ public class InteractorTest {
         game.addBuilding(b);
         game.setLocation(WithinBuildingLocation.atEntranceOf(b));
         return game;
+    }
+
+    @Test
+    public void cannotSeeAvailableBuildingsIfGameHasNotStarted(){
+        SeeAvailableBuildingsAction action = new SeeAvailableBuildingsAction();
+        AvailableBuildingsPresenterSpy mockPresenter = new AvailableBuildingsPresenterSpy();
+        i.setPresenter(mockPresenter);
+        i.perform(action);
+        assertFalse(mockPresenter.showAvailableBuildingsWasCalled);
     }
 }

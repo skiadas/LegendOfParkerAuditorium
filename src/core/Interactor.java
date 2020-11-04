@@ -90,10 +90,15 @@ public class Interactor implements ActionHandler {
         return game.getBuildings();
     }
 
-    public void perform(SeeAvailableBuildingsAction action){
-        List<Building> availableBuildings = game.produceAvailableBuildings();
-        List<MenuOption> menuOptions = convertBuildingsToMenuOptions(availableBuildings);
-        presenter.showAvailableBuildings(menuOptions);
+    public void perform(SeeAvailableBuildingsAction action) {
+        if (game == null) {
+            presenter.showErrorForGameNotStarted("Sorry game has yet to start!");
+        }
+        else {
+            List<Building> availableBuildings = game.produceAvailableBuildings();
+            List<MenuOption> menuOptions = convertBuildingsToMenuOptions(availableBuildings);
+            presenter.showAvailableBuildings(menuOptions);
+        }
     }
 
     static class GameAlreadyStartedException extends Exception {

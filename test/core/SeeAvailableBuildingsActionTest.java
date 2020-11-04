@@ -19,10 +19,8 @@ public class SeeAvailableBuildingsActionTest {
         i.setPresenter(mockPresenter);
         Game game = new Game();
         i.setGame(game);
-        Building building1 = new Building("building1", 0);
-        Building building2 = new Building("building2", 1);
-        game.addBuilding(building1);
-        game.addBuilding(building2);
+        game.addBuilding(new Building("building1", 0));
+        game.addBuilding(new Building("building2", 1));
         i.perform(action);
         List<Building> availableBuildings2 = game.produceAvailableBuildings();
         assertTrue(mockPresenter.showAvailableBuildingsWasCalled);
