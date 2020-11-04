@@ -135,17 +135,29 @@ public class InteractorTest {
 
     @Test
     public void cannotMoveWhenNotInsideBuilding() {
-        MovementAction moveLeft = MovementAction.left();
         i.setGame(new Game());
-        // TODO: set location to MapLocation
-        i.setPresenter(new PresenterStub());
-        // TODO: Take the action
-        // TODO: Should test something
+        UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
+        i.setPresenter(presenterSpy);
+        i.perform(MovementAction.up());
+        assertEquals(false, presenterSpy.showUpdatePositionWasCalled);
+    }
+
+    @Test
+    public void PresenterIsCalledWithCorrectArgsWhenPlayerMoved() {
+        i.setGame(getGameWithOneBuildingAndLocationAtItsEntrance());
+        UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
+        i.setPresenter(presenterSpy);
+        i.perform(MovementAction.up());
+        assertEquals(true, presenterSpy.showUpdatePositionWasCalled);
+        assertEquals(new Coordinates(0, 1), presenterSpy.providedLocation);
     }
 
     @Test
     public void cannotMoveWhenNoGameIsStarted() {
-        // TODO: Implement
+        UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
+        i.setPresenter(presenterSpy);
+        i.perform(MovementAction.up());
+        assertEquals(false, presenterSpy.showUpdatePositionWasCalled);
     }
 
 

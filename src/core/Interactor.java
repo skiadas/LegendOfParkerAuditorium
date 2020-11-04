@@ -54,7 +54,12 @@ public class Interactor implements ActionHandler {
         // check if tile is a movable tile
         // if yes, update player location
         // if no, throw exception
-        game.updatePosition(action.direction);
+        try {
+            game.updatePosition(action.direction);
+        } catch (RuntimeException e) {
+            System.out.println(e.toString());
+            return; // return without updating UI
+        }
         presenter.showUpdatedInsideLocation(game.getCoords());
     }
 
