@@ -43,19 +43,28 @@ public class GameTest {
     }
 
     @Test
-    public void canSetLocationWithEnoughKeys() {
+    public void canEnterBuildingWithEnoughKeys() {
         Game game = new Game();
         Building building = new Building("building1", 3);
         game.addBuilding(building);
         game.getInventory().addKeys(3);
-        assertThat(new OkResult(), instanceOf(game.enterBuilding(building).getClass()));
+        assertTrue(game.canEnterBuilding(building));
     }
 
     @Test
-    public void cannotSetLocationWithoutKeys() {
+    public void canEnterBuildingWithMoreThanEnoughKeys() {
         Game game = new Game();
         Building building = new Building("building1", 1);
         game.addBuilding(building);
-        assertThat(new NegativeResult(), instanceOf(game.enterBuilding(building).getClass()));
+        game.getInventory().addKeys(3);
+        assertTrue(game.canEnterBuilding(building));
+    }
+
+    @Test
+    public void cannotEnterBuildingWithoutEnoughKeys() {
+        Game game = new Game();
+        Building building = new Building("building1", 1);
+        game.addBuilding(building);
+        assertFalse(game.canEnterBuilding(building));
     }
 }

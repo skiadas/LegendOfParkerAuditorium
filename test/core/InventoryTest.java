@@ -15,4 +15,10 @@ public class InventoryTest {
         Inventory inventory = new Inventory(2);
         assertEquals(2, inventory.numberOfItems());
     }
+    @Test
+    public void canAddKey() {
+        Inventory i = new Inventory(0);
+        i.addKey();
+        assertEquals(1, i.numberOfItems());
+    }
 }

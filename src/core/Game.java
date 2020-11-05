@@ -110,7 +110,7 @@ public class Game {
         return false;
     }
 
-    private boolean canEnterBuilding(Building b){
+    public boolean canEnterBuilding(Building b){
         return inventory.numberOfItems() >= b.getRequiredNumOfKeys();
     }
 }
