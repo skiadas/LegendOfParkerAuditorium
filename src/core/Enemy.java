@@ -13,4 +13,9 @@ public class Enemy{
     public void setCords(Coordinates cords){
         this.cords = cords;
     }
+
+    public Coordinates getEnemyCords(){
+        return this.cords;
+    }
+
 }
