@@ -38,8 +38,8 @@ public class InteractorTest {
 
     @Test
     public void canReadFile() {
-        AssetReader fileReader = new AssetReader("MessageFiles/StartMessage.txt");
-        fileReader.printFileTxt();
+        AssetReader fileReader = new AssetReader("TestResources/TextMessage.txt");
+        // assertEquals("Test Message", fileReader.fileToString());
     }
 
     @Test

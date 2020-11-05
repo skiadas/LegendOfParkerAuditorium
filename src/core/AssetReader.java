@@ -19,4 +19,8 @@ public class AssetReader {
         BufferedReader reader = new BufferedReader(fileReader);
         reader.lines().forEach(System.out::println);
     }
+
+    public String fileToString() {
+        return null;
+    }
 }
