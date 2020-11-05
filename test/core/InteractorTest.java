@@ -10,11 +10,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
-import java.util.Scanner;
 
 import static org.junit.Assert.*;
 
@@ -28,7 +26,7 @@ public class InteractorTest {
     }
 
     @Test
-    public void canCreateGame() throws Interactor.GameAlreadyStartedException, FileNotFoundException {
+    public void canCreateGame() throws Interactor.GameAlreadyStartedException {
         PresenterStub mocks = new PresenterStub();
         i.setPresenter(mocks);
         StartGameAction start = new StartGameAction();
@@ -37,7 +35,7 @@ public class InteractorTest {
     }
 
     @Test (expected = Interactor.GameAlreadyStartedException.class)
-    public void cannotStartGameInProgress() throws Interactor.GameAlreadyStartedException, FileNotFoundException {
+    public void cannotStartGameInProgress() throws Interactor.GameAlreadyStartedException {
         i.game = new Game();
         StartGameAction start = new StartGameAction();
         i.perform(start);
