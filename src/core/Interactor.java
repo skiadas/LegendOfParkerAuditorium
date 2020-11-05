@@ -21,30 +21,16 @@ public class Interactor implements ActionHandler {
     }
 
     public void perform(SelectBuildingAction action){
-        //handle case of no-game-started
         String buildingName = action.buildingName;
-        if (game == null) {
-            presenter.showErrorForGameNotStarted("Sorry game has yet to start!");
+        try {
+            Building building = game.getBuildingNamed(buildingName);
+            BuildingView buildingInfo = BuildingConvert.getBuildingViewInfo(building);
+            presenter.showChoiceOfBuilding(buildingInfo);
+            game.enterBuilding(building);
+        } catch (RuntimeException e){
+            presenter.showError(e.toString());
+            return;
         }
-        // ask game about building with id action.id/name
-        else if (!game.hasBuildingNamed(buildingName))
-        {
-            presenter.showErrorForInvalidBuilding("No Such Building");
-        }
-        // check if player has access to that building
-        else if (!game.isSelectedBuildingInAvailableBuildingsList(buildingName)){
-            presenter.showErrorForUnavailableBuildings("You do not have access to enter this building");
-        }
-        // check if a player into already inside a building
-            // if yes, then call suitable presenter method and change game state to have enter the building
-            // if no, call presenter method to display error message
-        else if (game.isWithinABuilding())
-        {
-            presenter.showErrorForRestrictedBuilding("Oh, sorry you are unable to access this building!");
-        }
-        Building building = game.getBuildingNamed(buildingName);
-        presenter.showChoiceOfBuilding(buildingName);
-        game.enterBuilding(building);
     }
 
     public void perform(MovementAction action) {
@@ -86,7 +72,7 @@ public class Interactor implements ActionHandler {
 
     public void perform(SeeAvailableBuildingsAction action) {
         if (game == null) {
-            presenter.showErrorForGameNotStarted("Sorry game has yet to start!");
+            presenter.showError("Sorry game has yet to start!");
         }
         else {
             List<Building> availableBuildings = game.produceAvailableBuildings();

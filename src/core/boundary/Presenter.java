@@ -1,5 +1,6 @@
 package core.boundary;
 
+import core.BuildingView;
 import core.Coordinates;
 import core.MenuOption;
 import core.action.SeeAvailableBuildingsAction;
@@ -15,15 +16,9 @@ public interface Presenter {
 
     void transitionScreen(String fileName, SeeAvailableBuildingsAction action);
 
-    void showErrorForRestrictedBuilding(String errorMessage);
+    void showChoiceOfBuilding(BuildingView buildingView);
 
-    void showErrorForInvalidBuilding(String errorMessage);
+    void showError(String errorMessage);
 
-    void showChoiceOfBuilding(String chosenBuilding);
 
-    void showErrorForNotBeingAtExist(String errorMessage);
-
-    void showErrorForGameNotStarted(String errorMessage);
-
-    void showErrorForUnavailableBuildings(String s);
 }

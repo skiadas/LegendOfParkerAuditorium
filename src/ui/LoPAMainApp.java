@@ -4,6 +4,8 @@ import core.Coordinates;
 import core.Interactor;
 import core.MenuOption;
 import core.action.SeeAvailableBuildingsAction;
+import core.*;
+import core.action.UserAction;
 import core.boundary.ActionHandler;
 import core.boundary.Presenter;
 import minidraw.standard.MiniDrawApplication;
@@ -42,32 +44,13 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
     }
 
     @Override
-    public void showErrorForRestrictedBuilding(String errorMessage) {
+    public void showChoiceOfBuilding(BuildingView buildingView) {
 
     }
 
     @Override
-    public void showErrorForInvalidBuilding(String errorMessage) {
+    public void showError(String errorMessage) {
 
     }
 
-    @Override
-    public void showChoiceOfBuilding(String chosenBuilding) {
-
-    }
-
-    @Override
-    public void showErrorForNotBeingAtExist(String errorMessage) {
-
-    }
-
-    @Override
-    public void showErrorForGameNotStarted(String errorMessage) {
-
-    }
-
-    @Override
-    public void showErrorForUnavailableBuildings(String s) {
-
-    }
 }

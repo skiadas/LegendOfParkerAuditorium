@@ -1,9 +1,8 @@
 package mocks;
 
-import core.Building;
+import core.BuildingView;
 import core.MenuOption;
 import core.Coordinates;
-import core.action.SeeAvailableBuildingsAction;
 import core.action.UserAction;
 import core.boundary.Presenter;
 
@@ -32,32 +31,13 @@ public class PresenterStub implements Presenter {
     }
 
     @Override
-    public void showErrorForRestrictedBuilding(String errorMessage) {
+    public void showChoiceOfBuilding(BuildingView buildingView) {
 
     }
 
     @Override
-    public void showErrorForInvalidBuilding(String errorMessage) {
+    public void showError(String errorMessage) {
 
     }
 
-    @Override
-    public void showChoiceOfBuilding(String chosenBuilding) {
-
-    }
-
-    @Override
-    public void showErrorForNotBeingAtExist(String errorMessage) {
-
-    }
-
-    @Override
-    public void showErrorForGameNotStarted(String errorMessage) {
-
-    }
-
-    @Override
-    public void showErrorForUnavailableBuildings(String s) {
-
-    }
 }

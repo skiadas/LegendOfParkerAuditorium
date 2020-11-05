@@ -71,20 +71,8 @@ public class BuildingSelectionTests {
         assertFalse(game.isSelectedBuildingInAvailableBuildingsList(("building2")));
     }
 
-    @Test(expected = RuntimeException.class) //// WHY DOES THIS WORK??? SINCE METHODS DO NOT EXIST NO MORE
-    public void cannotSelectBuildingWithInvalidNumber() {
-        Interactor user = new Interactor();
-        user.perform(new SelectBuildingAction("Parker"));
-    }
+    @Test
+    public void creatingGameAndUsingSelectBuildingAction() {
 
-    @Test(expected = RuntimeException.class) //// WHY DOES THIS WORK??? SINCE METHODS DO NOT EXIST NO MORE
-    public void cannotSelectBuildingWithOutOfRangeNumber() {
-        Interactor user = new Interactor();
-        Building building = new Building("Donner");
-        Building building2 = new Building("Parker");
-        game.addBuilding(building);
-        game.addBuilding(building2);
-        user.perform(new SelectBuildingAction("WAC"));
     }
-
 }
