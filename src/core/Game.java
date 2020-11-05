@@ -26,7 +26,7 @@ public class Game {
         }
     }
 
-    private Building getCurrentBuilding() {
+    public Building getCurrentBuilding() {
         if (location.isBuildingLocation()) {
             return ((WithinBuildingLocation) location).getCurrentBuilding();
         } else {

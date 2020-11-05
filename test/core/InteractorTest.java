@@ -2,12 +2,15 @@ package core;
 
 import core.action.MovementAction;
 import core.action.SeeAvailableBuildingsAction;
+import core.action.SelectBuildingAction;
 import core.action.StartGameAction;
 import mocks.AvailableBuildingsPresenterSpy;
 import mocks.PresenterStub;
 import mocks.UpdateWithinBuildingLocationSpy;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.lang.annotation.ElementType;
 
 import static org.junit.Assert.*;
 
@@ -233,5 +236,30 @@ public class InteractorTest {
         i.perform(move);
         i.perform(move);
         i.perform(move);
+    }
+
+    @Test
+    public void selectBuildingTest() {
+        SelectBuildingAction action = new SelectBuildingAction("Donner");
+        Building building = new Building("Donner", 0);
+        Game game = new Game();
+        game.addBuilding(building);
+        i.setGame(game);
+        i.setPresenter(new PresenterStub());
+        i.perform(action);
+        Building currentBuilding = i.getGame().getCurrentBuilding();
+        assertTrue(building.equals(currentBuilding));
+    }
+
+    @Test (expected = RuntimeException.class)
+    public void selectBuildingTestWithIncorrectName() {
+        SelectBuildingAction action = new SelectBuildingAction("Wiley");
+        Building building = new Building("Donner", 0);
+        Game game = new Game();
+        game.addBuilding(building);
+        i.setGame(game);
+        i.setPresenter(new PresenterStub());
+        i.perform(action);
+        i.getGame().getCurrentBuilding(); // not exist
     }
 }

@@ -29,7 +29,6 @@ public class Interactor implements ActionHandler {
             game.enterBuilding(building);
         } catch (RuntimeException e){
             presenter.showError(e.toString());
-            return;
         }
     }
 

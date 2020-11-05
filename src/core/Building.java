@@ -3,6 +3,8 @@ package core;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.Objects;
+
 public class Building {
     private String name;
     private int requiredNumOfKeys;
@@ -21,6 +23,18 @@ public class Building {
         this.requiredNumOfKeys = requiredNumOfKeys;
         this.setBuildingBoundaries();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Building building = (Building) o;
+        return requiredNumOfKeys == building.requiredNumOfKeys &&
+                Objects.equals(name, building.name) &&
+                Objects.equals(upperLeft, building.upperLeft) &&
+                Objects.equals(lowerRight, building.lowerRight);
+    }
+
 
     String getBuildingName() {
         return name;
@@ -62,6 +76,14 @@ public class Building {
             return true;
         }
         return false;
+    }
+
+    public Coordinates getLowerRight() {
+        return lowerRight;
+    }
+
+    public Coordinates getUpperLeft() {
+        return upperLeft;
     }
 
     private boolean isInsideBuilding(Coordinates requestedMove) {

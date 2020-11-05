@@ -3,9 +3,8 @@ package core;
 public class BuildingConvert{
 
     public static BuildingView getBuildingViewInfo(Building building) {
-        building.getBuildingName();
-        building.getEntranceCoordinates();
-        building.getRequiredNumOfKeys();
-        return new BuildingView();
+        return new BuildingView(building.getBuildingName(),
+                building.getEntranceCoordinates(), building.getRequiredNumOfKeys(),
+                building.getLowerRight(), building.getUpperLeft());
     }
 }
