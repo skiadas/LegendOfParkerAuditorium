@@ -132,4 +132,8 @@ public class Game {
     }
 
     void setInventory(int amountOfKeys) { inventory.addKeys(amountOfKeys);}
+
+    public void addKeyToBuildingItemList(Building building, Coordinates coords) {
+        building.addLocatedItem(coords);
+    }
 }

@@ -1,8 +1,13 @@
 package core;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Building {
     private String name;
     private int requiredNumOfKeys;
+    private List<LocatedItem<Integer>> keys = new ArrayList<>() {
+    };
     private Coordinates upperLeft;
     private Coordinates lowerRight;
     private Coordinates buildingEntrance = new Coordinates(0, 0);
@@ -20,11 +25,9 @@ public class Building {
     String getBuildingName() {
         return name;
     }
-
     int getRequiredNumOfKeys() {
         return requiredNumOfKeys;
     }
-
     Coordinates getEntranceCoordinates() {
         return buildingEntrance;
     }
@@ -33,6 +36,24 @@ public class Building {
     //      By default the entrance should still be 0, 0
     void setEntranceCoordinates(int x, int y) {
         buildingEntrance = new Coordinates(x, y);
+    }
+
+    public void addLocatedItem(Coordinates coords) {
+        keys.add(new LocatedItem<>(coords));
+    }
+
+    public boolean hasKeyAt(Coordinates coords) {
+        if (keys.size() == 0) { return false; }
+        for (int i = 0; i < keys.size(); i++) {
+            if (hasLocatedItemWithMatchingCoords(coords, i)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean hasLocatedItemWithMatchingCoords(Coordinates coords, int i) {
+        return keys.get(i).getCoords() == coords;
     }
 
     boolean isValidMovement(Coordinates requestedMove) {

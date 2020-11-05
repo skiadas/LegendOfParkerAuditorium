@@ -7,6 +7,7 @@ public class Coordinates {
     public int xValue;
     public int yValue;
 
+
     public Coordinates(int xValue, int yValue) {
         super();
         this.xValue = xValue;
