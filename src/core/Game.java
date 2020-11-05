@@ -45,7 +45,7 @@ public class Game {
     public List<Building> produceAvailableBuildings() {
         List<Building> availableBuildings = new ArrayList<>();
         for (Building building : buildings) {
-            if (canEnterBuilding(building)) {
+            if (hasAccessTo(building)) {
                 availableBuildings.add(building);
             }
         }
@@ -58,7 +58,7 @@ public class Game {
     }
 
     public Result enterBuilding(Building building) {
-        if (canEnterBuilding(building)) {
+        if (hasAccessTo(building)) {
             location = WithinBuildingLocation.atEntranceOf(building);
             return new OkResult();
         } else {
@@ -104,13 +104,14 @@ public class Game {
 
     public boolean isSelectedBuildingInAvailableBuildingsList(String name) {
         for (Building chosenBuilding: buildings) {
-            if(chosenBuilding.getBuildingName().equals(name) && canEnterBuilding(chosenBuilding))
+            if(chosenBuilding.getBuildingName().equals(name) && hasAccessTo(chosenBuilding))
                 return true;
         }
         return false;
     }
 
-    public boolean canEnterBuilding(Building b){
+    boolean hasAccessTo(Building b){
         return inventory.numberOfItems() >= b.getRequiredNumOfKeys();
     }
 }
+// TODO: Create SetInventory method

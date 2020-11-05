@@ -5,7 +5,6 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.instanceOf;
 import static org.junit.Assert.*;
 
 public class GameTest {
@@ -42,13 +41,16 @@ public class GameTest {
 
     }
 
+    // TODO: Set Inventory rather than addKeys
+    // TODO: Use Random Int rather than set number
+
     @Test
     public void canEnterBuildingWithEnoughKeys() {
         Game game = new Game();
         Building building = new Building("building1", 3);
         game.addBuilding(building);
         game.getInventory().addKeys(3);
-        assertTrue(game.canEnterBuilding(building));
+        assertTrue(game.hasAccessTo(building));
     }
 
     @Test
@@ -57,7 +59,7 @@ public class GameTest {
         Building building = new Building("building1", 1);
         game.addBuilding(building);
         game.getInventory().addKeys(3);
-        assertTrue(game.canEnterBuilding(building));
+        assertTrue(game.hasAccessTo(building));
     }
 
     @Test
@@ -65,6 +67,6 @@ public class GameTest {
         Game game = new Game();
         Building building = new Building("building1", 1);
         game.addBuilding(building);
-        assertFalse(game.canEnterBuilding(building));
+        assertFalse(game.hasAccessTo(building));
     }
 }
