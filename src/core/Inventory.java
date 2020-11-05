@@ -10,7 +10,7 @@ public class Inventory {
         this.numberOfKeys = numberOfKeys;
     }
 
-    public int numberOfItems() {
+    public int getNumberOfKeys() {
         return numberOfKeys;
     }
 

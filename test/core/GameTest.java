@@ -40,33 +40,4 @@ public class GameTest {
 
 
     }
-
-    // TODO: Set Inventory rather than addKeys
-    // TODO: Use Random Int rather than set number
-
-    @Test
-    public void canEnterBuildingWithEnoughKeys() {
-        Game game = new Game();
-        Building building = new Building("building1", 3);
-        game.addBuilding(building);
-        game.getInventory().addKeys(3);
-        assertTrue(game.hasAccessTo(building));
-    }
-
-    @Test
-    public void canEnterBuildingWithMoreThanEnoughKeys() {
-        Game game = new Game();
-        Building building = new Building("building1", 1);
-        game.addBuilding(building);
-        game.getInventory().addKeys(3);
-        assertTrue(game.hasAccessTo(building));
-    }
-
-    @Test
-    public void cannotEnterBuildingWithoutEnoughKeys() {
-        Game game = new Game();
-        Building building = new Building("building1", 1);
-        game.addBuilding(building);
-        assertFalse(game.hasAccessTo(building));
-    }
 }

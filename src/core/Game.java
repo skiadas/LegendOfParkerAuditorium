@@ -111,7 +111,8 @@ public class Game {
     }
 
     boolean hasAccessTo(Building b){
-        return inventory.numberOfItems() >= b.getRequiredNumOfKeys();
+        return inventory.getNumberOfKeys() >= b.getRequiredNumOfKeys();
     }
+
+    void setInventory(int amountOfKeys) { inventory.addKeys(amountOfKeys);}
 }
-// TODO: Create SetInventory method
