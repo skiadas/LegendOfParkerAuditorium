@@ -4,10 +4,13 @@ package core;
 
 
 public class Enemy{
-    private final Coordinates cords;
+    private Coordinates cords;
 
 
-    public Enemy(Coordinates cords){
+    public Enemy(){
+    }
+
+    public void setCords(Coordinates cords){
         this.cords = cords;
     }
 }

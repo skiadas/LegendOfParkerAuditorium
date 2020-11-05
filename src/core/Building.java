@@ -97,8 +97,12 @@ public class Building {
         this.lowerRight = new Coordinates(20,-20);
     }
 
-    public void addEnemy(Enemy enemy){
+    public void addEnemy(Enemy enemy, Coordinates cords) throws Exception {
+        if (!isInsideBuilding(cords)){
+            throw new Exception("These Coordinates are not withing the building");
+        }
         this.enemies.add(enemy);
+        enemy.setCords(cords);
     }
 
     public Enemy getEnemyAtIndex(int index) {
