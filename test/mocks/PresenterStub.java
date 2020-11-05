@@ -3,6 +3,7 @@ package mocks;
 import core.BuildingView;
 import core.MenuOption;
 import core.Coordinates;
+import core.action.SeeAvailableBuildingsAction;
 import core.action.UserAction;
 import core.boundary.Presenter;
 
