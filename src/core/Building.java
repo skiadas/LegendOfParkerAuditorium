@@ -5,6 +5,7 @@ public class Building {
     private int requiredNumOfKeys;
     private Coordinates upperLeft;
     private Coordinates lowerRight;
+    private Coordinates buildingEntrance = new Coordinates(0, 0);
 
     Building(String name) {
         this(name, 0);
@@ -13,7 +14,7 @@ public class Building {
     Building(String name, int requiredNumOfKeys) {
         this.name = name;
         this.requiredNumOfKeys = requiredNumOfKeys;
-        this.drawBuildingBoundaries();
+        this.setBuildingBoundaries();
     }
 
     String getBuildingName() {
@@ -25,7 +26,13 @@ public class Building {
     }
 
     Coordinates getEntranceCoordinates() {
-        return new Coordinates(0, 0);
+        return buildingEntrance;
+    }
+
+    // Some buildings could have different entrances?
+    //      By default the entrance should still be 0, 0
+    void setEntranceCoordinates(int x, int y) {
+        buildingEntrance = new Coordinates(x, y);
     }
 
     boolean isValidMovement(Coordinates requestedMove) {
@@ -37,10 +44,11 @@ public class Building {
     }
 
     private boolean isInsideBuilding(Coordinates requestedMove) {
-        return requestedMove.xValue >= upperLeft.xValue && requestedMove.yValue <= upperLeft.yValue && requestedMove.xValue <= lowerRight.xValue && requestedMove.yValue >= lowerRight.yValue;
+        return (requestedMove.xValue >= upperLeft.xValue && requestedMove.yValue <= upperLeft.yValue)
+                && (requestedMove.xValue <= lowerRight.xValue && requestedMove.yValue >= lowerRight.yValue);
     }
 
-    private void drawBuildingBoundaries(){
+    private void setBuildingBoundaries(){
         this.upperLeft = new Coordinates(-20,20);
         this.lowerRight = new Coordinates(20,-20);
     }
