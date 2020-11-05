@@ -5,6 +5,7 @@ import core.Interactor;
 import core.MenuOption;
 import core.Coordinates;
 import core.action.SeeAvailableBuildingsAction;
+import core.action.UserAction;
 import core.boundary.ActionHandler;
 import core.boundary.Presenter;
 import minidraw.standard.MiniDrawApplication;
@@ -34,7 +35,7 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
     }
 
     @Override
-    public void transitionScreen() {
+    public void transitionScreen(String message, UserAction action) {
         //TODO; Implement Story Screen With Click To Continue.
     }
 

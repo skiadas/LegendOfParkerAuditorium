@@ -18,8 +18,7 @@ public class Interactor implements ActionHandler {
             throw new GameAlreadyStartedException("Game Already Started");
         }
         this.game = new Game();
-        presenter.transitionScreen();
-        perform(new SeeAvailableBuildingsAction());
+        presenter.transitionScreen("add message", new SeeAvailableBuildingsAction());
     }
 
     public void perform(SelectBuildingAction action){

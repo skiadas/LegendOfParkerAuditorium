@@ -3,6 +3,7 @@ package core.boundary;
 import core.Building;
 import core.Coordinates;
 import core.MenuOption;
+import core.action.UserAction;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public interface Presenter {
 
     void showUpdatedInsideLocation(Coordinates insideLocation);
 
-    void transitionScreen();
+    void transitionScreen(String message, UserAction action);
 
     void showErrorForRestrictedBuilding(String errorMessage);
 
