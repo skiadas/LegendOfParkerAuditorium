@@ -9,11 +9,6 @@ import mocks.UpdateWithinBuildingLocationSpy;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-
 import static org.junit.Assert.*;
 
 public class InteractorTest {
@@ -43,11 +38,8 @@ public class InteractorTest {
 
     @Test
     public void canReadFile() {
-        InputStream is = getClass().getClassLoader().getResourceAsStream("MessageFiles/StartMessage.txt");
-        assert is != null;
-        InputStreamReader fileReader = new InputStreamReader(is, StandardCharsets.UTF_8);
-        BufferedReader reader = new BufferedReader(fileReader);
-        reader.lines().forEach(System.out::println);
+        AssetReader fileReader = new AssetReader("MessageFiles/StartMessage.txt");
+        fileReader.printFileTxt();
     }
 
     @Test

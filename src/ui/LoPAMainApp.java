@@ -8,10 +8,8 @@ import core.boundary.ActionHandler;
 import core.boundary.Presenter;
 import minidraw.standard.MiniDrawApplication;
 
-import java.io.*;
-import java.nio.charset.StandardCharsets;
+import core.AssetReader;
 import java.util.List;
-import java.util.Scanner;
 
 public class LoPAMainApp extends MiniDrawApplication implements Presenter {
     private ActionHandler actionHandler;
@@ -37,11 +35,8 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
 
     @Override
     public void transitionScreen(String fileName, SeeAvailableBuildingsAction action) {
-        InputStream is = getClass().getClassLoader().getResourceAsStream(fileName);
-        assert is != null;
-        InputStreamReader fileReader = new InputStreamReader(is, StandardCharsets.UTF_8);
-        BufferedReader reader = new BufferedReader(fileReader);
-        reader.lines().forEach(System.out::println);
+        AssetReader fileReader = new AssetReader(fileName);
+        fileReader.printFileTxt();
         Interactor i = new Interactor();
         i.perform(action);
     }
