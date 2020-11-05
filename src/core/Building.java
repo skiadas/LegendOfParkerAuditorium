@@ -10,6 +10,7 @@ public class Building {
     private int requiredNumOfKeys;
     private List<LocatedItem<Integer>> keys = new ArrayList<>() {
     };
+    private List<Enemy> enemies = new ArrayList<>();
     private Coordinates upperLeft;
     private Coordinates lowerRight;
     private Coordinates buildingEntrance = new Coordinates(0, 0);
@@ -94,5 +95,13 @@ public class Building {
     private void setBuildingBoundaries(){
         this.upperLeft = new Coordinates(-20,20);
         this.lowerRight = new Coordinates(20,-20);
+    }
+
+    public void addEnemy(Enemy enemy){
+        this.enemies.add(enemy);
+    }
+
+    public Enemy getEnemyAtIndex(int index) {
+        return this.enemies.get(index);
     }
 }
