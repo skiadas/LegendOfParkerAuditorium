@@ -28,11 +28,20 @@ public class Building {
         return new Coordinates(0, 0);
     }
 
-    void drawBuildingBoundaries(){
-        this.upperLeft = new Coordinates(0,20);
-        this.lowerRight = new Coordinates(20,0);
+    boolean isValidMovement(Coordinates requestedMove) {
+        if (isInsideBuilding(requestedMove)) {
+            // TODO: checking if tile is a wall or other invalid movement tile
+            return true;
+        }
+        return false;
     }
 
+    private boolean isInsideBuilding(Coordinates requestedMove) {
+        return requestedMove.xValue >= upperLeft.xValue && requestedMove.yValue <= upperLeft.yValue && requestedMove.xValue <= lowerRight.xValue && requestedMove.yValue >= lowerRight.yValue;
+    }
 
-
+    private void drawBuildingBoundaries(){
+        this.upperLeft = new Coordinates(-20,20);
+        this.lowerRight = new Coordinates(20,-20);
+    }
 }

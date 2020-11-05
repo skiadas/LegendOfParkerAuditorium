@@ -176,6 +176,41 @@ public class InteractorTest {
         assertEquals(false, presenterSpy.showUpdatePositionWasCalled);
     }
 
+    @Test
+    public void cannotMoveOutsideTheBuildingX() {
+        MovementAction moveLeft = MovementAction.left();
+        UpdateWithinBuildingLocationSpy mockPresenter = new UpdateWithinBuildingLocationSpy();
+        Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
+        i.setGame(game);
+        i.setPresenter(new PresenterStub());
+        moveToEdge(moveLeft);
+        i.setPresenter(mockPresenter);
+        i.perform(moveLeft);
+        assertEquals(false, mockPresenter.showUpdatePositionWasCalled);
+    }
+
+    @Test
+    public void cannotMoveOutsideTheBuildingY() {
+        MovementAction moveUp = MovementAction.up();
+        UpdateWithinBuildingLocationSpy mockPresenter = new UpdateWithinBuildingLocationSpy();
+        Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
+        i.setGame(game);
+        i.setPresenter(new PresenterStub());
+        moveToEdge(moveUp);
+        i.setPresenter(mockPresenter);
+        i.perform(moveUp);
+        assertEquals(false, mockPresenter.showUpdatePositionWasCalled);
+    }
+
+
+    @Test
+    public void cannotSeeAvailableBuildingsIfGameHasNotStarted(){
+        SeeAvailableBuildingsAction action = new SeeAvailableBuildingsAction();
+        AvailableBuildingsPresenterSpy mockPresenter = new AvailableBuildingsPresenterSpy();
+        i.setPresenter(mockPresenter);
+        i.perform(action);
+        assertFalse(mockPresenter.showAvailableBuildingsWasCalled);
+    }
 
     private Game getGameWithOneBuildingAndLocationAtItsEntrance() {
         Game game = new Game();
@@ -185,12 +220,26 @@ public class InteractorTest {
         return game;
     }
 
-    @Test
-    public void cannotSeeAvailableBuildingsIfGameHasNotStarted(){
-        SeeAvailableBuildingsAction action = new SeeAvailableBuildingsAction();
-        AvailableBuildingsPresenterSpy mockPresenter = new AvailableBuildingsPresenterSpy();
-        i.setPresenter(mockPresenter);
-        i.perform(action);
-        assertFalse(mockPresenter.showAvailableBuildingsWasCalled);
+    private void moveToEdge(MovementAction move) {
+        i.perform(move);
+        i.perform(move);
+        i.perform(move);
+        i.perform(move);
+        i.perform(move);
+        i.perform(move);
+        i.perform(move);
+        i.perform(move);
+        i.perform(move);
+        i.perform(move);
+        i.perform(move);
+        i.perform(move);
+        i.perform(move);
+        i.perform(move);
+        i.perform(move);
+        i.perform(move);
+        i.perform(move);
+        i.perform(move);
+        i.perform(move);
+        i.perform(move);
     }
 }

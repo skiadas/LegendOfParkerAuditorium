@@ -18,6 +18,10 @@ public class WithinBuildingLocation implements Location {
         return coordinates;
     }
 
+    public Building getCurrentBuilding() {
+        return currentBuilding;
+    }
+
     @Override
     public boolean isBuildingLocation() {
         return true;

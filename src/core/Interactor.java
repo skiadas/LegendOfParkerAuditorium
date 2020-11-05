@@ -48,10 +48,6 @@ public class Interactor implements ActionHandler {
     }
 
     public void perform(MovementAction action) {
-        // TODO: check if tile is movable
-        // check if tile is a movable tile
-        // if yes, update player location
-        // if no, throw exception
         try {
             game.updatePosition(action.direction);
         } catch (RuntimeException e) {

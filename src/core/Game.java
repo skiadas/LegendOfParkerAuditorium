@@ -26,6 +26,14 @@ public class Game {
         }
     }
 
+    private Building getCurrentBuilding() {
+        if (location.isBuildingLocation()) {
+            return ((WithinBuildingLocation) location).getCurrentBuilding();
+        } else {
+            throw new RuntimeException("Should not access the current building for non-building");
+        }
+    }
+
     public void addBuilding(Building building) {
         this.buildings.add(building);
     }
@@ -83,7 +91,16 @@ public class Game {
     }
 
     void updatePosition(Direction direction) {
-        getCoords().updatePosition(direction);
+        if (isValidMovement(direction)) {
+            getCoords().updatePosition(direction);
+        }
+        else {
+            throw new RuntimeException("invalid movement tile");
+        }
+    }
+
+    private boolean isValidMovement(Direction direction) {
+        return getCurrentBuilding().isValidMovement(getCoords().getRequestedMove(direction));
     }
 
     public boolean hasBuildingNamed(String name) {
