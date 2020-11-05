@@ -3,7 +3,6 @@ package core;
 import core.action.*;
 import core.boundary.ActionHandler;
 import core.boundary.Presenter;
-import core.action.MovementAction;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,7 @@ public class Interactor implements ActionHandler {
             throw new GameAlreadyStartedException("Game Already Started");
         }
         this.game = new Game();
-        presenter.transitionScreen("add message", new SeeAvailableBuildingsAction());
+        presenter.transitionScreen("MessageFiles/StartMessage.txt", new SeeAvailableBuildingsAction());
     }
 
     public void perform(SelectBuildingAction action){

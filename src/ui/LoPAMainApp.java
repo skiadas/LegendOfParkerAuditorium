@@ -1,16 +1,17 @@
 package ui;
 
-import core.Building;
+import core.Coordinates;
 import core.Interactor;
 import core.MenuOption;
-import core.Coordinates;
 import core.action.SeeAvailableBuildingsAction;
-import core.action.UserAction;
 import core.boundary.ActionHandler;
 import core.boundary.Presenter;
 import minidraw.standard.MiniDrawApplication;
 
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
+import java.util.Scanner;
 
 public class LoPAMainApp extends MiniDrawApplication implements Presenter {
     private ActionHandler actionHandler;
@@ -35,8 +36,14 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
     }
 
     @Override
-    public void transitionScreen(String message, UserAction action) {
-        //TODO; Implement Story Screen With Click To Continue.
+    public void transitionScreen(String fileName, SeeAvailableBuildingsAction action) {
+        InputStream is = getClass().getClassLoader().getResourceAsStream(fileName);
+        assert is != null;
+        InputStreamReader fileReader = new InputStreamReader(is, StandardCharsets.UTF_8);
+        BufferedReader reader = new BufferedReader(fileReader);
+        reader.lines().forEach(System.out::println);
+        Interactor i = new Interactor();
+        i.perform(action);
     }
 
     @Override

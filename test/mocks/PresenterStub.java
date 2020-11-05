@@ -7,6 +7,7 @@ import core.action.SeeAvailableBuildingsAction;
 import core.action.UserAction;
 import core.boundary.Presenter;
 
+import java.io.File;
 import java.util.List;
 
 public class PresenterStub implements Presenter {
@@ -26,7 +27,7 @@ public class PresenterStub implements Presenter {
     }
 
     @Override
-    public void transitionScreen(String message, UserAction action) {
+    public void transitionScreen(String fileName, SeeAvailableBuildingsAction action) {
 
     }
 

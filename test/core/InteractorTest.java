@@ -9,6 +9,13 @@ import mocks.UpdateWithinBuildingLocationSpy;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+import java.util.Scanner;
+
 import static org.junit.Assert.*;
 
 public class InteractorTest {
@@ -21,7 +28,7 @@ public class InteractorTest {
     }
 
     @Test
-    public void canCreateGame() throws Interactor.GameAlreadyStartedException {
+    public void canCreateGame() throws Interactor.GameAlreadyStartedException, FileNotFoundException {
         PresenterStub mocks = new PresenterStub();
         i.setPresenter(mocks);
         StartGameAction start = new StartGameAction();
@@ -30,10 +37,19 @@ public class InteractorTest {
     }
 
     @Test (expected = Interactor.GameAlreadyStartedException.class)
-    public void cannotStartGameInProgress() throws Interactor.GameAlreadyStartedException {
+    public void cannotStartGameInProgress() throws Interactor.GameAlreadyStartedException, FileNotFoundException {
         i.game = new Game();
         StartGameAction start = new StartGameAction();
         i.perform(start);
+    }
+
+    @Test
+    public void canReadFile() {
+        InputStream is = getClass().getClassLoader().getResourceAsStream("MessageFiles/StartMessage.txt");
+        assert is != null;
+        InputStreamReader fileReader = new InputStreamReader(is, StandardCharsets.UTF_8);
+        BufferedReader reader = new BufferedReader(fileReader);
+        reader.lines().forEach(System.out::println);
     }
 
     @Test
