@@ -41,7 +41,7 @@ public class Game {
         if (location.isBuildingLocation()) {
             return ((WithinBuildingLocation) location).getCurrentBuilding();
         } else {
-            throw new RuntimeException("Should not access the current building for non-building");
+            throw new ExistingBuildingError("Should not access the current building for non-building");
         }
     }
 
@@ -127,11 +127,14 @@ public class Game {
     }
 
     public Building getBuildingNamed(String name) {
+        if (isWithinABuilding()) {
+            throw new ExistingBuildingError("You cannot select a building when you are already inside a building");
+        }
         for (Building chosenBuilding: buildings) {
             if(isSelectedBuildingInAvailableBuildingsList(name))
                 return chosenBuilding;
         }
-        throw new RuntimeException("Building does not exist!");
+        throw new ExistingBuildingError("Building does not exist!");
     }
 
     public boolean isSelectedBuildingInAvailableBuildingsList(String name) {
@@ -150,5 +153,11 @@ public class Game {
 
     public void addKeyToBuildingItemList(Building building, Coordinates coords) {
         building.addLocatedItem(coords);
+    }
+
+    public class ExistingBuildingError extends RuntimeException {
+        public ExistingBuildingError(String message) {
+            super(message);
+        }
     }
 }

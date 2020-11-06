@@ -37,13 +37,17 @@ public class Interactor implements ActionHandler {
 
     public void perform(SelectBuildingAction action) {
         String buildingName = action.buildingName;
+        if (game == null){
+            presenter.showError("Game Has Not Started");
+            return;
+        }
         try {
             Building building = game.getBuildingNamed(buildingName);
             BuildingView buildingInfo = BuildingConvert.getBuildingViewInfo(building);
             game.enterBuilding(building);
             presenter.showChoiceOfBuilding(buildingInfo);
             presenter.showUpdatedInsideLocation(game.getCoords());
-        } catch (RuntimeException e) {
+        } catch (Game.ExistingBuildingError e) {
             presenter.showError(e.toString());
         }
     }
