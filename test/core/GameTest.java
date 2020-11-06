@@ -62,7 +62,6 @@ public class GameTest {
         game.addKeyToBuildingItemList(buildingWithKeyAtX0Y1, coords);
         assertTrue(buildingWithKeyAtX0Y1.hasKeyAt(coords));
     }
-    @Ignore
     @Test
     public void canAddKeyToInventoryByWalkingOnATileWithAKey() {
 
