@@ -1,16 +1,10 @@
 package ui;
 
-import core.Coordinates;
-import core.Interactor;
-import core.MenuOption;
-import core.action.SeeAvailableBuildingsAction;
 import core.*;
-import core.action.UserAction;
+import core.action.SeeAvailableBuildingsAction;
 import core.boundary.ActionHandler;
 import core.boundary.Presenter;
 import minidraw.standard.MiniDrawApplication;
-
-import core.AssetReader;
 
 import java.io.IOException;
 import java.util.List;

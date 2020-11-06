@@ -6,11 +6,10 @@ import core.action.SelectBuildingAction;
 import core.action.StartGameAction;
 import mocks.AvailableBuildingsPresenterSpy;
 import mocks.PresenterStub;
+import mocks.StartGameActionSpy;
 import mocks.UpdateWithinBuildingLocationSpy;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.lang.annotation.ElementType;
 
 import java.io.IOException;
 
@@ -44,6 +43,15 @@ public class InteractorTest {
     @Test
     public void canReadFile() throws IOException {
         assertEquals("Test Message", AssetReader.fileToString("TestMessage.txt"));
+    }
+
+    @Test
+    public void transitionScreenIsCalled() throws IOException, Interactor.GameAlreadyStartedException {
+        StartGameActionSpy presenterSpy = new StartGameActionSpy();
+        StartGameAction start = new StartGameAction();
+        i.setPresenter(presenterSpy);
+        i.perform(start);
+        assertTrue(presenterSpy.transitionScreenIsCalled);
     }
 
     @Test
