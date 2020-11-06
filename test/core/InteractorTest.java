@@ -180,19 +180,23 @@ public class InteractorTest {
         i.setPresenter(presenterSpy);
         i.perform(MovementAction.up());
         assertEquals(false, presenterSpy.showUpdatePositionWasCalled);
+        assertEquals(true, presenterSpy.showErrorWasCalled);
+        assertEquals("No game started.", presenterSpy.errorMessage);
     }
 
     @Test
     public void cannotMoveOutsideTheBuildingX() {
         MovementAction moveLeft = MovementAction.left();
-        UpdateWithinBuildingLocationSpy mockPresenter = new UpdateWithinBuildingLocationSpy();
+        UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
         Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
         i.setGame(game);
         i.setPresenter(new PresenterStub());
         moveToEdge(moveLeft);
-        i.setPresenter(mockPresenter);
+        i.setPresenter(presenterSpy);
         i.perform(moveLeft);
-        assertEquals(false, mockPresenter.showUpdatePositionWasCalled);
+        assertEquals(false, presenterSpy.showUpdatePositionWasCalled);
+        assertEquals(true, presenterSpy.showErrorWasCalled);
+        assertEquals("Unable to move to location.", presenterSpy.errorMessage);
     }
 
     @Test

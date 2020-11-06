@@ -3,6 +3,8 @@ package core;
 import core.action.*;
 import core.boundary.ActionHandler;
 import core.boundary.Presenter;
+import core.exceptions.InvalidCoordinateAccessorException;
+import core.exceptions.InvalidMovementException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,13 +49,18 @@ public class Interactor implements ActionHandler {
     }
 
     public void perform(MovementAction action) {
+        if (game == null) {
+            presenter.showError("No game started.");
+            return;
+        }
         try {
             game.updatePosition(action.direction);
+            presenter.showUpdatedInsideLocation(game.getCoords());
+        } catch (InvalidMovementException | InvalidCoordinateAccessorException e) {
+            presenter.showError(e.getMessage());
         } catch (RuntimeException e) {
-            System.out.println(e.toString());
-            return; // return without updating UI
+            // TODO: change to catching a specific exception
         }
-        presenter.showUpdatedInsideLocation(game.getCoords());
     }
 
     public void perform(AppLoadAction action) {

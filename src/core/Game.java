@@ -1,5 +1,8 @@
 package core;
 
+import core.exceptions.InvalidCoordinateAccessorException;
+import core.exceptions.InvalidMovementException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +25,15 @@ public class Game {
         if (location.isBuildingLocation()) {
             return ((WithinBuildingLocation) location).getCoords();
         } else {
-            throw new RuntimeException("Should not access coords for non-building");
+            throw new InvalidCoordinateAccessorException();
+        }
+    }
+
+    public void setCoordinates(Coordinates coordinates) {
+        if (location.isBuildingLocation()) {
+            ((WithinBuildingLocation) location).setCoordinates(coordinates);
+        } else {
+            throw new InvalidCoordinateAccessorException();
         }
     }
 
@@ -91,16 +102,20 @@ public class Game {
     }
 
     void updatePosition(Direction direction) {
-        if (isValidMovement(direction)) {
-            getCoords().updatePosition(direction);
+        if (isValidLocation(direction)) {
+            setCoordinates(getRequestedMove(direction));
         }
         else {
-            throw new RuntimeException("invalid movement tile");
+            throw new InvalidMovementException();
         }
     }
 
-    private boolean isValidMovement(Direction direction) {
-        return getCurrentBuilding().isValidMovement(getCoords().getRequestedMove(direction));
+    private boolean isValidLocation(Direction direction) {
+        return getCurrentBuilding().isValidMovement(getRequestedMove(direction));
+    }
+
+    private Coordinates getRequestedMove(Direction direction) {
+        return getCoords().getRequestedMove(direction);
     }
 
     public boolean hasBuildingNamed(String name) {

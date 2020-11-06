@@ -18,6 +18,10 @@ public class WithinBuildingLocation implements Location {
         return coordinates;
     }
 
+    public void setCoordinates(Coordinates coordinates) {
+        this.coordinates = coordinates;
+    }
+
     public Building getCurrentBuilding() {
         return currentBuilding;
     }
