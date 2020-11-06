@@ -25,7 +25,7 @@ public class InteractorTest {
     }
 
     @Test
-    public void canCreateGame() throws Interactor.GameAlreadyStartedException, IOException {
+    public void canCreateGame() throws IOException {
         PresenterStub mocks = new PresenterStub();
         i.setPresenter(mocks);
         StartGameAction start = new StartGameAction();
@@ -33,11 +33,13 @@ public class InteractorTest {
         assertEquals(true , i.getGame().gameStarted);
     }
 
-    @Test (expected = Interactor.GameAlreadyStartedException.class)
-    public void cannotStartGameInProgress() throws Interactor.GameAlreadyStartedException, IOException {
-        i.game = new Game();
+    @Test
+    public void cannotStartGameInProgress() throws IOException {
+        StartGameActionSpy presenterSpy = new StartGameActionSpy();
+        i.setPresenter(presenterSpy);
         StartGameAction start = new StartGameAction();
         i.perform(start);
+        assertFalse(presenterSpy.showErrorIsCalled);
     }
 
     @Test
@@ -46,7 +48,7 @@ public class InteractorTest {
     }
 
     @Test
-    public void transitionScreenIsCalled() throws IOException, Interactor.GameAlreadyStartedException {
+    public void transitionScreenIsCalled() throws IOException {
         StartGameActionSpy presenterSpy = new StartGameActionSpy();
         StartGameAction start = new StartGameAction();
         i.setPresenter(presenterSpy);

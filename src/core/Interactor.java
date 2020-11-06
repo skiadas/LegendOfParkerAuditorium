@@ -13,22 +13,22 @@ public class Interactor implements ActionHandler {
     private Presenter presenter;
     private Building chosenBuilding = null;
 
-    public void perform(StartGameAction action) throws GameAlreadyStartedException, IOException {
-        if(game != null) {
-            throw new GameAlreadyStartedException("Game Already Started");
+    public void perform(StartGameAction action) throws IOException {
+        if (game != null) {
+            presenter.showError("Game Already Started");
         }
         this.game = new Game();
         presenter.transitionScreen("MessageFiles/StartMessage.txt", new SeeAvailableBuildingsAction());
     }
 
-    public void perform(SelectBuildingAction action){
+    public void perform(SelectBuildingAction action) {
         String buildingName = action.buildingName;
         try {
             Building building = game.getBuildingNamed(buildingName);
             BuildingView buildingInfo = BuildingConvert.getBuildingViewInfo(building);
             presenter.showChoiceOfBuilding(buildingInfo);
             game.enterBuilding(building);
-        } catch (RuntimeException e){
+        } catch (RuntimeException e) {
             presenter.showError(e.toString());
         }
     }
@@ -63,18 +63,19 @@ public class Interactor implements ActionHandler {
     public Game getGame() {
         return game;
     }
+
     public void setGame(Game game) {
         this.game = game;
     }
-    public List<Building> getBuildings(){
+
+    public List<Building> getBuildings() {
         return game.getBuildings();
     }
 
     public void perform(SeeAvailableBuildingsAction action) {
         if (game == null) {
             presenter.showError("Sorry game has yet to start!");
-        }
-        else {
+        } else {
             List<Building> availableBuildings = game.produceAvailableBuildings();
             List<MenuOption> menuOptions = convertBuildingsToMenuOptions(availableBuildings);
             presenter.showAvailableBuildings(menuOptions);
