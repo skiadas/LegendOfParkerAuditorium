@@ -71,8 +71,4 @@ public class BuildingSelectionTests {
         assertFalse(game.isSelectedBuildingInAvailableBuildingsList(("building2")));
     }
 
-    @Test
-    public void creatingGameAndUsingSelectBuildingAction() {
-
-    }
 }
