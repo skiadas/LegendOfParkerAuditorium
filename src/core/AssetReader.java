@@ -1,26 +1,21 @@
 package core;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
+import java.util.stream.Collectors;
 
 public class AssetReader {
-    private String filePath;
 
-    public AssetReader(String filePath) {
-        this.filePath = filePath;
-    }
-
-    public void printFileTxt(){
-        InputStream is = getClass().getClassLoader().getResourceAsStream(filePath);
-        assert is != null;
-        InputStreamReader fileReader = new InputStreamReader(is, StandardCharsets.UTF_8);
-        BufferedReader reader = new BufferedReader(fileReader);
-        reader.lines().forEach(System.out::println);
-    }
-
-    public String fileToString() {
-        return null;
+    public static String fileToString(String fileName) throws IOException {
+        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+        try (InputStream is = classLoader.getResourceAsStream(fileName)) {
+            if (is == null) return null;
+            try (InputStreamReader isr = new InputStreamReader(is);
+                 BufferedReader reader = new BufferedReader(isr)) {
+                return reader.lines().collect(Collectors.joining(System.lineSeparator()));
+            }
+        }
     }
 }

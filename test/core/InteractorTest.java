@@ -12,6 +12,8 @@ import org.junit.Test;
 
 import java.lang.annotation.ElementType;
 
+import java.io.IOException;
+
 import static org.junit.Assert.*;
 
 public class InteractorTest {
@@ -24,7 +26,7 @@ public class InteractorTest {
     }
 
     @Test
-    public void canCreateGame() throws Interactor.GameAlreadyStartedException {
+    public void canCreateGame() throws Interactor.GameAlreadyStartedException, IOException {
         PresenterStub mocks = new PresenterStub();
         i.setPresenter(mocks);
         StartGameAction start = new StartGameAction();
@@ -33,16 +35,15 @@ public class InteractorTest {
     }
 
     @Test (expected = Interactor.GameAlreadyStartedException.class)
-    public void cannotStartGameInProgress() throws Interactor.GameAlreadyStartedException {
+    public void cannotStartGameInProgress() throws Interactor.GameAlreadyStartedException, IOException {
         i.game = new Game();
         StartGameAction start = new StartGameAction();
         i.perform(start);
     }
 
     @Test
-    public void canReadFile() {
-        AssetReader fileReader = new AssetReader("TestResources/TextMessage.txt");
-        // assertEquals("Test Message", fileReader.fileToString());
+    public void canReadFile() throws IOException {
+        assertEquals("Test Message", AssetReader.fileToString("TestMessage.txt"));
     }
 
     @Test

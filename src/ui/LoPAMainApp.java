@@ -11,6 +11,8 @@ import core.boundary.Presenter;
 import minidraw.standard.MiniDrawApplication;
 
 import core.AssetReader;
+
+import java.io.IOException;
 import java.util.List;
 
 public class LoPAMainApp extends MiniDrawApplication implements Presenter {
@@ -36,9 +38,8 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
     }
 
     @Override
-    public void transitionScreen(String fileName, SeeAvailableBuildingsAction action) {
-        AssetReader fileReader = new AssetReader(fileName);
-        fileReader.printFileTxt();
+    public void transitionScreen(String fileName, SeeAvailableBuildingsAction action) throws IOException {
+        String message = AssetReader.fileToString(fileName);
         Interactor i = new Interactor();
         i.perform(action);
     }

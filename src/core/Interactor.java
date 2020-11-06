@@ -4,6 +4,7 @@ import core.action.*;
 import core.boundary.ActionHandler;
 import core.boundary.Presenter;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ public class Interactor implements ActionHandler {
     private Presenter presenter;
     private Building chosenBuilding = null;
 
-    public void perform(StartGameAction action) throws GameAlreadyStartedException {
+    public void perform(StartGameAction action) throws GameAlreadyStartedException, IOException {
         if(game != null) {
             throw new GameAlreadyStartedException("Game Already Started");
         }
