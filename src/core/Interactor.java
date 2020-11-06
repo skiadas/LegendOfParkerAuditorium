@@ -38,8 +38,9 @@ public class Interactor implements ActionHandler {
         try {
             Building building = game.getBuildingNamed(buildingName);
             BuildingView buildingInfo = BuildingConvert.getBuildingViewInfo(building);
-            presenter.showChoiceOfBuilding(buildingInfo);
             game.enterBuilding(building);
+            presenter.showChoiceOfBuilding(buildingInfo);
+            presenter.showUpdatedInsideLocation(game.getCoords());
         } catch (RuntimeException e) {
             presenter.showError(e.toString());
         }
