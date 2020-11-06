@@ -4,6 +4,7 @@ import core.BuildingView;
 import core.Coordinates;
 import core.MenuOption;
 import core.action.SeeAvailableBuildingsAction;
+import core.action.UserAction;
 import core.boundary.Presenter;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class PresenterStub implements Presenter {
 
     }
 
-    public void transitionScreen(String fileName, SeeAvailableBuildingsAction action) {
+    public void transitionScreen(String fileName, UserAction action) {
 
     }
 

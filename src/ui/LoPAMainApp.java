@@ -2,7 +2,8 @@ package ui;
 
 import core.*;
 import core.action.SeeAvailableBuildingsAction;
-import core.boundary.ActionHandler;
+import core.action.UserAction;
+import core.boundary.ActionRouter;
 import core.boundary.Presenter;
 import minidraw.standard.MiniDrawApplication;
 
@@ -10,15 +11,20 @@ import java.io.IOException;
 import java.util.List;
 
 public class LoPAMainApp extends MiniDrawApplication implements Presenter {
-    private ActionHandler actionHandler;
+    private ActionRouter actionRouter;
 
-    public LoPAMainApp(ActionHandler actionHandler) {
+    public LoPAMainApp(ActionRouter actionRouter) {
         super("Legend of Parker Auditorium", new LoPAFactory());
-        this.actionHandler = actionHandler;
+        this.actionRouter = actionRouter;
+        UserAction startAction = actionRouter.getStartAction();
+        actionRouter.perform(startAction);
     }
 
     public void showMainMenu(List<MenuOption> options) {
         // TODO: Show the options, allow for option to be chosen
+        // ....
+        UserAction action = options.get(0).action;
+        actionRouter.perform(action);
     }
 
     @Override
@@ -31,11 +37,9 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
 
     }
 
-    @Override
-    public void transitionScreen(String fileName, SeeAvailableBuildingsAction action) throws IOException {
+    public void transitionScreen(String fileName, UserAction action) throws IOException {
         String message = AssetReader.fileToString(fileName);
-        Interactor i = new Interactor();
-        i.perform(action);
+        actionRouter.perform(action);
     }
 
     @Override

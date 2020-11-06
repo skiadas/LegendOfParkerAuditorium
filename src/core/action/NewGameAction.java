@@ -1,7 +1,11 @@
 package core.action;
 
-public class NewGameAction implements UserAction {
+import core.boundary.ActionVisitor;
 
+public class NewGameAction implements UserAction {
+    public void accept(ActionVisitor visitor) {
+        visitor.perform(this);
+    }
     public String toString() {
         return "NewGameAction";
     }

@@ -1,8 +1,7 @@
 package core.action;
 
-import core.Building;
+import core.boundary.ActionVisitor;
 
-import java.util.List;
 import java.util.Objects;
 
 public class SelectBuildingAction implements UserAction {
@@ -10,6 +9,10 @@ public class SelectBuildingAction implements UserAction {
 
     public SelectBuildingAction(String buildingName) {
         this.buildingName = buildingName;
+    }
+
+    public void accept(ActionVisitor visitor) {
+        visitor.perform(this);
     }
 
     @Override

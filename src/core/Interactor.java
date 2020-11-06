@@ -13,12 +13,24 @@ public class Interactor implements ActionHandler {
     private Presenter presenter;
     private Building chosenBuilding = null;
 
-    public void perform(StartGameAction action) throws IOException {
+    public void perform(UserAction action) {
+        action.accept(this);
+    }
+
+    public void perform(NewGameAction action) {
+
+    }
+
+    public void perform(StartGameAction action) {
         if (game != null) {
             presenter.showError("Game Already Started");
         }
         this.game = new Game();
-        presenter.transitionScreen("MessageFiles/StartMessage.txt", new SeeAvailableBuildingsAction());
+        try {
+            presenter.transitionScreen("MessageFiles/StartMessage.txt", new SeeAvailableBuildingsAction());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public void perform(SelectBuildingAction action) {
@@ -51,6 +63,10 @@ public class Interactor implements ActionHandler {
         presenter.showMainMenu(menuOptions);
     }
 
+    public void perform(SaveGameAction action) {
+        // TODO
+    }
+
     public void setPresenter(Presenter presenter) {
         this.presenter = presenter;
     }
@@ -58,8 +74,8 @@ public class Interactor implements ActionHandler {
     public Presenter getPresenter() {
         return presenter;
     }
-
     // For test
+
     public Game getGame() {
         return game;
     }
@@ -80,6 +96,10 @@ public class Interactor implements ActionHandler {
             List<MenuOption> menuOptions = convertBuildingsToMenuOptions(availableBuildings);
             presenter.showAvailableBuildings(menuOptions);
         }
+    }
+
+    public UserAction getStartAction() {
+        return new AppLoadAction();
     }
 
     static class GameAlreadyStartedException extends Exception {

@@ -1,5 +1,7 @@
 package core.action;
 
+import core.boundary.ActionVisitor;
+
 public class SaveGameAction implements UserAction {
 
     public String toString() {
@@ -11,4 +13,7 @@ public class SaveGameAction implements UserAction {
         return o != null && getClass() == o.getClass();
     }
 
+    public void accept(ActionVisitor visitor) {
+        visitor.perform(this);
+    }
 }
