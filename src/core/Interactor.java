@@ -29,7 +29,7 @@ public class Interactor implements ActionHandler {
         }
         this.game = new Game();
         try {
-            presenter.transitionScreen("MessageFiles/StartMessage.txt", new SeeAvailableBuildingsAction());
+            presenter.message("MessageFiles/StartMessage.txt", new SeeAvailableBuildingsAction());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

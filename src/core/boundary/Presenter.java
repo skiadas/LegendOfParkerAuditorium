@@ -16,7 +16,7 @@ public interface Presenter {
 
     void showUpdatedInsideLocation(Coordinates insideLocation);
 
-    void transitionScreen(String fileName, UserAction action) throws IOException;
+    void message(String fileName, UserAction action) throws IOException;
 
     void showChoiceOfBuilding(BuildingView buildingView);
 

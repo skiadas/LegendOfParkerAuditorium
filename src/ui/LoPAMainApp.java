@@ -37,7 +37,7 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
 
     }
 
-    public void transitionScreen(String fileName, UserAction action) throws IOException {
+    public void message(String fileName, UserAction action) throws IOException {
         String message = AssetReader.fileToString(fileName);
         actionRouter.perform(action);
     }
