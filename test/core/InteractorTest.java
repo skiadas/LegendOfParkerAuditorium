@@ -25,7 +25,7 @@ public class InteractorTest {
     }
 
     @Test
-    public void canCreateGame() throws IOException {
+    public void canCreateGame() {
         PresenterStub mocks = new PresenterStub();
         i.setPresenter(mocks);
         StartGameAction start = new StartGameAction();
@@ -34,7 +34,7 @@ public class InteractorTest {
     }
 
     @Test
-    public void cannotStartGameInProgress() throws IOException {
+    public void cannotStartGameInProgress() {
         StartGameActionSpy presenterSpy = new StartGameActionSpy();
         i.setPresenter(presenterSpy);
         StartGameAction start = new StartGameAction();
@@ -48,7 +48,7 @@ public class InteractorTest {
     }
 
     @Test
-    public void transitionScreenIsCalled() throws IOException {
+    public void transitionScreenIsCalled() {
         StartGameActionSpy presenterSpy = new StartGameActionSpy();
         StartGameAction start = new StartGameAction();
         i.setPresenter(presenterSpy);
