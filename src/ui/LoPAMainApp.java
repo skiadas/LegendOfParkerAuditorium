@@ -18,8 +18,6 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
     public LoPAMainApp(ActionRouter actionRouter) {
         super("Legend of Parker Auditorium", new LoPAFactory());
         this.actionRouter = actionRouter;
-        UserAction startAction = actionRouter.getStartAction();
-        actionRouter.perform(startAction);
     }
 
     public void showMainMenu(List<MenuOption> options) {
@@ -59,4 +57,9 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
 
     }
 
+    public void open() {
+        super.open();
+        UserAction startAction = actionRouter.getStartAction();
+        actionRouter.perform(startAction);
+    }
 }
