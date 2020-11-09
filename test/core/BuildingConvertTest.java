@@ -2,6 +2,8 @@ package core;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class BuildingConvertTest {
@@ -20,5 +22,6 @@ public class BuildingConvertTest {
         assertEquals(entrance, bv.getEntranceCoordinates());
         assertEquals(upperLeft, bv.getUpperLeft());
         assertEquals(lowerRight, bv.getLowerRight());
+        assertEquals(new ArrayList<>(), bv.getEnemyList());
     }
 }

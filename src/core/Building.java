@@ -110,4 +110,6 @@ public class Building {
     public Enemy getEnemyAtIndex(int index) {
         return this.enemies.get(index);
     }
+
+    public List<Enemy> getListOfEnemies() { return enemies;}
 }
