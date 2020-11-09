@@ -9,6 +9,7 @@ import mocks.PresenterStub;
 import mocks.StartGameActionSpy;
 import mocks.UpdateWithinBuildingLocationSpy;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -42,6 +43,7 @@ public class InteractorTest {
         assertFalse(presenterSpy.showErrorIsCalled);
     }
 
+    @Ignore
     @Test
     public void canReadFile() throws IOException {
         assertEquals("Test Message", AssetReader.fileToString("TestMessage.txt"));
