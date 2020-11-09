@@ -1,5 +1,7 @@
 package core;
 
+import java.util.Objects;
+
 public class BuildingView {
 
     private final String name;
@@ -34,5 +36,22 @@ public class BuildingView {
 
     public int getRequiredNumOfKey() {
         return requiredNumOfKey;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BuildingView that = (BuildingView) o;
+        return getRequiredNumOfKey() == that.getRequiredNumOfKey() &&
+                Objects.equals(getName(), that.getName()) &&
+                Objects.equals(getEntranceCoordinates(), that.getEntranceCoordinates()) &&
+                Objects.equals(getLowerRight(), that.getLowerRight()) &&
+                Objects.equals(getUpperLeft(), that.getUpperLeft());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getName(), getEntranceCoordinates(), getRequiredNumOfKey(), getLowerRight(), getUpperLeft());
     }
 }

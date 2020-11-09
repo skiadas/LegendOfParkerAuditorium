@@ -7,4 +7,5 @@ public class BuildingConvert{
                 building.getEntranceCoordinates(), building.getRequiredNumOfKeys(),
                 building.getLowerRight(), building.getUpperLeft());
     }
+
 }
