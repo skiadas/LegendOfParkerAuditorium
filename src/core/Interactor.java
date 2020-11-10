@@ -60,10 +60,8 @@ public class Interactor implements ActionHandler {
         try {
             game.updatePosition(action.direction);
             presenter.showUpdatedInsideLocation(game.getCoords());
-        } catch (InvalidMovementException | InvalidCoordinateAccessorException e) {
+        } catch (InvalidMovementException | InvalidCoordinateAccessorException | Game.ExistingBuildingError e) {
             presenter.showError(e.getMessage());
-        } catch (RuntimeException e) {
-            // TODO: change to catching a specific exception
         }
         IfPlayerOnTheDoorCell_thenExitAndShowBuildingMenu();
     }
