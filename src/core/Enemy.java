@@ -4,7 +4,7 @@ package core;
 
 
 public class Enemy{
-    private Coordinates cords;
+    public Coordinates cords;
 
 
     public Enemy(){

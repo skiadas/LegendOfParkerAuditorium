@@ -8,4 +8,8 @@ public class BuildingConvert{
                 building.getLowerRight(), building.getUpperLeft(), building.getListOfEnemies());
     }
 
+
+    public static EnemyView getEnemyViewInfo(Enemy enemy){
+        return new EnemyView(enemy.getEnemyCords());
+    }
 }

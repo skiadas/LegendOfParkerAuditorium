@@ -24,4 +24,14 @@ public class BuildingConvertTest {
         assertEquals(lowerRight, bv.getLowerRight());
         assertEquals(new ArrayList<>(), bv.getEnemyList());
     }
+
+    @Test
+    public void getEnemyViewInfotest() throws Exception {
+        Building building = new Building("b1",0);
+        Enemy enemy = new Enemy();
+        Coordinates cords = new Coordinates(3,0);
+        building.addEnemy(enemy,cords);
+        EnemyView ev = BuildingConvert.getEnemyViewInfo(enemy);
+        assertEquals(cords,ev.getCords());
+    }
 }
