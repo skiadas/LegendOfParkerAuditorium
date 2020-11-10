@@ -255,4 +255,16 @@ public class InteractorTest {
         i.perform(move);
     }
 
+    @Test
+    public void canLeaveTheBuildingBySteppingOnTheEntrance() {
+        Game game = new Game();
+        game.setLocation(WithinBuildingLocation.atEntranceOf(new Building("B1",0)));
+        AvailableBuildingsPresenterSpy mockPresenter = new AvailableBuildingsPresenterSpy();
+        i.setGame(game);
+        i.setPresenter(mockPresenter);
+        i.perform(MovementAction.down());
+        i.perform(MovementAction.up());
+        assertFalse(i.game.isWithinABuilding());
+        assertTrue(mockPresenter.showAvailableBuildingsWasCalled);
+    }
 }

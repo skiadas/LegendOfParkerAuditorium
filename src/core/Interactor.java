@@ -65,6 +65,14 @@ public class Interactor implements ActionHandler {
         } catch (RuntimeException e) {
             // TODO: change to catching a specific exception
         }
+        IfPlayerOnTheDoorCell_thenExitAndShowBuildingMenu();
+    }
+
+    private void IfPlayerOnTheDoorCell_thenExitAndShowBuildingMenu() {
+        if(game.isOnTheEntranceCell()){
+            game.setLocation(new MapLocation());
+            perform(new SeeAvailableBuildingsAction());
+        }
     }
 
     public void perform(AppLoadAction action) {

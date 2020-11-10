@@ -65,4 +65,18 @@ public class GameTest {
     public void canAddKeyToInventoryByWalkingOnATileWithAKey() {
 
     }
+
+    @Test
+    public void canCheckIfThePlayerisOnTheEntranceCell() {
+        Building b = new Building("b1",0);
+        game.setLocation(WithinBuildingLocation.atEntranceOf(b));
+        assertTrue(game.isOnTheEntranceCell());
+    }
+
+    @Test
+    public void canCheckIfThePlayerIsNotOnTheEntranceCell() {
+        Building b = new Building("b1",0);
+        game.setLocation(new WithinBuildingLocation(b, new Coordinates(1,1)));
+        assertFalse(game.isOnTheEntranceCell());
+    }
 }

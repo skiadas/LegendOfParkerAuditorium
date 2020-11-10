@@ -145,6 +145,10 @@ public class Game {
         return false;
     }
 
+    public boolean isOnTheEntranceCell(){
+        return isWithinABuilding() && getCoords().equals(getCurrentBuilding().getEntranceCoordinates());
+    }
+
     boolean hasAccessTo(Building b){
         return inventory.getNumberOfKeys() >= b.getRequiredNumOfKeys();
     }
