@@ -131,12 +131,6 @@ public class Interactor implements ActionHandler {
         return new AppLoadAction();
     }
 
-    static class GameAlreadyStartedException extends Exception {
-        public GameAlreadyStartedException(String message) {
-            super(message);
-        }
-    }
-
     public List<MenuOption> convertBuildingsToMenuOptions(List<Building> buildings) {
         List<MenuOption> menuOptions = new ArrayList<>();
         for (Building building : buildings) {

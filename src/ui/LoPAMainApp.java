@@ -1,7 +1,9 @@
 package ui;
 
-import core.*;
-import core.action.SeeAvailableBuildingsAction;
+import core.AssetReader;
+import core.BuildingView;
+import core.Coordinates;
+import core.MenuOption;
 import core.action.UserAction;
 import core.boundary.ActionRouter;
 import core.boundary.Presenter;

@@ -3,7 +3,6 @@ package core.boundary;
 import core.BuildingView;
 import core.Coordinates;
 import core.MenuOption;
-import core.action.SeeAvailableBuildingsAction;
 import core.action.UserAction;
 
 import java.io.IOException;
@@ -21,7 +20,6 @@ public interface Presenter {
     void showChoiceOfBuilding(BuildingView buildingView);
 
     void showError(String errorMessage);
-
 
     void showDeathScreen(String message);
 }
