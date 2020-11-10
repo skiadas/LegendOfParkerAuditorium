@@ -8,8 +8,7 @@ import java.util.Objects;
 public class Building {
     private String name;
     private int requiredNumOfKeys;
-    private List<LocatedItem<Integer>> keys = new ArrayList<>() {
-    };
+    private List<LocatedItem<Integer>> keys = new ArrayList<>();
     private List<Enemy> enemies = new ArrayList<>();
     private Coordinates upperLeft;
     private Coordinates lowerRight;

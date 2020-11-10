@@ -52,4 +52,9 @@ public class LoPAMainApp extends MiniDrawApplication implements Presenter {
 
     }
 
+    @Override
+    public void showDeathScreen(String message) {
+
+    }
+
 }

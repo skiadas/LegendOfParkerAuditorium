@@ -3,7 +3,6 @@ package mocks;
 import core.BuildingView;
 import core.Coordinates;
 import core.MenuOption;
-import core.action.SeeAvailableBuildingsAction;
 import core.action.UserAction;
 import core.boundary.Presenter;
 
@@ -36,6 +35,11 @@ public class PresenterStub implements Presenter {
 
     @Override
     public void showError(String errorMessage) {
+
+    }
+
+    @Override
+    public void showDeathScreen(String message) {
 
     }
 

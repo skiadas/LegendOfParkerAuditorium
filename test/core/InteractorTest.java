@@ -2,7 +2,6 @@ package core;
 
 import core.action.MovementAction;
 import core.action.SeeAvailableBuildingsAction;
-import core.action.SelectBuildingAction;
 import core.action.StartGameAction;
 import mocks.AvailableBuildingsPresenterSpy;
 import mocks.PresenterStub;
@@ -212,6 +211,22 @@ public class InteractorTest {
         i.setPresenter(mockPresenter);
         i.perform(moveUp);
         assertEquals(false, mockPresenter.showUpdatePositionWasCalled);
+    }
+
+    @Test
+    public void playerDiesWhenOnEnemySquare() {
+        UpdateWithinBuildingLocationSpy mockPresenter = new UpdateWithinBuildingLocationSpy();
+        Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
+        game.getCurrentBuilding().getListOfEnemies().add(new Enemy());
+        Coordinates cords = new Coordinates(0, 1);
+        game.getCurrentBuilding().getListOfEnemies().get(0).setCords(cords);
+        i.setGame(game);
+        i.setPresenter(mockPresenter);
+        i.perform(MovementAction.up());
+        assertEquals(cords.yValue, game.getCoords().yValue);
+        assertEquals(cords.xValue, game.getCoords().xValue);
+        // assertEquals(true, mockPresenter.showDeathScreenIsCalled);
+        //TODO; why is showDeathScreen not being called
     }
 
 

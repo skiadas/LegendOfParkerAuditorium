@@ -23,4 +23,5 @@ public interface Presenter {
     void showError(String errorMessage);
 
 
+    void showDeathScreen(String message);
 }

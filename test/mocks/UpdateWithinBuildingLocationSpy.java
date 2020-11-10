@@ -3,7 +3,7 @@ package mocks;
 import core.Coordinates;
 
 public class UpdateWithinBuildingLocationSpy extends PresenterStub {
-
+    public boolean showDeathScreenIsCalled = false;
     public boolean showUpdatePositionWasCalled = false;
     public Coordinates providedLocation;
 
@@ -18,5 +18,9 @@ public class UpdateWithinBuildingLocationSpy extends PresenterStub {
     public void showError(String errorMessage) {
         showErrorWasCalled = true;
         this.errorMessage = errorMessage;
+    }
+
+    public void showDeathScreen(String message) {
+        showDeathScreenIsCalled = true;
     }
 }

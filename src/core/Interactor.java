@@ -63,6 +63,7 @@ public class Interactor implements ActionHandler {
         } catch (InvalidMovementException | InvalidCoordinateAccessorException | Game.ExistingBuildingError e) {
             presenter.showError(e.getMessage());
         }
+        IfPlayerOnEnemy_ShowDeathScreen();
         IfPlayerOnTheDoorCell_thenExitAndShowBuildingMenu();
     }
 
@@ -71,6 +72,16 @@ public class Interactor implements ActionHandler {
             game.setLocation(new MapLocation());
             perform(new SeeAvailableBuildingsAction());
         }
+    }
+
+    private void IfPlayerOnEnemy_ShowDeathScreen() {
+        List<Enemy> enemies = game.getCurrentBuilding().getListOfEnemies();
+        for (Enemy enemy : enemies) {
+            if (enemy.getEnemyCords() == game.getCoords()) {
+                presenter.showDeathScreen("You Are Dead");
+            }
+        }
+        perform(new AppLoadAction());
     }
 
     public void perform(AppLoadAction action) {
