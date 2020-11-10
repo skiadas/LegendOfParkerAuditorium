@@ -98,8 +98,15 @@ public class Building {
     }
 
     public void addEnemy(Enemy enemy, Coordinates cords) throws Exception {
+        // TODO: throw exception if coordinates are in a wall
+        // TODO: throw exception if coordinates are on a door
+        // TODO: throw exception if enemy is already placed on that coordinate
+
+        if (getEntranceCoordinates().equals(cords)){
+            throw new Exception ("These Coordinates are used for a door");
+        }
         if (!isInsideBuilding(cords)){
-            throw new Exception("These Coordinates are not withing the building");
+            throw new Exception("These Coordinates are not within the building");
         }
         else {
             this.enemies.add(enemy);
