@@ -131,7 +131,7 @@ public class Game {
             throw new ExistingBuildingError("You cannot select a building when you are already inside a building");
         }
         for (Building chosenBuilding: buildings) {
-            if(isSelectedBuildingInAvailableBuildingsList(name))
+            if(chosenBuilding.getBuildingName().equals(name) && hasAccessTo(chosenBuilding)) // first refactored by putting in the boolean isSelectedBuildingInAvailableBuildingsList but did not work
                 return chosenBuilding;
         }
         throw new ExistingBuildingError("Building does not exist!");

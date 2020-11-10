@@ -48,7 +48,7 @@ public class Interactor implements ActionHandler {
             presenter.showChoiceOfBuilding(buildingInfo);
             presenter.showUpdatedInsideLocation(game.getCoords());
         } catch (Game.ExistingBuildingError e) {
-            presenter.showError(e.toString());
+            presenter.showError(e.getMessage());
         }
     }
 

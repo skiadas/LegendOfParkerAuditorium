@@ -29,7 +29,7 @@ public class SelectBuildingActionTests {
         i.setPresenter(new PresenterStub());
         i.perform(action);
         Building currentBuilding = i.getGame().getCurrentBuilding();
-        assertTrue(building.equals(currentBuilding));
+        assertEquals(currentBuilding, building);
     }
 
     @Test
@@ -51,18 +51,18 @@ public class SelectBuildingActionTests {
     @Test
     public void whenSelectingBuildingOutOfMoreThanOneBuilding_ANewImageOnScreenIsShow() {
         BuildingSelectPresenterSpy mockPresenter = new BuildingSelectPresenterSpy();
-        SelectBuildingAction action = new SelectBuildingAction("Parker");
         Building building = new Building("Donner", 0);
         Building building2 = new Building("Parker", 0);
         Game game = new Game();
-        game.addBuilding(building);
-        game.addBuilding(building2);
         i.setGame(game);
         i.setPresenter(mockPresenter);
+        game.addBuilding(building);
+        game.addBuilding(building2);
+        SelectBuildingAction action = new SelectBuildingAction("Parker");
         i.perform(action);
-        BuildingView chosenBuilding = mockPresenter.chosenBuilding;
         assertTrue(mockPresenter.showChoiceOfBuildingCalled);
-        BuildingView bv = BuildingConvert.getBuildingViewInfo(building);
+        BuildingView chosenBuilding = mockPresenter.chosenBuilding;
+        BuildingView bv = BuildingConvert.getBuildingViewInfo(building2);
         assertEquals(bv, chosenBuilding);
     }
 
@@ -88,7 +88,7 @@ public class SelectBuildingActionTests {
         game.setLocation(new WithinBuildingLocation(building, building.getEntranceCoordinates()));
         i.setGame(game);
         i.perform(action);
-        String expected = "core.Game$ExistingBuildingError: You cannot select a building when you are already inside a building"; // Why??
+        String expected = "You cannot select a building when you are already inside a building";
         assertTrue(mockPresenter.showErrorMessageCalled);
         assertEquals(expected, mockPresenter.message);
     }
@@ -103,7 +103,7 @@ public class SelectBuildingActionTests {
         game.addBuilding(building);
         i.setGame(game);
         i.perform(action);
-        String expected = "core.Game$ExistingBuildingError: Building does not exist!"; /// How to fix this
+        String expected = "Building does not exist!";
         assertTrue(mockPresenter.showErrorMessageCalled);
         assertEquals(expected, mockPresenter.message);
     }
