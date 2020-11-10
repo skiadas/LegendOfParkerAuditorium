@@ -1,12 +1,12 @@
 package core;
 
 public class LocatedItem<S> {
-    private int key;
+    private Key key;
     private Coordinates coords;
 
     public LocatedItem(Coordinates coords) {
         this.coords = coords;
-        this.key = 1;
+        this.key = new Key();
     }
 
     public Coordinates getCoords() {
