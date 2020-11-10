@@ -104,9 +104,11 @@ public class Building {
 
     public void addEnemy(Enemy enemy, Coordinates cords) throws Exception {
         // TODO: throw exception if coordinates are in a wall
-        // TODO: throw exception if coordinates are on a door
-        // TODO: throw exception if enemy is already placed on that coordinate
-
+        for(Enemy enemy1 : enemies){
+            if(enemy1.getEnemyCords().equals(cords)){
+                throw new Exception ("These Coordinates are used by another enemy");
+            }
+        }
         if (getEntranceCoordinates().equals(cords)){
             throw new Exception ("These Coordinates are used for a door");
         }

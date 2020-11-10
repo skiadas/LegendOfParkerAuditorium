@@ -31,4 +31,14 @@ public class BuildingTest {
         Enemy enemy1 = new Enemy();
         building1.addEnemy(enemy1,cords);
     }
+
+    @Test (expected = Exception.class)
+    public void canNotAddEnemyBecauseEnemyIsAlreadyThere() throws Exception{
+        Building building1 = new Building("building1", 0);
+        Coordinates cords = new Coordinates(-25, 30);
+        Enemy enemy1 = new Enemy();
+        Enemy  enemy2 = new Enemy();
+        building1.addEnemy(enemy1,cords);
+        building1.addEnemy(enemy2,cords);
+    }
 }

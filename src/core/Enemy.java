@@ -6,7 +6,6 @@ package core;
 public class Enemy{
     public Coordinates cords;
 
-
     public Enemy(){
     }
 
