@@ -1,8 +1,6 @@
 package core;
 
-import core.action.MovementAction;
-import core.action.SeeAvailableBuildingsAction;
-import core.action.StartGameAction;
+import core.action.*;
 import mocks.AvailableBuildingsPresenterSpy;
 import mocks.PresenterStub;
 import mocks.StartGameActionSpy;
@@ -62,13 +60,13 @@ public class InteractorTest {
         Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
         i.setGame(game);
         i.setPresenter(new PresenterStub());
-        i.perform(MovementAction.up());
+        i.perform(ActionFactory.moveUp());
         assertEquals(1, game.getYValue());
     }
 
     @Test
     public void canMoveUpMultipleTimes() {
-        MovementAction moveUp = MovementAction.up();
+        UserAction moveUp = ActionFactory.moveUp();
         Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
         i.setGame(game);
         i.setPresenter(new PresenterStub());
@@ -83,13 +81,13 @@ public class InteractorTest {
         Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
         i.setGame(game);
         i.setPresenter(new PresenterStub());
-        i.perform(MovementAction.down());
+        i.perform(ActionFactory.moveDown());
         assertEquals(-1, i.getGame().getYValue());
     }
 
     @Test
     public void canMoveDownMultipleTimes() {
-        MovementAction moveDown = MovementAction.down();
+        UserAction moveDown = ActionFactory.moveDown();
         Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
         i.setGame(game);
         i.setPresenter(new PresenterStub());
@@ -104,13 +102,13 @@ public class InteractorTest {
         Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
         i.setGame(game);
         i.setPresenter(new PresenterStub());
-        i.perform(MovementAction.left());
+        i.perform(ActionFactory.moveLeft());
         assertEquals(-1, i.getGame().getXValue());
     }
 
     @Test
     public void canMoveLeftMultipleTimes() {
-        MovementAction moveLeft = MovementAction.left();
+        UserAction moveLeft = ActionFactory.moveLeft();
         Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
         i.setGame(game);
         i.setPresenter(new PresenterStub());
@@ -122,7 +120,7 @@ public class InteractorTest {
 
     @Test
     public void canMoveRight() {
-        MovementAction moveRight = MovementAction.right();
+        UserAction moveRight = ActionFactory.moveRight();
         Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
         i.setGame(game);
         i.setPresenter(new PresenterStub());
@@ -132,7 +130,7 @@ public class InteractorTest {
 
     @Test
     public void canMoveRightMultipleTimes() {
-        MovementAction moveLeft = MovementAction.left();
+        UserAction moveLeft = ActionFactory.moveLeft();
         Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
         i.setGame(game);
         i.setPresenter(new PresenterStub());
@@ -144,7 +142,7 @@ public class InteractorTest {
 
     @Test
     public void whenMovementActionIsPerformed_UpdatePositionWasCalled() {
-        MovementAction moveLeft = MovementAction.left();
+        UserAction moveLeft = ActionFactory.moveLeft();
         UpdateWithinBuildingLocationSpy mockPresenter = new UpdateWithinBuildingLocationSpy();
         Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
         i.setGame(game);
@@ -162,7 +160,7 @@ public class InteractorTest {
         i.setGame(new Game());
         UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
         i.setPresenter(presenterSpy);
-        i.perform(MovementAction.up());
+        i.perform(ActionFactory.moveUp());
         assertEquals(false, presenterSpy.showUpdatePositionWasCalled);
     }
 
@@ -171,7 +169,7 @@ public class InteractorTest {
         i.setGame(getGameWithOneBuildingAndLocationAtItsEntrance());
         UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
         i.setPresenter(presenterSpy);
-        i.perform(MovementAction.up());
+        i.perform(ActionFactory.moveUp());
         assertEquals(true, presenterSpy.showUpdatePositionWasCalled);
         assertEquals(new Coordinates(0, 1), presenterSpy.providedLocation);
     }
@@ -180,7 +178,7 @@ public class InteractorTest {
     public void cannotMoveWhenNoGameIsStarted() {
         UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
         i.setPresenter(presenterSpy);
-        i.perform(MovementAction.up());
+        i.perform(ActionFactory.moveUp());
         assertEquals(false, presenterSpy.showUpdatePositionWasCalled);
         assertEquals(true, presenterSpy.showErrorWasCalled);
         assertEquals("No game started.", presenterSpy.errorMessage);
@@ -188,7 +186,7 @@ public class InteractorTest {
 
     @Test
     public void cannotMoveOutsideTheBuildingX() {
-        MovementAction moveLeft = MovementAction.left();
+        UserAction moveLeft = ActionFactory.moveLeft();
         UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
         Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
         i.setGame(game);
@@ -203,7 +201,7 @@ public class InteractorTest {
 
     @Test
     public void cannotMoveOutsideTheBuildingY() {
-        MovementAction moveUp = MovementAction.up();
+        UserAction moveUp = ActionFactory.moveUp();
         UpdateWithinBuildingLocationSpy mockPresenter = new UpdateWithinBuildingLocationSpy();
         Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
         i.setGame(game);
@@ -223,7 +221,7 @@ public class InteractorTest {
         game.getCurrentBuilding().getListOfEnemies().get(0).setCords(cords);
         i.setGame(game);
         i.setPresenter(mockPresenter);
-        i.perform(MovementAction.up());
+        i.perform(ActionFactory.moveUp());
         assertEquals(cords.yValue, game.getCoords().yValue);
         assertEquals(cords.xValue, game.getCoords().xValue);
         // assertEquals(true, mockPresenter.showDeathScreenIsCalled);
@@ -233,7 +231,7 @@ public class InteractorTest {
 
     @Test
     public void cannotSeeAvailableBuildingsIfGameHasNotStarted(){
-        SeeAvailableBuildingsAction action = new SeeAvailableBuildingsAction();
+        UserAction action = ActionFactory.seeAvailableBuildings();
         AvailableBuildingsPresenterSpy mockPresenter = new AvailableBuildingsPresenterSpy();
         i.setPresenter(mockPresenter);
         i.perform(action);
@@ -248,7 +246,7 @@ public class InteractorTest {
         return game;
     }
 
-    private void moveToEdge(MovementAction move) {
+    private void moveToEdge(UserAction move) {
         i.perform(move);
         i.perform(move);
         i.perform(move);
@@ -278,8 +276,8 @@ public class InteractorTest {
         AvailableBuildingsPresenterSpy mockPresenter = new AvailableBuildingsPresenterSpy();
         i.setGame(game);
         i.setPresenter(mockPresenter);
-        i.perform(MovementAction.down());
-        i.perform(MovementAction.up());
+        i.perform(ActionFactory.moveDown());
+        i.perform(ActionFactory.moveUp());
         assertFalse(i.game.isWithinABuilding());
         assertTrue(mockPresenter.showAvailableBuildingsWasCalled);
     }

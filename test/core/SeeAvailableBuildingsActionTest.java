@@ -1,6 +1,7 @@
 package core;
 
-import core.action.SeeAvailableBuildingsAction;
+import core.action.ActionFactory;
+import core.action.UserAction;
 import mocks.AvailableBuildingsPresenterSpy;
 import org.junit.Test;
 
@@ -14,7 +15,7 @@ public class SeeAvailableBuildingsActionTest {
     @Test
     public void whenSeeAvailableBuildingsPerformed_AvailableBuildingsPresented(){
         Interactor i = new Interactor();
-        SeeAvailableBuildingsAction action = new SeeAvailableBuildingsAction();
+        UserAction action = ActionFactory.seeAvailableBuildings();
         AvailableBuildingsPresenterSpy mockPresenter = new AvailableBuildingsPresenterSpy();
         i.setPresenter(mockPresenter);
         Game game = new Game();

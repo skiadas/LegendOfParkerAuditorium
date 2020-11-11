@@ -29,7 +29,7 @@ public class Interactor implements ActionHandler {
         }
         this.game = new Game();
         try {
-            presenter.message("MessageFiles/StartMessage.txt", new SeeAvailableBuildingsAction());
+            presenter.message("MessageFiles/StartMessage.txt", ActionFactory.seeAvailableBuildings());
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -71,7 +71,7 @@ public class Interactor implements ActionHandler {
     private void IfPlayerOnTheDoorCell_thenExitAndShowBuildingMenu() {
         if(game.isOnTheEntranceCell()){
             game.setLocation(new MapLocation());
-            perform(new SeeAvailableBuildingsAction());
+            perform(ActionFactory.seeAvailableBuildings());
         }
     }
 

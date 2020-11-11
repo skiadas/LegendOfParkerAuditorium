@@ -1,5 +1,6 @@
 package core;
 
+import core.action.ActionFactory;
 import core.action.MovementAction;
 import org.junit.Test;
 
@@ -30,25 +31,25 @@ public class MovementInsideBuildingTest {
 
     @Test
     public void canCallMovementActionWithDirectionUp() {
-        MovementAction movementAction = MovementAction.up();
+        MovementAction movementAction = (MovementAction) ActionFactory.moveUp();
         assertEquals(Direction.up, movementAction.direction);
     }
 
     @Test
     public void canCallMovementActionWithDirectionDown() {
-        MovementAction movementAction = MovementAction.down();
+        MovementAction movementAction = (MovementAction) ActionFactory.moveDown();
         assertEquals(Direction.down, movementAction.direction);
     }
 
     @Test
     public void canCallMovementActionWithDirectionLeft() {
-        MovementAction movementAction = MovementAction.left();
+        MovementAction movementAction = (MovementAction) ActionFactory.moveLeft();
         assertEquals(Direction.left, movementAction.direction);
     }
 
     @Test
     public void canCallMovementActionWithDirectionRight() {
-        MovementAction movementAction = MovementAction.right();
+        MovementAction movementAction = (MovementAction) ActionFactory.moveRight();
         assertEquals(Direction.right, movementAction.direction);
     }
 }
