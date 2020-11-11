@@ -60,12 +60,12 @@ public class Interactor implements ActionHandler {
         try {
             game.updatePosition(action.direction);
             presenter.showUpdatedInsideLocation(game.getCoords());
+            IfPlayerOnEnemy_ShowDeathScreen();
+            IfPlayerOnTheDoorCell_thenExitAndShowBuildingMenu();
         } catch (InvalidMovementException | InvalidCoordinateAccessorException | Game.ExistingBuildingError e) {
             presenter.showError(e.getMessage());
-            return;
         }
-        IfPlayerOnEnemy_ShowDeathScreen();
-        IfPlayerOnTheDoorCell_thenExitAndShowBuildingMenu();
+
     }
 
     private void IfPlayerOnTheDoorCell_thenExitAndShowBuildingMenu() {
