@@ -37,7 +37,6 @@ public class Building {
                 Objects.equals(lowerRight, building.lowerRight);
     }
 
-
     String getBuildingName() {
         return name;
     }

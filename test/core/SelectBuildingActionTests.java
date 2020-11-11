@@ -28,7 +28,7 @@ public class SelectBuildingActionTests {
         i.setGame(game);
         i.setPresenter(new PresenterStub());
         i.perform(action);
-        Building currentBuilding = i.getGame().getCurrentBuilding();
+        Building currentBuilding = game.getCurrentBuilding();
         assertEquals(currentBuilding, building);
     }
 
@@ -44,8 +44,10 @@ public class SelectBuildingActionTests {
         i.perform(action);
         BuildingView chosenBuilding = mockPresenter.chosenBuilding;
         assertTrue(mockPresenter.showChoiceOfBuildingCalled);
+        assertTrue(mockPresenter.showUpdatedLocationCalled);
         BuildingView bv = BuildingConvert.getBuildingViewInfo(building);
         assertEquals(bv, chosenBuilding);
+        assertEquals(building.getEntranceCoordinates(), mockPresenter.showUpdatedLocation);
     }
 
     @Test
@@ -61,9 +63,11 @@ public class SelectBuildingActionTests {
         SelectBuildingAction action = new SelectBuildingAction("Parker");
         i.perform(action);
         assertTrue(mockPresenter.showChoiceOfBuildingCalled);
+        assertTrue(mockPresenter.showUpdatedLocationCalled);
         BuildingView chosenBuilding = mockPresenter.chosenBuilding;
         BuildingView bv = BuildingConvert.getBuildingViewInfo(building2);
         assertEquals(bv, chosenBuilding);
+        assertEquals(building2.getEntranceCoordinates(), mockPresenter.showUpdatedLocation);
     }
 
     @Test
