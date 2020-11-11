@@ -54,6 +54,7 @@ public class SelectBuildingActionTests {
     public void whenSelectingBuildingOutOfMoreThanOneBuilding_ANewImageOnScreenIsShow() {
         BuildingSelectPresenterSpy mockPresenter = new BuildingSelectPresenterSpy();
         Building building = new Building("Donner", 0);
+        building.setEntranceCoordinates(1,5);
         Building building2 = new Building("Parker", 0);
         Game game = new Game();
         i.setGame(game);

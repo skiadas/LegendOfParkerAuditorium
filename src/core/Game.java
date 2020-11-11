@@ -119,8 +119,8 @@ public class Game {
     }
 
     public boolean hasBuildingNamed(String name) {
-        for (Building chosenBuilding: buildings) {
-            if(chosenBuilding.getBuildingName().equals(name))
+        for (Building building: buildings) {
+            if(building.isNamed(name))
                 return true;
         }
         return false;
@@ -130,16 +130,17 @@ public class Game {
         if (isWithinABuilding()) {
             throw new ExistingBuildingError("You cannot select a building when you are already inside a building");
         }
-        for (Building chosenBuilding: buildings) {
-            if(chosenBuilding.getBuildingName().equals(name) && hasAccessTo(chosenBuilding)) // first refactored by putting in the boolean isSelectedBuildingInAvailableBuildingsList but did not work
-                return chosenBuilding;
+        for (Building building: produceAvailableBuildings()) {
+            if(building.isNamed(name))
+                return building;
         }
         throw new ExistingBuildingError("Building does not exist!");
     }
 
+
     public boolean isSelectedBuildingInAvailableBuildingsList(String name) {
-        for (Building chosenBuilding: buildings) {
-            if(chosenBuilding.getBuildingName().equals(name) && hasAccessTo(chosenBuilding))
+        for (Building chosenBuilding: produceAvailableBuildings()) {
+            if(chosenBuilding.isNamed(name))
                 return true;
         }
         return false;
