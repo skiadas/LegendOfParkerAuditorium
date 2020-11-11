@@ -181,7 +181,7 @@ public class InteractorTest {
         i.perform(ActionFactory.moveUp());
         assertEquals(false, presenterSpy.showUpdatePositionWasCalled);
         assertEquals(true, presenterSpy.showErrorWasCalled);
-        assertEquals("No game started.", presenterSpy.errorMessage);
+        assertEquals("Game has not started", presenterSpy.errorMessage);
     }
 
     @Test

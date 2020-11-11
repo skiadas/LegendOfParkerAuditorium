@@ -159,7 +159,7 @@ public class Game {
         building.addLocatedItem(coords);
     }
 
-    public class ExistingBuildingError extends RuntimeException {
+    public class ExistingBuildingError extends GameErrorException {
         public ExistingBuildingError(String message) {
             super(message);
         }

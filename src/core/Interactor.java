@@ -16,7 +16,11 @@ public class Interactor implements ActionHandler {
     private Building chosenBuilding = null;
 
     public void perform(UserAction action) {
-        action.accept(this);
+        try {
+            action.accept(this);
+        } catch (GameErrorException e) {
+            presenter.showError(e.getMessage());
+        }
     }
 
     public void perform(NewGameAction action) {
@@ -53,16 +57,13 @@ public class Interactor implements ActionHandler {
     }
 
     public void perform(MovementAction action) {
-        if (game == null) {
-            presenter.showError("No game started.");
-            return;
-        }
         try {
+            Game game = getGameOrFail();
             game.updatePosition(action.direction);
             presenter.showUpdatedInsideLocation(game.getCoords());
             IfPlayerOnEnemy_ShowDeathScreen();
             IfPlayerOnTheDoorCell_thenExitAndShowBuildingMenu();
-        } catch (InvalidMovementException | InvalidCoordinateAccessorException | Game.ExistingBuildingError e) {
+        } catch (InvalidMovementException | InvalidCoordinateAccessorException e) {
             presenter.showError(e.getMessage());
         }
 
@@ -104,8 +105,15 @@ public class Interactor implements ActionHandler {
     public Presenter getPresenter() {
         return presenter;
     }
-    // For test
 
+    private Game getGameOrFail() {
+        if (game == null) {
+            throw new GameErrorException("Game has not started");
+        }
+        return game;
+    }
+
+    // For test
     public Game getGame() {
         return game;
     }
