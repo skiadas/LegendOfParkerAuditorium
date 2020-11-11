@@ -69,8 +69,8 @@ public class Interactor implements ActionHandler {
 
     }
 
-    private void IfPlayerOnTheDoorCell_thenExitAndShowBuildingMenu() {
-        if(game.isOnTheEntranceCell()){
+    public void IfPlayerOnTheDoorCell_thenExitAndShowBuildingMenu() {
+        if(game.canExitBuilding()){
             game.setLocation(new MapLocation());
             perform(ActionFactory.seeAvailableBuildings());
         }

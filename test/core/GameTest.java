@@ -67,16 +67,22 @@ public class GameTest {
     }
 
     @Test
-    public void canCheckIfThePlayerisOnTheEntranceCell() {
+    public void canCheckIfThePlayerIsOnTheEntranceCell() {
         Building b = new Building("b1",0);
         game.setLocation(WithinBuildingLocation.atEntranceOf(b));
-        assertTrue(game.isOnTheEntranceCell());
+        assertTrue(game.canExitBuilding());
     }
 
     @Test
     public void canCheckIfThePlayerIsNotOnTheEntranceCell() {
         Building b = new Building("b1",0);
         game.setLocation(new WithinBuildingLocation(b, new Coordinates(1,1)));
-        assertFalse(game.isOnTheEntranceCell());
+        assertFalse(game.canExitBuilding());
+    }
+
+    @Test
+    public void canCheckIfThePlayerIsOnTheMap() {
+        game.setLocation(new MapLocation());
+        assertFalse(game.canExitBuilding());
     }
 }

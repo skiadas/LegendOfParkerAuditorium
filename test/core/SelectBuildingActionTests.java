@@ -7,8 +7,7 @@ import mocks.PresenterStub;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class SelectBuildingActionTests {
 
@@ -66,8 +65,8 @@ public class SelectBuildingActionTests {
         assertTrue(mockPresenter.showChoiceOfBuildingCalled);
         assertTrue(mockPresenter.showUpdatedLocationCalled);
         BuildingView chosenBuilding = mockPresenter.chosenBuilding;
-        BuildingView bv = BuildingConvert.getBuildingViewInfo(building2);
-        assertEquals(bv, chosenBuilding);
+        assertNotEquals(BuildingConvert.getBuildingViewInfo(building), chosenBuilding);
+        assertEquals(BuildingConvert.getBuildingViewInfo(building2), chosenBuilding);
         assertEquals(building2.getEntranceCoordinates(), mockPresenter.showUpdatedLocation);
     }
 

@@ -272,13 +272,36 @@ public class InteractorTest {
     @Test
     public void canLeaveTheBuildingBySteppingOnTheEntrance() {
         Game game = new Game();
-        game.setLocation(WithinBuildingLocation.atEntranceOf(new Building("B1",0)));
+        WithinBuildingLocation wbl = WithinBuildingLocation.atEntranceOf(new Building("B1",0));
+        game.setLocation(wbl);
         AvailableBuildingsPresenterSpy mockPresenter = new AvailableBuildingsPresenterSpy();
         i.setGame(game);
         i.setPresenter(mockPresenter);
-        i.perform(ActionFactory.moveDown());
-        i.perform(ActionFactory.moveUp());
-        assertFalse(i.game.isWithinABuilding());
+        Coordinates coords = game.getCoords();
+        Coordinates upCoords = coords.getRequestedMove(Direction.up);
+        game.setCoordinates(upCoords);
+        Coordinates downCoords = upCoords.getRequestedMove(Direction.down);
+        game.setCoordinates(downCoords);
+        i.IfPlayerOnTheDoorCell_thenExitAndShowBuildingMenu();
+        assertFalse(game.isWithinABuilding());
         assertTrue(mockPresenter.showAvailableBuildingsWasCalled);
     }
+
+    @Test
+    public void canLeaveTheBuildingWithoutMovement() {
+        Game game = new Game();
+        Building b = new Building("B1",0);
+        WithinBuildingLocation wbl = WithinBuildingLocation.atEntranceOf(b);
+        game.setLocation(wbl);
+        AvailableBuildingsPresenterSpy mockPresenter = new AvailableBuildingsPresenterSpy();
+        i.setGame(game);
+        i.setPresenter(mockPresenter);
+        i.IfPlayerOnTheDoorCell_thenExitAndShowBuildingMenu();
+        assertFalse(game.isWithinABuilding());
+        assertTrue(mockPresenter.showAvailableBuildingsWasCalled);
+    }
+
+
+
+
 }

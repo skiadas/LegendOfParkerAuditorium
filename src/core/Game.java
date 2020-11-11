@@ -146,7 +146,7 @@ public class Game {
         return false;
     }
 
-    public boolean isOnTheEntranceCell(){
+    public boolean canExitBuilding(){
         return isWithinABuilding() && getCoords().equals(getCurrentBuilding().getEntranceCoordinates());
     }
 
