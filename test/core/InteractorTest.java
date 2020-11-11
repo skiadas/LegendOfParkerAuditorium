@@ -156,7 +156,7 @@ public class InteractorTest {
         assertEquals(expectedInsideLocation, mockPresenter.providedLocation);
     }
 
-    @Ignore
+
     @Test
     public void cannotMoveWhenNotInsideBuilding() {
         i.setGame(new Game());
