@@ -1,5 +1,7 @@
 package core;
 
+import java.util.Objects;
+
 public class WithinBuildingLocation implements Location {
     private Building currentBuilding;
     private Coordinates coordinates;
@@ -30,4 +32,20 @@ public class WithinBuildingLocation implements Location {
     public boolean isBuildingLocation() {
         return true;
     }
+
+
+    public Location getRequestedMove(Direction direction) {
+        this.coordinates = coordinates.getRequestedMove(direction);
+        return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        WithinBuildingLocation that = (WithinBuildingLocation) o;
+        return Objects.equals(currentBuilding, that.currentBuilding) &&
+                Objects.equals(coordinates, that.coordinates);
+    }
+
 }
