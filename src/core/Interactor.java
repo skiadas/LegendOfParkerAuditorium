@@ -89,7 +89,7 @@ public class Interactor implements ActionHandler {
     public void perform(AppLoadAction action) {
         // TODO: Should really not hard-code the actions like that
         List<MenuOption> menuOptions = List.of(
-                new MenuOption("New Game", new NewGameAction()),
+                new MenuOption("New Game", new StartGameAction()),
                 new MenuOption("Save Game", new SaveGameAction()));
         presenter.showMainMenu(menuOptions);
     }
