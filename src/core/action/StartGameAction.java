@@ -4,6 +4,9 @@ import core.boundary.ActionVisitor;
 
 public class StartGameAction implements UserAction{
 
+    public StartGameAction() {
+    }
+
     public void accept(ActionVisitor visitor) {
         visitor.perform(this);
     }

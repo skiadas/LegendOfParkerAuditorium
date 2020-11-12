@@ -26,7 +26,7 @@ public class InteractorTest {
     public void canCreateGame() {
         PresenterStub mocks = new PresenterStub();
         i.setPresenter(mocks);
-        StartGameAction start = new StartGameAction();
+        UserAction start = ActionFactory.startGameAction();
         i.perform(start);
         assertEquals(true , i.getGame().gameStarted);
     }
@@ -35,7 +35,7 @@ public class InteractorTest {
     public void cannotStartGameInProgress() {
         StartGameActionSpy presenterSpy = new StartGameActionSpy();
         i.setPresenter(presenterSpy);
-        StartGameAction start = new StartGameAction();
+        UserAction start = ActionFactory.startGameAction();
         i.perform(start);
         assertFalse(presenterSpy.showErrorIsCalled);
     }
@@ -49,7 +49,7 @@ public class InteractorTest {
     @Test
     public void transitionScreenIsCalled() {
         StartGameActionSpy presenterSpy = new StartGameActionSpy();
-        StartGameAction start = new StartGameAction();
+        UserAction start = ActionFactory.startGameAction();
         i.setPresenter(presenterSpy);
         i.perform(start);
         assertTrue(presenterSpy.transitionScreenIsCalled);
@@ -246,29 +246,6 @@ public class InteractorTest {
         return game;
     }
 
-    private void moveToEdge(UserAction move) {
-        i.perform(move);
-        i.perform(move);
-        i.perform(move);
-        i.perform(move);
-        i.perform(move);
-        i.perform(move);
-        i.perform(move);
-        i.perform(move);
-        i.perform(move);
-        i.perform(move);
-        i.perform(move);
-        i.perform(move);
-        i.perform(move);
-        i.perform(move);
-        i.perform(move);
-        i.perform(move);
-        i.perform(move);
-        i.perform(move);
-        i.perform(move);
-        i.perform(move);
-    }
-
     @Test
     public void canLeaveTheBuildingBySteppingOnTheEntrance() {
         Game game = new Game();
@@ -299,6 +276,12 @@ public class InteractorTest {
         i.IfPlayerOnTheDoorCell_thenExitAndShowBuildingMenu();
         assertFalse(game.isWithinABuilding());
         assertTrue(mockPresenter.showAvailableBuildingsWasCalled);
+    }
+
+    private void moveToEdge(UserAction move) {
+        for (int n = 0; n<=20; n++){
+            i.perform(move);
+        }
     }
 
 

@@ -1,5 +1,6 @@
 package core;
 
+import core.action.ActionFactory;
 import core.action.SelectBuildingAction;
 import org.junit.Test;
 
@@ -12,7 +13,7 @@ public class BuildingSelectionTests {
 
     @Test
     public void canCreateSelectBuildingAction() {
-        SelectBuildingAction playerAction = new SelectBuildingAction("Donner");
+        SelectBuildingAction playerAction = (SelectBuildingAction) ActionFactory.selectBuildingAction("Donner");
         assertEquals("Donner", playerAction.buildingName);
     }
 
@@ -39,7 +40,7 @@ public class BuildingSelectionTests {
 
     @Test
     public void checkingIfSelectedBuildingIsInList() {
-        SelectBuildingAction selectBuildingAction = new SelectBuildingAction("Donner");
+        SelectBuildingAction selectBuildingAction = (SelectBuildingAction) ActionFactory.selectBuildingAction("Donner");
         game.addBuilding(new Building("Donner"));
         assertTrue(game.hasBuildingNamed(selectBuildingAction.buildingName));
     }

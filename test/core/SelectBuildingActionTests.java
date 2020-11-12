@@ -1,7 +1,7 @@
 package core;
 
-import core.action.SelectBuildingAction;
-import mocks.AvailableBuildingsPresenterSpy;
+import core.action.ActionFactory;
+import core.action.UserAction;
 import mocks.BuildingSelectPresenterSpy;
 import mocks.PresenterStub;
 import org.junit.Before;
@@ -20,7 +20,7 @@ public class SelectBuildingActionTests {
 
     @Test
     public void whenSelectingBuilding_CurrentBuildingGetUpdated() {
-        SelectBuildingAction action = new SelectBuildingAction("Donner");
+        UserAction action = ActionFactory.selectBuildingAction("Donner");
         Building building = new Building("Donner", 0);
         Game game = new Game();
         game.addBuilding(building);
@@ -34,7 +34,7 @@ public class SelectBuildingActionTests {
     @Test
     public void whenSelectingBuilding_ANewImageOnScreenIsShow() {
         BuildingSelectPresenterSpy mockPresenter = new BuildingSelectPresenterSpy();
-        SelectBuildingAction action = new SelectBuildingAction("Donner");
+        UserAction action = ActionFactory.selectBuildingAction("Donner");
         Building building = new Building("Donner", 0);
         Game game = new Game();
         game.addBuilding(building);
@@ -60,7 +60,7 @@ public class SelectBuildingActionTests {
         i.setPresenter(mockPresenter);
         game.addBuilding(building);
         game.addBuilding(building2);
-        SelectBuildingAction action = new SelectBuildingAction("Parker");
+        UserAction action = ActionFactory.selectBuildingAction("Parker");
         i.perform(action);
         assertTrue(mockPresenter.showChoiceOfBuildingCalled);
         assertTrue(mockPresenter.showUpdatedLocationCalled);
@@ -74,7 +74,7 @@ public class SelectBuildingActionTests {
     public void whenSelectingBuilding_CannotSelectBuildingWhenGameHasNotStarted() {
         BuildingSelectPresenterSpy mockPresenter = new BuildingSelectPresenterSpy();
         i.setPresenter(mockPresenter);
-        SelectBuildingAction action = new SelectBuildingAction("Donner");
+        UserAction action = ActionFactory.selectBuildingAction("Donner");
         i.perform(action);
         String expected = "Game Has Not Started";
         assertTrue(mockPresenter.showErrorMessageCalled);
@@ -85,7 +85,7 @@ public class SelectBuildingActionTests {
     public void whenSelectingBuilding_CannotSelectBuildingWhileInsideABuilding() {
         BuildingSelectPresenterSpy mockPresenter = new BuildingSelectPresenterSpy();
         i.setPresenter(mockPresenter);
-        SelectBuildingAction action = new SelectBuildingAction("Donner");
+        UserAction action = ActionFactory.selectBuildingAction("Donner");
         Building building = new Building("Donner", 0);
         Game game = new Game();
         game.addBuilding(building);
@@ -101,7 +101,7 @@ public class SelectBuildingActionTests {
     public void whenSelectingANonExistingBuilding_PresenterErrorMethodShouldHaveOccur() {
         BuildingSelectPresenterSpy mockPresenter = new BuildingSelectPresenterSpy();
         i.setPresenter(mockPresenter);
-        SelectBuildingAction action = new SelectBuildingAction("Wiley");
+        UserAction action = ActionFactory.selectBuildingAction("Wiley");
         Building building = new Building("Donner", 0);
         Game game = new Game();
         game.addBuilding(building);

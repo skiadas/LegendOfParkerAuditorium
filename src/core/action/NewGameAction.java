@@ -3,6 +3,9 @@ package core.action;
 import core.boundary.ActionVisitor;
 
 public class NewGameAction implements UserAction {
+    public NewGameAction() {
+    }
+
     public void accept(ActionVisitor visitor) {
         visitor.perform(this);
     }

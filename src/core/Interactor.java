@@ -83,14 +83,14 @@ public class Interactor implements ActionHandler {
                 presenter.showDeathScreen("You Are Dead");
             }
         }
-        perform(new AppLoadAction());
+        perform(ActionFactory.appLoadAction());
     }
 
     public void perform(AppLoadAction action) {
         // TODO: Should really not hard-code the actions like that
         List<MenuOption> menuOptions = List.of(
-                new MenuOption("New Game", new StartGameAction()),
-                new MenuOption("Save Game", new SaveGameAction()));
+                new MenuOption("New Game", ActionFactory.newGameAction()),
+                new MenuOption("Save Game", ActionFactory.saveGameAction()));
         presenter.showMainMenu(menuOptions);
     }
 
@@ -137,13 +137,13 @@ public class Interactor implements ActionHandler {
     }
 
     public UserAction getStartAction() {
-        return new AppLoadAction();
+        return ActionFactory.appLoadAction();
     }
 
     public List<MenuOption> convertBuildingsToMenuOptions(List<Building> buildings) {
         List<MenuOption> menuOptions = new ArrayList<>();
         for (Building building : buildings) {
-            MenuOption m = new MenuOption(building.getBuildingName(), new SelectBuildingAction(building.getBuildingName()));
+            MenuOption m = new MenuOption(building.getBuildingName(), ActionFactory.selectBuildingAction(building.getBuildingName()));
             menuOptions.add(m);
         }
         return menuOptions;

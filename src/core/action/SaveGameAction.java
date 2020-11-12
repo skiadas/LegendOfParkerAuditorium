@@ -4,6 +4,9 @@ import core.boundary.ActionVisitor;
 
 public class SaveGameAction implements UserAction {
 
+    public SaveGameAction() {
+    }
+
     public String toString() {
         return "SaveGameAction";
     }
