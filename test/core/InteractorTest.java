@@ -265,6 +265,26 @@ public class InteractorTest {
     }
 
     @Test
+    public void canLeaveTheBuildingWithDifferentEntranceCoordinates() {
+        Game game = new Game();
+        Building b = new Building("B1",0);
+        b.setEntranceCoordinates(1,1);
+        WithinBuildingLocation wbl = new WithinBuildingLocation(b, new Coordinates(0,0));
+        game.setLocation(wbl);
+        AvailableBuildingsPresenterSpy mockPresenter = new AvailableBuildingsPresenterSpy();
+        i.setGame(game);
+        i.setPresenter(mockPresenter);
+        Coordinates coords = game.getCoords();
+        coords = coords.getRequestedMove(Direction.up);
+        game.setCoordinates(coords);
+        coords = coords.getRequestedMove(Direction.right);
+        game.setCoordinates(coords);
+        i.IfPlayerOnTheDoorCell_thenExitAndShowBuildingMenu();
+        assertFalse(game.isWithinABuilding());
+        assertTrue(mockPresenter.showAvailableBuildingsWasCalled);
+    }
+
+    @Test
     public void canLeaveTheBuildingWithoutMovement() {
         Game game = new Game();
         Building b = new Building("B1",0);

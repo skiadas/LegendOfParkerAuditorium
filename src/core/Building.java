@@ -132,4 +132,8 @@ public class Building {
     public boolean isNamed(String name) {
         return getBuildingName().equals(name);
     }
+
+    public void setBuildingEntrance(Coordinates buildingEntrance) {
+        this.buildingEntrance = buildingEntrance;
+    }
 }
