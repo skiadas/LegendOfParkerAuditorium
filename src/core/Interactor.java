@@ -4,7 +4,6 @@ import core.action.*;
 import core.boundary.ActionHandler;
 import core.boundary.Presenter;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +14,7 @@ public class Interactor implements ActionHandler {
     public void perform(UserAction action) {
         try {
             action.accept(this);
-        } catch (GameErrorException | IOException e) {
+        } catch (GameErrorException e) {
             presenter.showError(e.getMessage());
         }
     }
@@ -24,12 +23,12 @@ public class Interactor implements ActionHandler {
 
     }
 
-    public void perform(StartGameAction action) throws IOException {
+    public void perform(StartGameAction action) {
         if (game != null) {
-            presenter.showError("Game Already Started");
+            presenter.showError(MessageFactory.getInstance().gameAlreadyStarted());
         } else {
             this.game = new Game();
-            presenter.message("MessageFiles/StartMessage.txt", ActionFactory.seeAvailableBuildings());
+            presenter.showTransition(AssetReader.fileToString("MessageFiles/StartMessage.txt"), ActionFactory.seeAvailableBuildings());
         }
     }
 
@@ -62,7 +61,7 @@ public class Interactor implements ActionHandler {
         List<Enemy> enemies = game.getCurrentBuilding().getListOfEnemies();
         for (Enemy enemy : enemies) {
             if (enemy.getEnemyCords().equals(game.getCoords())) {
-                presenter.showDeathScreen("You Are Dead");
+                presenter.showDeathScreen(MessageFactory.getInstance().characterIsDead());
             }
         }
         perform(ActionFactory.appLoadAction());
@@ -71,8 +70,8 @@ public class Interactor implements ActionHandler {
     public void perform(AppLoadAction action) {
         // TODO: Should really not hard-code the actions like that
         List<MenuOption> menuOptions = List.of(
-                new MenuOption("New Game", ActionFactory.startGameAction()),
-                new MenuOption("Save Game", ActionFactory.saveGameAction()));
+                new MenuOption(MessageFactory.getInstance().newGameMenuOption(), ActionFactory.startGameAction()),
+                new MenuOption(MessageFactory.getInstance().saveGameMenuOption(), ActionFactory.saveGameAction()));
         presenter.showMainMenu(menuOptions);
     }
 
@@ -86,7 +85,7 @@ public class Interactor implements ActionHandler {
 
     private Game getGameOrFail() {
         if (game == null) {
-            throw new GameErrorException("Game has not started");
+            throw new GameErrorException(MessageFactory.getInstance().gameNotStarted());
         }
         return game;
     }
@@ -102,7 +101,7 @@ public class Interactor implements ActionHandler {
 
     public void perform(SeeAvailableBuildingsAction action) {
         if (game == null) {
-            presenter.showError("Sorry game has yet to start!");
+            presenter.showError(MessageFactory.getInstance().gameNotStarted());
         } else {
             List<Building> availableBuildings = game.produceAvailableBuildings();
             List<MenuOption> menuOptions = convertBuildingsToMenuOptions(availableBuildings);

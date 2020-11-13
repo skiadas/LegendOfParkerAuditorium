@@ -5,7 +5,6 @@ import core.Coordinates;
 import core.MenuOption;
 import core.action.UserAction;
 
-import java.io.IOException;
 import java.util.List;
 
 public interface Presenter {
@@ -15,7 +14,7 @@ public interface Presenter {
 
     void showUpdatedInsideLocation(Coordinates insideLocation);
 
-    void message(String fileName, UserAction action) throws IOException;
+    void showTransition(String message, UserAction action);
 
     void showChoiceOfBuilding(BuildingView buildingView);
 

@@ -9,7 +9,7 @@ public class StartGameActionSpy extends PresenterStub{
     public void showError(String message) {
         showErrorIsCalled = true;
     }
-    public void message(String message, UserAction action) {
+    public void showTransition(String message, UserAction action) {
         transitionScreenIsCalled = true;
 
     }

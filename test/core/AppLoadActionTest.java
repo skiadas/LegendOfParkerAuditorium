@@ -12,10 +12,9 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class AppLoadActionTest {
+public class AppLoadActionTest extends BaseAppTest {
     @Test
     public void whenTheAppLoadActionIsPerformed_MainMenuIsShown() {
-        Interactor interactor = new Interactor();
         UserAction action = ActionFactory.appLoadAction();
         AppLoadPresenterSpy mockPresenter = new mocks.AppLoadPresenterSpy();
         interactor.setPresenter(mockPresenter);

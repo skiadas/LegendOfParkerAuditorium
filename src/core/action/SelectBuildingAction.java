@@ -30,8 +30,6 @@ public class SelectBuildingAction implements UserAction {
 
     @Override
     public String toString() {
-        return "SelectBuildingAction{" +
-                "buildingName='" + buildingName + '\'' +
-                '}';
+        return String.format("SelectBuildingAction{%s}", buildingName);
     }
 }

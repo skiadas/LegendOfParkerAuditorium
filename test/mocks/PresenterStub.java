@@ -24,7 +24,7 @@ public class PresenterStub implements Presenter {
 
     }
 
-    public void message(String fileName, UserAction action) {
+    public void showTransition(String message, UserAction action) {
 
     }
 

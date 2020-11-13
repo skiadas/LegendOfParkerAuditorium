@@ -41,7 +41,7 @@ public class Game {
         if (location.isBuildingLocation()) {
             return ((WithinBuildingLocation) location).getCurrentBuilding();
         } else {
-            throw new ExistingBuildingError("Should not access the current building for non-building");
+            throw new GameErrorException(MessageFactory.getInstance().mapLocationHasNoCurrentBuilding());
         }
     }
 
@@ -128,15 +128,14 @@ public class Game {
 
     public Building getBuildingNamed(String name) {
         if (isWithinABuilding()) {
-            throw new ExistingBuildingError("You cannot select a building when you are already inside a building");
+            throw new GameErrorException(MessageFactory.getInstance().mustExistBuilding());
         }
         for (Building building: produceAvailableBuildings()) {
             if(building.isNamed(name))
                 return building;
         }
-        throw new ExistingBuildingError("Building does not exist!");
+        throw new NonExistingBuildingError();
     }
-
 
     public boolean isSelectedBuildingInAvailableBuildingsList(String name) {
         for (Building chosenBuilding: produceAvailableBuildings()) {

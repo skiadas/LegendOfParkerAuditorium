@@ -1,6 +1,5 @@
 package ui;
 
-import core.AssetReader;
 import core.BuildingView;
 import core.Coordinates;
 import core.MenuOption;
@@ -55,8 +54,7 @@ public class LoPAMainApp implements Presenter {
 
     }
 
-    public void message(String fileName, UserAction action) {
-        String message = AssetReader.fileToString(fileName);
+    public void showTransition(String message, UserAction action) {
         displayTransitionScreen(message, trigger(action));
     }
 
