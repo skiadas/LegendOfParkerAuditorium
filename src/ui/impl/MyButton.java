@@ -5,8 +5,6 @@ import ui.framework.Command;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 class MyButton extends MyElement implements Button {
     private Command command;
@@ -23,11 +21,7 @@ class MyButton extends MyElement implements Button {
     }
 
     private void setListener(JButton button) {
-        button.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                command.execute();
-            }
-        });
+        button.addActionListener(e -> command.execute());
     }
 
     private JButton prepareJButton(String label) {

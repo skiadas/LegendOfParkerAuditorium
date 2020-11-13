@@ -52,7 +52,7 @@ class MyMenu extends MyElement implements Menu {
         buttonPanel.add(((MyElement) e).getJComponent());
     }
 
-    public void remove(Element e) {
-        buttonPanel.remove(((MyElement) e).getJComponent());
+    public void remove(Element elem) {
+        buttonPanel.remove(((MyElement) elem).getJComponent());
     }
 }

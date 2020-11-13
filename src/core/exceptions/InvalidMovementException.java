@@ -1,6 +1,8 @@
 package core.exceptions;
 
-public class InvalidMovementException extends RuntimeException {
+import core.GameErrorException;
+
+public class InvalidMovementException extends GameErrorException {
     public InvalidMovementException() {
         super("Unable to move to location.");
     }

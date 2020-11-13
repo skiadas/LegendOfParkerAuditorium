@@ -3,8 +3,6 @@ package core;
 import core.action.*;
 import core.boundary.ActionHandler;
 import core.boundary.Presenter;
-import core.exceptions.InvalidCoordinateAccessorException;
-import core.exceptions.InvalidMovementException;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,8 +27,7 @@ public class Interactor implements ActionHandler {
     public void perform(StartGameAction action) throws IOException {
         if (game != null) {
             presenter.showError("Game Already Started");
-        }
-        else {
+        } else {
             this.game = new Game();
             presenter.message("MessageFiles/StartMessage.txt", ActionFactory.seeAvailableBuildings());
         }
@@ -38,36 +35,24 @@ public class Interactor implements ActionHandler {
 
     public void perform(SelectBuildingAction action) {
         String buildingName = action.buildingName;
-        if (game == null){
-            presenter.showError("Game Has Not Started");
-            return;
-        }
-        try {
-            Building building = game.getBuildingNamed(buildingName);
-            BuildingView buildingInfo = BuildingConvert.getBuildingViewInfo(building);
-            game.enterBuilding(building);
-            presenter.showChoiceOfBuilding(buildingInfo);
-            presenter.showUpdatedInsideLocation(game.getCoords());
-        } catch (Game.ExistingBuildingError e) {
-            presenter.showError(e.getMessage());
-        }
+        Game game = getGameOrFail();
+        Building building = game.getBuildingNamed(buildingName);
+        BuildingView buildingInfo = BuildingConvert.getBuildingViewInfo(building);
+        game.enterBuilding(building);
+        presenter.showChoiceOfBuilding(buildingInfo);
+        presenter.showUpdatedInsideLocation(game.getCoords());
     }
 
     public void perform(MovementAction action) {
-        try {
-            Game game = getGameOrFail();
-            game.updatePosition(action.direction);
-            presenter.showUpdatedInsideLocation(game.getCoords());
-            showDeathScreenIfPlayerOnEnemySquare();
-            exitBuildingIfPLayerOnExitCell();
-        } catch (InvalidMovementException | InvalidCoordinateAccessorException e) {
-            presenter.showError(e.getMessage());
-        }
-
+        Game game = getGameOrFail();
+        game.updatePosition(action.direction);
+        presenter.showUpdatedInsideLocation(game.getCoords());
+        showDeathScreenIfPlayerOnEnemySquare();
+        exitBuildingIfPLayerOnExitCell();
     }
 
     public void exitBuildingIfPLayerOnExitCell() {
-        if(game.canExitBuilding()){
+        if (game.canExitBuilding()) {
             game.setLocation(new MapLocation());
             perform(ActionFactory.seeAvailableBuildings());
         }
@@ -77,7 +62,7 @@ public class Interactor implements ActionHandler {
         List<Enemy> enemies = game.getCurrentBuilding().getListOfEnemies();
         for (Enemy enemy : enemies) {
             if (enemy.getEnemyCords().equals(game.getCoords())) {
-                    presenter.showDeathScreen("You Are Dead");
+                presenter.showDeathScreen("You Are Dead");
             }
         }
         perform(ActionFactory.appLoadAction());
@@ -86,7 +71,7 @@ public class Interactor implements ActionHandler {
     public void perform(AppLoadAction action) {
         // TODO: Should really not hard-code the actions like that
         List<MenuOption> menuOptions = List.of(
-                new MenuOption("New Game", ActionFactory.newGameAction()),
+                new MenuOption("New Game", ActionFactory.startGameAction()),
                 new MenuOption("Save Game", ActionFactory.saveGameAction()));
         presenter.showMainMenu(menuOptions);
     }

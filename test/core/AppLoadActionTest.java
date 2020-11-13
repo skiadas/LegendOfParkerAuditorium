@@ -23,7 +23,7 @@ public class AppLoadActionTest {
         assertTrue(mockPresenter.showMainMenuWasCalled);
         assertNotNull(mockPresenter.providedOptions);
         List<MenuOption> expectedOptions = List.of(
-                new MenuOption("New Game", ActionFactory.newGameAction()),
+                new MenuOption("New Game", ActionFactory.startGameAction()),
                 new MenuOption("Save Game", ActionFactory.saveGameAction()));
         assertEquals(expectedOptions, mockPresenter.providedOptions);
     }

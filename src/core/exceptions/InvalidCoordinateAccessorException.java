@@ -1,6 +1,8 @@
 package core.exceptions;
 
-public class InvalidCoordinateAccessorException extends RuntimeException {
+import core.GameErrorException;
+
+public class InvalidCoordinateAccessorException extends GameErrorException {
     public InvalidCoordinateAccessorException() {
         super("Should not access coords for non-building");
     }

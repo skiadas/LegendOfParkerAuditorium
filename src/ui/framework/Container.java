@@ -3,5 +3,5 @@ package ui.framework;
 public interface Container {
     void add(Element elem);
 
-    void remove(Element element);
+    void remove(Element elem);
 }

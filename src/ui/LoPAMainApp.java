@@ -83,34 +83,19 @@ public class LoPAMainApp implements Presenter {
     }
 
     public void open() {
-//        super.open();
-        UserAction startAction = actionRouter.getStartAction();
-        actionRouter.perform(startAction);
+        actionRouter.performStartAction();
     }
 
     private Command close(Element element) {
-        return new Command() {
-            public void execute() {
-                view.remove(element);
-            }
-        };
+        return () -> view.remove(element);
     }
 
     private Command trigger(UserAction action) {
-        return new Command() {
-            public void execute() {
-                actionRouter.perform(action);
-            }
-        };
+        return () -> actionRouter.perform(action);
     }
 
     private Command chained(Command cmd1, Command cmd2) {
-        return new Command() {
-            public void execute() {
-                cmd1.execute();
-                cmd2.execute();
-            }
-        };
+        return () -> { cmd1.execute(); cmd2.execute(); };
     }
 
 }

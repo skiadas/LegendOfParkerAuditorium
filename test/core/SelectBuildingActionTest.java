@@ -76,7 +76,7 @@ public class SelectBuildingActionTest {
         i.setPresenter(mockPresenter);
         UserAction action = ActionFactory.selectBuildingAction("Donner");
         i.perform(action);
-        String expected = "Game Has Not Started";
+        String expected = "Game has not started";
         assertTrue(mockPresenter.showErrorMessageCalled);
         assertEquals(expected, mockPresenter.message);
     }
