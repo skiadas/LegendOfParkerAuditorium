@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class BuildingSelectionTests {
+public class BuildingSelectionTest {
 
     private Game game = new Game();
 
