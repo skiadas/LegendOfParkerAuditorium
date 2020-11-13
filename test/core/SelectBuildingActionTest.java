@@ -106,7 +106,7 @@ public class SelectBuildingActionTest {
         i.setPresenter(mockPresenter);
         i.perform(action);
         assertTrue(mockPresenter.showErrorMessageCalled);
-        assertEquals(StandardMessageFactory.getInstance().buildingDoesNotExist(), mockPresenter.message);
+        assertEquals(StandardMessageFactory.getInstance().notInAvailableBuildingsList(), mockPresenter.message);
     }
 
     @Test

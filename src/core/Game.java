@@ -131,11 +131,13 @@ public class Game {
         if (isWithinABuilding()) {
             throw new GameErrorException(MessageFactory.getInstance().mustExistBuilding());
         }
+        if (!isSelectedBuildingInBuildingsList(name))
+            throw new GameErrorException(MessageFactory.getInstance().buildingDoesNotExist());
         for (Building building: produceAvailableBuildings()) {
             if(building.isNamed(name))
                 return building;
         }
-        throw new GameErrorException(MessageFactory.getInstance().buildingDoesNotExist());
+        throw new GameErrorException(MessageFactory.getInstance().notInAvailableBuildingsList());
     }
 
     public boolean isSelectedBuildingInAvailableBuildingsList(String name) {
