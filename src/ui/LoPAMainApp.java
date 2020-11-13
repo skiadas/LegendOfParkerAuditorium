@@ -56,7 +56,7 @@ public class LoPAMainApp implements Presenter {
 
     }
 
-    public void message(String fileName, UserAction action) throws IOException {
+    public void message(String fileName, UserAction action) {
         String message = AssetReader.fileToString(fileName);
         displayTransitionScreen(message, trigger(action));
     }

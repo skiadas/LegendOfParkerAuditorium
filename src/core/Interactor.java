@@ -18,7 +18,7 @@ public class Interactor implements ActionHandler {
     public void perform(UserAction action) {
         try {
             action.accept(this);
-        } catch (GameErrorException e) {
+        } catch (GameErrorException | IOException e) {
             presenter.showError(e.getMessage());
         }
     }
@@ -27,17 +27,13 @@ public class Interactor implements ActionHandler {
 
     }
 
-    public void perform(StartGameAction action) {
+    public void perform(StartGameAction action) throws IOException {
         if (game != null) {
             presenter.showError("Game Already Started");
         }
         else {
             this.game = new Game();
-            try {
-                presenter.message("MessageFiles/StartMessage.txt", ActionFactory.seeAvailableBuildings());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            presenter.message("MessageFiles/StartMessage.txt", ActionFactory.seeAvailableBuildings());
         }
     }
 
