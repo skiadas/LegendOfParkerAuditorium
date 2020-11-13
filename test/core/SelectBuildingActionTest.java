@@ -98,6 +98,21 @@ public class SelectBuildingActionTest {
     }
 
     @Test
+    public void whenSelectingBuilding_CannotPickABuildingNotWithinAvailableBuildingsList() {
+        BuildingSelectPresenterSpy mockPresenter = new BuildingSelectPresenterSpy();
+        UserAction action = ActionFactory.selectBuildingAction("Donner");
+        Building building = new Building("Donner", 1);
+        Game game = new Game();
+        game.addBuilding(building);
+        i.setGame(game);
+        i.setPresenter(mockPresenter);
+        i.perform(action);
+        String expected = "Building does not exist!";
+        assertTrue(mockPresenter.showErrorMessageCalled);
+        assertEquals(expected, mockPresenter.message);
+    }
+
+    @Test
     public void whenSelectingANonExistingBuilding_PresenterErrorMethodShouldHaveOccur() {
         BuildingSelectPresenterSpy mockPresenter = new BuildingSelectPresenterSpy();
         i.setPresenter(mockPresenter);

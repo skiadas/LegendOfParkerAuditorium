@@ -130,7 +130,7 @@ public class Building {
     public List<Enemy> getListOfEnemies() { return enemies;}
 
     public boolean isNamed(String name) {
-        return getBuildingName().equals(name);
+        return this.name.equals(name);
     }
 
     public void setBuildingEntrance(Coordinates buildingEntrance) {
