@@ -40,4 +40,8 @@ public class StandardMessageFactory extends MessageFactory {
 
     public String notInAvailableBuildingsList() { return "You do not have the keys to enter this building"; }
 
+    public String gameWon() {
+        return "You won the game";
+    }
+
 }

@@ -21,6 +21,11 @@ public class MinidrawTest {
 
         }
 
+        @Override
+        public void perform(GameWonAction action) {
+
+        }
+
         public void perform(UserAction action) {
 
         }
