@@ -13,7 +13,6 @@ import java.util.List;
 public class Interactor implements ActionHandler {
     public Game game = null;
     private Presenter presenter;
-    private Building chosenBuilding = null;
 
     public void perform(UserAction action) {
         try {
@@ -100,10 +99,6 @@ public class Interactor implements ActionHandler {
         this.presenter = presenter;
     }
 
-    public Presenter getPresenter() {
-        return presenter;
-    }
-
     private Game getGameOrFail() {
         if (game == null) {
             throw new GameErrorException("Game has not started");
@@ -118,10 +113,6 @@ public class Interactor implements ActionHandler {
 
     public void setGame(Game game) {
         this.game = game;
-    }
-
-    public List<Building> getBuildings() {
-        return game.getBuildings();
     }
 
     public void perform(SeeAvailableBuildingsAction action) {
