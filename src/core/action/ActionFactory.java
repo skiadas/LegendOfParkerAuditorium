@@ -6,6 +6,7 @@ public class ActionFactory {
     public static UserAction seeAvailableBuildings() {
         return new SeeAvailableBuildingsAction();
     }
+    public static UserAction gameWonAction() { return new GameWonAction();}
 
     public static UserAction moveUp() {
         return new MovementAction(Direction.up);

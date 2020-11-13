@@ -43,4 +43,10 @@ public class PresenterStub implements Presenter {
 
     }
 
+    @Override
+    public void showWinScreen(String message) {
+
+    }
+
+
 }

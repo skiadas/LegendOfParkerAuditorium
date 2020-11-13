@@ -53,8 +53,13 @@ public class Interactor implements ActionHandler {
 
     public void exitBuildingIfPLayerOnExitCell() {
         if (game.canExitBuilding()) {
-            game.setLocation(new MapLocation());
-            perform(ActionFactory.seeAvailableBuildings());
+            if(game.getCurrentBuilding().getIsFinalBuilding()){
+                perform(ActionFactory.gameWonAction());
+            }
+            else {
+                game.setLocation(new MapLocation());
+                perform(ActionFactory.seeAvailableBuildings());
+            }
         }
     }
 
@@ -78,6 +83,12 @@ public class Interactor implements ActionHandler {
 
     public void perform(SaveGameAction action) {
         // TODO
+    }
+
+    @Override
+    public void perform(GameWonAction action) {
+        presenter.showWinScreen(MessageFactory.getInstance().gameWon());
+
     }
 
     public void setPresenter(Presenter presenter) {

@@ -10,4 +10,5 @@ public interface ActionVisitor {
     void perform(MovementAction action);
     void perform(AppLoadAction action);
     void perform(SaveGameAction action);
+    void perform(GameWonAction action);
 }

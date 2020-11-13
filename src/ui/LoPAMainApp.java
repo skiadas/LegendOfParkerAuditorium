@@ -80,6 +80,11 @@ public class LoPAMainApp implements Presenter {
 
     }
 
+    @Override
+    public void showWinScreen(String message) {
+
+    }
+
     public void open() {
         actionRouter.performStartAction();
     }

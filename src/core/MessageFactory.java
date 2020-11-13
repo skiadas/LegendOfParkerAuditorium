@@ -22,4 +22,5 @@ public abstract class MessageFactory {
     public abstract String playerCannotMove();
     public abstract String noCoordinatesForNonExistingBuilding();
     public abstract String notInAvailableBuildingsList();
+    public abstract String gameWon();
 }
