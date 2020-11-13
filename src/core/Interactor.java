@@ -31,11 +31,13 @@ public class Interactor implements ActionHandler {
         if (game != null) {
             presenter.showError("Game Already Started");
         }
-        this.game = new Game();
-        try {
-            presenter.message("MessageFiles/StartMessage.txt", ActionFactory.seeAvailableBuildings());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        else {
+            this.game = new Game();
+            try {
+                presenter.message("MessageFiles/StartMessage.txt", ActionFactory.seeAvailableBuildings());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -61,26 +63,26 @@ public class Interactor implements ActionHandler {
             Game game = getGameOrFail();
             game.updatePosition(action.direction);
             presenter.showUpdatedInsideLocation(game.getCoords());
-            IfPlayerOnEnemy_ShowDeathScreen();
-            IfPlayerOnTheDoorCell_thenExitAndShowBuildingMenu();
+            showDeathScreenIfPlayerOnEnemySquare();
+            exitBuildingIfPLayerOnExitCell();
         } catch (InvalidMovementException | InvalidCoordinateAccessorException e) {
             presenter.showError(e.getMessage());
         }
 
     }
 
-    private void IfPlayerOnTheDoorCell_thenExitAndShowBuildingMenu() {
+    public void exitBuildingIfPLayerOnExitCell() {
         if(game.canExitBuilding()){
             game.setLocation(new MapLocation());
             perform(ActionFactory.seeAvailableBuildings());
         }
     }
 
-    private void IfPlayerOnEnemy_ShowDeathScreen() {
+    private void showDeathScreenIfPlayerOnEnemySquare() {
         List<Enemy> enemies = game.getCurrentBuilding().getListOfEnemies();
         for (Enemy enemy : enemies) {
-            if (enemy.getEnemyCords() == game.getCoords()) {
-                presenter.showDeathScreen("You Are Dead");
+            if (enemy.getEnemyCords().equals(game.getCoords())) {
+                    presenter.showDeathScreen("You Are Dead");
             }
         }
         perform(ActionFactory.appLoadAction());

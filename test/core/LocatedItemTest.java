@@ -20,7 +20,6 @@ public class LocatedItemTest {
         assertTrue(building.hasKeyAt(coords));
     }
 
-    @Ignore
     @Test
     public void canAddLocatedItemToInventoryAfterWalkingOver() {
         Game game = new Game();

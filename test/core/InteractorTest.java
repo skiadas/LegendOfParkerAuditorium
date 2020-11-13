@@ -6,7 +6,6 @@ import mocks.PresenterStub;
 import mocks.StartGameActionSpy;
 import mocks.UpdateWithinBuildingLocationSpy;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -35,12 +34,12 @@ public class InteractorTest {
     public void cannotStartGameInProgress() {
         StartGameActionSpy presenterSpy = new StartGameActionSpy();
         i.setPresenter(presenterSpy);
+        i.game = new Game();
         UserAction start = ActionFactory.startGameAction();
         i.perform(start);
-        assertFalse(presenterSpy.showErrorIsCalled);
+        assertTrue(presenterSpy.showErrorIsCalled);
     }
 
-    @Ignore
     @Test
     public void canReadFile() throws IOException {
         assertEquals("Test Message", AssetReader.fileToString("TestMessage.txt"));
@@ -154,7 +153,6 @@ public class InteractorTest {
         assertEquals(expectedInsideLocation, mockPresenter.providedLocation);
     }
 
-
     @Test
     public void cannotMoveWhenNotInsideBuilding() {
         i.setGame(new Game());
@@ -224,8 +222,8 @@ public class InteractorTest {
         i.perform(ActionFactory.moveUp());
         assertEquals(cords.yValue, game.getCoords().yValue);
         assertEquals(cords.xValue, game.getCoords().xValue);
-        // assertEquals(true, mockPresenter.showDeathScreenIsCalled);
-        //TODO; why is showDeathScreen not being called
+        assertTrue(mockPresenter.showDeathScreenIsCalled);
+        assertTrue(mockPresenter.showMainMenuWasCalled);
     }
 
 
@@ -271,6 +269,7 @@ public class InteractorTest {
         i.setGame(game);
         i.setPresenter(mockPresenter);
         i.perform(ActionFactory.moveUp());
+        i.exitBuildingIfPLayerOnExitCell();
         assertFalse(game.isWithinABuilding());
         assertTrue(mockPresenter.showAvailableBuildingsWasCalled);
     }
