@@ -1,8 +1,8 @@
 package core;
 
-import core.exceptions.InvalidCoordinateAccessorException;
-import core.exceptions.InvalidMovementException;
-import core.exceptions.NonExistingBuildingError;
+
+
+import core.exceptions.GameErrorException;
 
 import java.util.ArrayList;
 import java.util.List;

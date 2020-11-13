@@ -3,6 +3,7 @@ package core;
 import core.action.*;
 import core.boundary.ActionHandler;
 import core.boundary.Presenter;
+import core.exceptions.GameErrorException;
 
 import java.util.ArrayList;
 import java.util.List;
