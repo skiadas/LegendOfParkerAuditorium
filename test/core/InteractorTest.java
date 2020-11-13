@@ -1,14 +1,13 @@
 package core;
 
-import core.action.*;
+import core.action.ActionFactory;
+import core.action.UserAction;
 import mocks.AvailableBuildingsPresenterSpy;
 import mocks.PresenterStub;
 import mocks.StartGameActionSpy;
 import mocks.UpdateWithinBuildingLocationSpy;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.io.IOException;
 
 import static org.junit.Assert.*;
 
@@ -41,7 +40,7 @@ public class InteractorTest {
     }
 
     @Test
-    public void canReadFile() throws IOException {
+    public void canReadFile() {
         assertEquals("Test Message", AssetReader.fileToString("TestMessage.txt"));
     }
 
@@ -159,7 +158,7 @@ public class InteractorTest {
         UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
         i.setPresenter(presenterSpy);
         i.perform(ActionFactory.moveUp());
-        assertEquals(false, presenterSpy.showUpdatePositionWasCalled);
+        assertFalse(presenterSpy.showUpdatePositionWasCalled);
     }
 
     @Test
@@ -168,7 +167,7 @@ public class InteractorTest {
         UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
         i.setPresenter(presenterSpy);
         i.perform(ActionFactory.moveUp());
-        assertEquals(true, presenterSpy.showUpdatePositionWasCalled);
+        assertTrue(presenterSpy.showUpdatePositionWasCalled);
         assertEquals(new Coordinates(0, 1), presenterSpy.providedLocation);
     }
 
@@ -177,8 +176,8 @@ public class InteractorTest {
         UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
         i.setPresenter(presenterSpy);
         i.perform(ActionFactory.moveUp());
-        assertEquals(false, presenterSpy.showUpdatePositionWasCalled);
-        assertEquals(true, presenterSpy.showErrorWasCalled);
+        assertFalse(presenterSpy.showUpdatePositionWasCalled);
+        assertTrue(presenterSpy.showErrorWasCalled);
         assertEquals("Game has not started", presenterSpy.errorMessage);
     }
 
@@ -192,8 +191,8 @@ public class InteractorTest {
         moveToEdge(moveLeft);
         i.setPresenter(presenterSpy);
         i.perform(moveLeft);
-        assertEquals(false, presenterSpy.showUpdatePositionWasCalled);
-        assertEquals(true, presenterSpy.showErrorWasCalled);
+        assertFalse(presenterSpy.showUpdatePositionWasCalled);
+        assertTrue(presenterSpy.showErrorWasCalled);
         assertEquals("Unable to move to location.", presenterSpy.errorMessage);
     }
 
@@ -207,7 +206,7 @@ public class InteractorTest {
         moveToEdge(moveUp);
         i.setPresenter(mockPresenter);
         i.perform(moveUp);
-        assertEquals(false, mockPresenter.showUpdatePositionWasCalled);
+        assertFalse(mockPresenter.showUpdatePositionWasCalled);
     }
 
     @Test

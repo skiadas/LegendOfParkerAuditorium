@@ -10,7 +10,6 @@ import core.boundary.Presenter;
 import ui.framework.*;
 import ui.impl.MyUIFactory;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.stream.Collectors;
 
