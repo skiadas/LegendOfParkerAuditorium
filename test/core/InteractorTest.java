@@ -144,15 +144,6 @@ public class InteractorTest extends BaseAppTest {
     }
 
     @Test
-    public void cannotMoveWhenNotInsideBuilding() {
-        interactor.setGame(new Game());
-        UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
-        interactor.setPresenter(presenterSpy);
-        interactor.perform(ActionFactory.moveUp());
-        assertFalse(presenterSpy.showUpdatePositionWasCalled);
-    }
-
-    @Test
     public void PresenterIsCalledWithCorrectArgsWhenPlayerMoved() {
         interactor.setGame(getGameWithOneBuildingAndLocationAtItsEntrance());
         UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
@@ -160,6 +151,17 @@ public class InteractorTest extends BaseAppTest {
         interactor.perform(ActionFactory.moveUp());
         assertTrue(presenterSpy.showUpdatePositionWasCalled);
         assertEquals(new Coordinates(0, 1), presenterSpy.providedLocation);
+    }
+
+    @Test
+    public void cannotMoveWhenNotInsideBuilding() {
+        interactor.setGame(new Game());
+        UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
+        interactor.setPresenter(presenterSpy);
+        interactor.perform(ActionFactory.moveUp());
+        assertEquals(false, presenterSpy.showUpdatePositionWasCalled);
+        assertEquals(true, presenterSpy.showErrorWasCalled);
+        assertEquals("Should not access the current building for non-building", presenterSpy.errorMessage);
     }
 
     @Test
