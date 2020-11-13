@@ -19,4 +19,7 @@ public abstract class MessageFactory {
     public abstract String buildingDoesNotExist();
     public abstract String mustExistBuilding();
     public abstract String mapLocationHasNoCurrentBuilding();
+    public abstract String playerCannotMove();
+    public abstract String noCoordinatesForNonExistingBuilding();
+    public abstract String notInAvailableBuildingsList();
 }

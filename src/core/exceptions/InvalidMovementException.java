@@ -1,9 +1,11 @@
 package core.exceptions;
 
 import core.GameErrorException;
+import core.MessageFactory;
 
 public class InvalidMovementException extends GameErrorException {
     public InvalidMovementException() {
-        super("Unable to move to location.");
+        super(MessageFactory.getInstance().playerCannotMove());
     }
+
 }

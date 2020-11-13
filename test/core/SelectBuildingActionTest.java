@@ -76,9 +76,8 @@ public class SelectBuildingActionTest {
         i.setPresenter(mockPresenter);
         UserAction action = ActionFactory.selectBuildingAction("Donner");
         i.perform(action);
-        String expected = "Game has not started";
         assertTrue(mockPresenter.showErrorMessageCalled);
-        assertEquals(expected, mockPresenter.message);
+        assertEquals(StandardMessageFactory.getInstance().gameNotStarted(), mockPresenter.message);
     }
 
     @Test
@@ -92,9 +91,8 @@ public class SelectBuildingActionTest {
         game.setLocation(new WithinBuildingLocation(building, building.getEntranceCoordinates()));
         i.setGame(game);
         i.perform(action);
-        String expected = "You cannot select a building when you are already inside a building";
         assertTrue(mockPresenter.showErrorMessageCalled);
-        assertEquals(expected, mockPresenter.message);
+        assertEquals(StandardMessageFactory.getInstance().mustExistBuilding(), mockPresenter.message);
     }
 
     @Test
@@ -107,9 +105,8 @@ public class SelectBuildingActionTest {
         i.setGame(game);
         i.setPresenter(mockPresenter);
         i.perform(action);
-        String expected = "Building does not exist!";
         assertTrue(mockPresenter.showErrorMessageCalled);
-        assertEquals(expected, mockPresenter.message);
+        assertEquals(StandardMessageFactory.getInstance().buildingDoesNotExist(), mockPresenter.message);
     }
 
     @Test
@@ -122,8 +119,7 @@ public class SelectBuildingActionTest {
         game.addBuilding(building);
         i.setGame(game);
         i.perform(action);
-        String expected = "Building does not exist!";
         assertTrue(mockPresenter.showErrorMessageCalled);
-        assertEquals(expected, mockPresenter.message);
+        assertEquals(StandardMessageFactory.getInstance().buildingDoesNotExist(), mockPresenter.message);
     }
 }

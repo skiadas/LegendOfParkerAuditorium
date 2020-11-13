@@ -33,4 +33,11 @@ public class StandardMessageFactory extends MessageFactory {
     public String mapLocationHasNoCurrentBuilding() {
         return "Should not access the current building for non-building";
     }
+
+    public String playerCannotMove() { return "Unable to move to location."; }
+
+    public String noCoordinatesForNonExistingBuilding() { return "Should not access coords for non-building"; }
+
+    public String notInAvailableBuildingsList() { return "You do not have the keys to enter this building"; }
+
 }

@@ -2,6 +2,7 @@ package core;
 
 import core.exceptions.InvalidCoordinateAccessorException;
 import core.exceptions.InvalidMovementException;
+import core.exceptions.NonExistingBuildingError;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class Game {
         if (location.isBuildingLocation()) {
             return ((WithinBuildingLocation) location).getCoords();
         } else {
-            throw new InvalidCoordinateAccessorException();
+            throw new GameErrorException(MessageFactory.getInstance().playerCannotMove());
         }
     }
 
@@ -33,7 +34,7 @@ public class Game {
         if (location.isBuildingLocation()) {
             ((WithinBuildingLocation) location).setCoordinates(coordinates);
         } else {
-            throw new InvalidCoordinateAccessorException();
+            throw new GameErrorException(MessageFactory.getInstance().playerCannotMove());//InvalidCoordinateAccessorException();
         }
     }
 
@@ -106,7 +107,7 @@ public class Game {
             setCoordinates(getRequestedMove(direction));
         }
         else {
-            throw new InvalidMovementException();
+            throw new GameErrorException(MessageFactory.getInstance().playerCannotMove());
         }
     }
 
@@ -134,11 +135,19 @@ public class Game {
             if(building.isNamed(name))
                 return building;
         }
-        throw new NonExistingBuildingError();
+        throw new GameErrorException(MessageFactory.getInstance().buildingDoesNotExist());
     }
 
     public boolean isSelectedBuildingInAvailableBuildingsList(String name) {
         for (Building chosenBuilding: produceAvailableBuildings()) {
+            if(chosenBuilding.isNamed(name))
+                return true;
+        }
+        return false;
+    }
+
+    public boolean isSelectedBuildingInBuildingsList(String name) {
+        for (Building chosenBuilding: buildings) {
             if(chosenBuilding.isNamed(name))
                 return true;
         }
@@ -158,12 +167,5 @@ public class Game {
     public void addKeyToBuildingItemList(Building building, Coordinates coords) {
         building.addLocatedItem(coords);
     }
-
-    public class ExistingBuildingError extends GameErrorException {
-        public ExistingBuildingError(String message) {
-            super(message);
-        }
-    }
-
 
 }
