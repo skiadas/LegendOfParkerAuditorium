@@ -6,6 +6,7 @@ import mocks.AvailableBuildingsPresenterSpy;
 import mocks.PresenterStub;
 import mocks.StartGameActionSpy;
 import mocks.UpdateWithinBuildingLocationSpy;
+import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -235,6 +236,7 @@ public class InteractorTest extends BaseAppTest {
         return game;
     }
 
+
     @Test
     public void canLeaveTheBuildingBySteppingOnTheEntrance() {
         Game game = new Game();
@@ -247,6 +249,7 @@ public class InteractorTest extends BaseAppTest {
         assertFalse(game.isWithinABuilding());
         assertTrue(mockPresenter.showAvailableBuildingsWasCalled);
     }
+
 
     @Test
     public void canLeaveTheBuildingWithDifferentEntranceCoordinates() {

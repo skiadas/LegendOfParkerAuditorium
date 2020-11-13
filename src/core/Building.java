@@ -13,7 +13,7 @@ public class Building {
     private Coordinates upperLeft;
     private Coordinates lowerRight;
     private Coordinates buildingEntrance = new Coordinates(0, 0);
-    private Boolean isFinalBuilding;
+    private Boolean isFinalBuilding = false;
 
     Building(String name) {
         this(name, 0);
