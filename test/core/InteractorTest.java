@@ -8,7 +8,6 @@ import mocks.StartGameActionSpy;
 import mocks.UpdateWithinBuildingLocationSpy;
 import org.junit.Before;
 import org.junit.Test;
-
 import static org.junit.Assert.*;
 
 public class InteractorTest {
@@ -225,7 +224,6 @@ public class InteractorTest {
         assertTrue(mockPresenter.showMainMenuWasCalled);
     }
 
-
     @Test
     public void cannotSeeAvailableBuildingsIfGameHasNotStarted(){
         UserAction action = ActionFactory.seeAvailableBuildings();
@@ -256,7 +254,6 @@ public class InteractorTest {
         assertTrue(mockPresenter.showAvailableBuildingsWasCalled);
     }
 
-
     @Test
     public void canLeaveTheBuildingWithDifferentEntranceCoordinates() {
         Game game = new Game();
@@ -278,8 +275,4 @@ public class InteractorTest {
             i.perform(move);
         }
     }
-
-
-
-
 }
