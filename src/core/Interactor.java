@@ -85,6 +85,7 @@ public class Interactor implements ActionHandler {
     @Override
     public void perform(GameWonAction action) {
         presenter.showWinScreen(MessageFactory.getInstance().gameWon());
+        perform(ActionFactory.appLoadAction());
 
     }
 

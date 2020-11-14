@@ -6,6 +6,7 @@ import mocks.AvailableBuildingsPresenterSpy;
 import mocks.PresenterStub;
 import mocks.StartGameActionSpy;
 import mocks.UpdateWithinBuildingLocationSpy;
+import mocks.GameWinningConditionsSpy;
 import org.junit.Ignore;
 import org.junit.Test;
 import static org.junit.Assert.*;
@@ -216,6 +217,19 @@ public class InteractorTest extends BaseAppTest {
         assertEquals(cords.yValue, game.getCoords().yValue);
         assertEquals(cords.xValue, game.getCoords().xValue);
         assertTrue(mockPresenter.showDeathScreenIsCalled);
+        assertTrue(mockPresenter.showMainMenuWasCalled);
+    }
+
+    @Test
+    public void playerWinsWhenOnExitInFinalBuilding() {
+        GameWinningConditionsSpy mockPresenter = new GameWinningConditionsSpy();
+        Game game = getGameWithOneBuildingAndLocationAtItsEntrance();
+        game.getCurrentBuilding().setFinalBuilding();
+        interactor.setGame(game);
+        interactor.setPresenter(mockPresenter);
+        interactor.perform(ActionFactory.moveUp());
+        interactor.perform(ActionFactory.moveDown());
+        assertTrue(mockPresenter.showWinScreenWasCalled);
         assertTrue(mockPresenter.showMainMenuWasCalled);
     }
 

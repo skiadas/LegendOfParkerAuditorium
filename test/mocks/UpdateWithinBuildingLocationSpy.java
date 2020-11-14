@@ -10,7 +10,6 @@ public class UpdateWithinBuildingLocationSpy extends PresenterStub {
     public boolean showUpdatePositionWasCalled = false;
     public Coordinates providedLocation;
     public boolean showMainMenuWasCalled = false;
-
     public boolean showErrorWasCalled = false;
     public String errorMessage;
 
