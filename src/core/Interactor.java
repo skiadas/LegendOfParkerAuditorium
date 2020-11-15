@@ -95,7 +95,7 @@ public class Interactor implements ActionHandler {
 
     private Game getGameOrFail() {
         if (game == null) {
-            throw new GameErrorException(MessageFactory.getInstance().gameNotStarted());
+            throw GameErrorException.gameNotStarted();
         }
         return game;
     }

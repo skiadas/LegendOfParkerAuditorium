@@ -1,7 +1,5 @@
 package core;
 
-
-
 import core.exceptions.GameErrorException;
 
 import java.util.ArrayList;
@@ -26,7 +24,7 @@ public class Game {
         if (location.isBuildingLocation()) {
             return ((WithinBuildingLocation) location).getCoords();
         } else {
-            throw new GameErrorException(MessageFactory.getInstance().playerCannotMove());
+            throw GameErrorException.playerCannotMove();
         }
     }
 
@@ -34,7 +32,7 @@ public class Game {
         if (location.isBuildingLocation()) {
             ((WithinBuildingLocation) location).setCoordinates(coordinates);
         } else {
-            throw new GameErrorException(MessageFactory.getInstance().playerCannotMove());//InvalidCoordinateAccessorException();
+            throw GameErrorException.playerCannotMove();//InvalidCoordinateAccessorException();
         }
     }
 
@@ -42,7 +40,7 @@ public class Game {
         if (location.isBuildingLocation()) {
             return ((WithinBuildingLocation) location).getCurrentBuilding();
         } else {
-            throw new GameErrorException(MessageFactory.getInstance().mapLocationHasNoCurrentBuilding());
+            throw GameErrorException.mapLocationHasNoCurrentBuilding();
         }
     }
 
@@ -107,7 +105,7 @@ public class Game {
             setCoordinates(getRequestedMove(direction));
         }
         else {
-            throw new GameErrorException(MessageFactory.getInstance().playerCannotMove());
+            throw GameErrorException.playerCannotMove();
         }
     }
 
@@ -129,15 +127,15 @@ public class Game {
 
     public Building getBuildingNamed(String name) {
         if (isWithinABuilding()) {
-            throw new GameErrorException(MessageFactory.getInstance().mustExistBuilding());
+            throw GameErrorException.mustExitBuilding();
         }
         if (!isSelectedBuildingInBuildingsList(name))
-            throw new GameErrorException(MessageFactory.getInstance().buildingDoesNotExist());
+            throw GameErrorException.buildingDoesNotExist();
         for (Building building: produceAvailableBuildings()) {
             if(building.isNamed(name))
                 return building;
         }
-        throw new GameErrorException(MessageFactory.getInstance().notInAvailableBuildingsList());
+        throw GameErrorException.notInAvailableBuildingsList();
     }
 
     public boolean isSelectedBuildingInAvailableBuildingsList(String name) {
