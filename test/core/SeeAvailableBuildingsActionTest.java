@@ -10,22 +10,21 @@ import java.util.List;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-public class SeeAvailableBuildingsActionTest {
+public class SeeAvailableBuildingsActionTest extends BaseAppTest {
 
     @Test
     public void whenSeeAvailableBuildingsPerformed_AvailableBuildingsPresented(){
-        Interactor i = new Interactor();
         UserAction action = ActionFactory.seeAvailableBuildings();
         AvailableBuildingsPresenterSpy mockPresenter = new AvailableBuildingsPresenterSpy();
-        i.setPresenter(mockPresenter);
+        interactor.setPresenter(mockPresenter);
         Game game = new Game();
-        i.setGame(game);
+        interactor.setGame(game);
         game.addBuilding(new Building("building1", 0));
         game.addBuilding(new Building("building2", 1));
-        i.perform(action);
+        interactor.perform(action);
         List<Building> availableBuildings2 = game.produceAvailableBuildings();
         assertTrue(mockPresenter.showAvailableBuildingsWasCalled);
-        List<MenuOption> menuOptions = i.convertBuildingsToMenuOptions(availableBuildings2);
+        List<MenuOption> menuOptions = interactor.convertBuildingsToMenuOptions(availableBuildings2);
         assertEquals(menuOptions, mockPresenter.availableBuildings);
     }
 

@@ -9,14 +9,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class SelectBuildingActionTest {
-
-    private Interactor i;
-
-    @Before
-    public void setUp(){
-        i = new Interactor();
-    }
+public class SelectBuildingActionTest extends BaseAppTest {
 
     @Test
     public void whenSelectingBuilding_CurrentBuildingGetUpdated() {
@@ -24,9 +17,9 @@ public class SelectBuildingActionTest {
         Building building = new Building("Donner", 0);
         Game game = new Game();
         game.addBuilding(building);
-        i.setGame(game);
-        i.setPresenter(new PresenterStub());
-        i.perform(action);
+        interactor.setGame(game);
+        interactor.setPresenter(new PresenterStub());
+        interactor.perform(action);
         Building currentBuilding = game.getCurrentBuilding();
         assertEquals(currentBuilding, building);
     }
@@ -38,9 +31,9 @@ public class SelectBuildingActionTest {
         Building building = new Building("Donner", 0);
         Game game = new Game();
         game.addBuilding(building);
-        i.setGame(game);
-        i.setPresenter(mockPresenter);
-        i.perform(action);
+        interactor.setGame(game);
+        interactor.setPresenter(mockPresenter);
+        interactor.perform(action);
         BuildingView chosenBuilding = mockPresenter.chosenBuilding;
         assertTrue(mockPresenter.showChoiceOfBuildingCalled);
         assertTrue(mockPresenter.showUpdatedLocationCalled);
@@ -56,12 +49,12 @@ public class SelectBuildingActionTest {
         building.setEntranceCoordinates(1,5);
         Building building2 = new Building("Parker", 0);
         Game game = new Game();
-        i.setGame(game);
-        i.setPresenter(mockPresenter);
+        interactor.setGame(game);
+        interactor.setPresenter(mockPresenter);
         game.addBuilding(building);
         game.addBuilding(building2);
         UserAction action = ActionFactory.selectBuildingAction("Parker");
-        i.perform(action);
+        interactor.perform(action);
         assertTrue(mockPresenter.showChoiceOfBuildingCalled);
         assertTrue(mockPresenter.showUpdatedLocationCalled);
         BuildingView chosenBuilding = mockPresenter.chosenBuilding;
@@ -73,9 +66,9 @@ public class SelectBuildingActionTest {
     @Test
     public void whenSelectingBuilding_CannotSelectBuildingWhenGameHasNotStarted() {
         BuildingSelectPresenterSpy mockPresenter = new BuildingSelectPresenterSpy();
-        i.setPresenter(mockPresenter);
+        interactor.setPresenter(mockPresenter);
         UserAction action = ActionFactory.selectBuildingAction("Donner");
-        i.perform(action);
+        interactor.perform(action);
         assertTrue(mockPresenter.showErrorMessageCalled);
         assertEquals(StandardMessageFactory.getInstance().gameNotStarted(), mockPresenter.message);
     }
@@ -83,14 +76,14 @@ public class SelectBuildingActionTest {
     @Test
     public void whenSelectingBuilding_CannotSelectBuildingWhileInsideABuilding() {
         BuildingSelectPresenterSpy mockPresenter = new BuildingSelectPresenterSpy();
-        i.setPresenter(mockPresenter);
+        interactor.setPresenter(mockPresenter);
         UserAction action = ActionFactory.selectBuildingAction("Donner");
         Building building = new Building("Donner", 0);
         Game game = new Game();
         game.addBuilding(building);
         game.setLocation(new WithinBuildingLocation(building, building.getEntranceCoordinates()));
-        i.setGame(game);
-        i.perform(action);
+        interactor.setGame(game);
+        interactor.perform(action);
         assertTrue(mockPresenter.showErrorMessageCalled);
         assertEquals(StandardMessageFactory.getInstance().mustExistBuilding(), mockPresenter.message);
     }
@@ -102,9 +95,9 @@ public class SelectBuildingActionTest {
         Building building = new Building("Donner", 1);
         Game game = new Game();
         game.addBuilding(building);
-        i.setGame(game);
-        i.setPresenter(mockPresenter);
-        i.perform(action);
+        interactor.setGame(game);
+        interactor.setPresenter(mockPresenter);
+        interactor.perform(action);
         assertTrue(mockPresenter.showErrorMessageCalled);
         assertEquals(StandardMessageFactory.getInstance().notInAvailableBuildingsList(), mockPresenter.message);
     }
@@ -112,13 +105,13 @@ public class SelectBuildingActionTest {
     @Test
     public void whenSelectingANonExistingBuilding_PresenterErrorMethodShouldHaveOccur() {
         BuildingSelectPresenterSpy mockPresenter = new BuildingSelectPresenterSpy();
-        i.setPresenter(mockPresenter);
+        interactor.setPresenter(mockPresenter);
         UserAction action = ActionFactory.selectBuildingAction("Wiley");
         Building building = new Building("Donner", 0);
         Game game = new Game();
         game.addBuilding(building);
-        i.setGame(game);
-        i.perform(action);
+        interactor.setGame(game);
+        interactor.perform(action);
         assertTrue(mockPresenter.showErrorMessageCalled);
         assertEquals(StandardMessageFactory.getInstance().buildingDoesNotExist(), mockPresenter.message);
     }
