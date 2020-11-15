@@ -16,56 +16,56 @@ public class BuildingSelectionTest extends BaseAppTest {
 
     @Test
     public void canGetBuildingBasedOnItsName() {
-        game.addBuilding(new Building("Donner"));
+        addBuilding("Donner");
         Building building = game.getBuildingNamed("Donner");
         assertEquals("Donner", building.getBuildingName());
     }
 
     @Test
     public void canSelectBuildingNumberOutOfMoreBuildings() {
-        game.addBuilding(new Building("Outside"));
-        game.addBuilding(new Building("Donner"));
+        addBuilding("Outside");
+        addBuilding("Donner");
         assertEquals("Outside", game.getBuildingNamed("Outside").getBuildingName());
     }
 
 
     @Test
     public void cannotFindABuildingWithANameIfABuildingWithThatNameDoesNotExist() {
-        game.addBuilding(new Building("Donner"));
+        addBuilding("Donner");
         assertFalse(game.hasBuildingNamed("Outside"));
     }
 
     @Test
     public void checkingIfSelectedBuildingIsInList() {
         SelectBuildingAction selectBuildingAction = (SelectBuildingAction) ActionFactory.selectBuildingAction("Donner");
-        game.addBuilding(new Building("Donner"));
+        addBuilding("Donner");
         assertTrue(game.hasBuildingNamed(selectBuildingAction.buildingName));
     }
 
     @Test
     public void isBuildingWithinList() {
-        game.addBuilding(new Building("Donner"));
+        addBuilding("Donner");
         assertEquals(1, game.sizeOfBuildingList());
     }
 
     @Test
     public void canAddAnotherBuildingToList() {
-        game.addBuilding(new Building("Donner"));
-        game.addBuilding(new Building("Parker"));
+        addBuilding("Donner");
+        addBuilding("Parker");
         assertEquals(2, game.sizeOfBuildingList());
     }
 
     @Test
     public void checkingIfBuildingIsWithinAvailableBuildingsList() {
-        game.addBuilding(new Building("building1", 0));
-        game.addBuilding(new Building("building2", 1));
+        addBuildingRequiringKeys("building1", 0);
+        addBuildingRequiringKeys("building2", 1);
         assertTrue(game.isSelectedBuildingInAvailableBuildingsList(("building1")));
     }
 
     @Test
     public void checkingIfBuildingIsNotWithinAvailableBuildingsList() {
-        game.addBuilding(new Building("building1", 0));
-        game.addBuilding(new Building("building2", 1));
+        addBuildingRequiringKeys("building1", 0);
+        addBuildingRequiringKeys("building2", 1);
         assertFalse(game.isSelectedBuildingInAvailableBuildingsList(("building2")));
     }
 

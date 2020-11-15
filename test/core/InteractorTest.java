@@ -44,7 +44,7 @@ public class InteractorTest extends BaseAppTest {
 
     @Test
     public void canMoveUp() {
-        addBuildingAndMoveToItsEntrance();
+        addBuildingAndMoveToItsEntrance("building1");
         interactor.setPresenter(new PresenterStub());
         interactor.perform(ActionFactory.moveUp());
         assertEquals(1, game.getYValue());
@@ -53,7 +53,7 @@ public class InteractorTest extends BaseAppTest {
     @Test
     public void canMoveUpMultipleTimes() {
         UserAction moveUp = ActionFactory.moveUp();
-        addBuildingAndMoveToItsEntrance();
+        addBuildingAndMoveToItsEntrance("building1");
         interactor.setPresenter(new PresenterStub());
         interactor.perform(moveUp);
         interactor.perform(moveUp);
@@ -63,7 +63,7 @@ public class InteractorTest extends BaseAppTest {
 
     @Test
     public void canMoveDown() {
-        addBuildingAndMoveToItsEntrance();
+        addBuildingAndMoveToItsEntrance("building1");
         interactor.setPresenter(new PresenterStub());
         interactor.perform(ActionFactory.moveDown());
         assertEquals(-1, interactor.getGame().getYValue());
@@ -72,7 +72,7 @@ public class InteractorTest extends BaseAppTest {
     @Test
     public void canMoveDownMultipleTimes() {
         UserAction moveDown = ActionFactory.moveDown();
-        addBuildingAndMoveToItsEntrance();
+        addBuildingAndMoveToItsEntrance("building1");
         interactor.setPresenter(new PresenterStub());
         interactor.perform(moveDown);
         interactor.perform(moveDown);
@@ -82,7 +82,7 @@ public class InteractorTest extends BaseAppTest {
 
     @Test
     public void canMoveLeft() {
-        addBuildingAndMoveToItsEntrance();
+        addBuildingAndMoveToItsEntrance("building1");
         interactor.setPresenter(new PresenterStub());
         interactor.perform(ActionFactory.moveLeft());
         assertEquals(-1, interactor.getGame().getXValue());
@@ -91,7 +91,7 @@ public class InteractorTest extends BaseAppTest {
     @Test
     public void canMoveLeftMultipleTimes() {
         UserAction moveLeft = ActionFactory.moveLeft();
-        addBuildingAndMoveToItsEntrance();
+        addBuildingAndMoveToItsEntrance("building1");
         interactor.setPresenter(new PresenterStub());
         interactor.perform(moveLeft);
         interactor.perform(moveLeft);
@@ -102,7 +102,7 @@ public class InteractorTest extends BaseAppTest {
     @Test
     public void canMoveRight() {
         UserAction moveRight = ActionFactory.moveRight();
-        addBuildingAndMoveToItsEntrance();
+        addBuildingAndMoveToItsEntrance("building1");
         interactor.setPresenter(new PresenterStub());
         interactor.perform(moveRight);
         assertEquals(1, interactor.getGame().getXValue());
@@ -111,7 +111,7 @@ public class InteractorTest extends BaseAppTest {
     @Test
     public void canMoveRightMultipleTimes() {
         UserAction moveLeft = ActionFactory.moveLeft();
-        addBuildingAndMoveToItsEntrance();
+        addBuildingAndMoveToItsEntrance("building1");
         interactor.setPresenter(new PresenterStub());
         interactor.perform(moveLeft);
         interactor.perform(moveLeft);
@@ -123,7 +123,7 @@ public class InteractorTest extends BaseAppTest {
     public void whenMovementActionIsPerformed_UpdatePositionWasCalled() {
         UserAction moveLeft = ActionFactory.moveLeft();
         UpdateWithinBuildingLocationSpy mockPresenter = new UpdateWithinBuildingLocationSpy();
-        addBuildingAndMoveToItsEntrance();
+        addBuildingAndMoveToItsEntrance("building1");
         interactor.setPresenter(mockPresenter);
         interactor.perform(moveLeft);
         assertTrue(mockPresenter.showUpdatePositionWasCalled);
@@ -134,7 +134,7 @@ public class InteractorTest extends BaseAppTest {
 
     @Test
     public void PresenterIsCalledWithCorrectArgsWhenPlayerMoved() {
-        addBuildingAndMoveToItsEntrance();
+        addBuildingAndMoveToItsEntrance("building1");
         UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
         interactor.setPresenter(presenterSpy);
         interactor.perform(ActionFactory.moveUp());
@@ -167,7 +167,7 @@ public class InteractorTest extends BaseAppTest {
     public void cannotMoveOutsideTheBuildingX() {
         UserAction moveLeft = ActionFactory.moveLeft();
         UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
-        addBuildingAndMoveToItsEntrance();
+        addBuildingAndMoveToItsEntrance("building1");
         interactor.setPresenter(new PresenterStub());
         moveToEdge(moveLeft);
         interactor.setPresenter(presenterSpy);
@@ -181,7 +181,7 @@ public class InteractorTest extends BaseAppTest {
     public void cannotMoveOutsideTheBuildingY() {
         UserAction moveUp = ActionFactory.moveUp();
         UpdateWithinBuildingLocationSpy mockPresenter = new UpdateWithinBuildingLocationSpy();
-        addBuildingAndMoveToItsEntrance();
+        addBuildingAndMoveToItsEntrance("building1");
         interactor.setPresenter(new PresenterStub());
         moveToEdge(moveUp);
         interactor.setPresenter(mockPresenter);
@@ -192,7 +192,7 @@ public class InteractorTest extends BaseAppTest {
     @Test
     public void playerDiesWhenOnEnemySquare() {
         UpdateWithinBuildingLocationSpy mockPresenter = new UpdateWithinBuildingLocationSpy();
-        addBuildingAndMoveToItsEntrance();
+        addBuildingAndMoveToItsEntrance("building1");
         game.getCurrentBuilding().getListOfEnemies().add(new Enemy());
         Coordinates cords = new Coordinates(0, 1);
         game.getCurrentBuilding().getListOfEnemies().get(0).setCords(cords);
@@ -207,7 +207,7 @@ public class InteractorTest extends BaseAppTest {
     @Test
     public void playerWinsWhenOnExitInFinalBuilding() {
         GameWinningConditionsSpy mockPresenter = new GameWinningConditionsSpy();
-        addBuildingAndMoveToItsEntrance();
+        addBuildingAndMoveToItsEntrance("building1");
         game.getCurrentBuilding().setFinalBuilding();
         interactor.setPresenter(mockPresenter);
         interactor.perform(ActionFactory.moveUp());
@@ -229,7 +229,7 @@ public class InteractorTest extends BaseAppTest {
 
     @Test
     public void canLeaveTheBuildingBySteppingOnTheEntrance() {
-        WithinBuildingLocation wbl = WithinBuildingLocation.atEntranceOf(new Building("B1", 0));
+        WithinBuildingLocation wbl = WithinBuildingLocation.atEntranceOf(addBuildingRequiringKeys("B1", 0));
         game.setLocation(wbl.getRequestedMove(Direction.up));
         AvailableBuildingsPresenterSpy mockPresenter = new AvailableBuildingsPresenterSpy();
         interactor.setPresenter(mockPresenter);
@@ -241,7 +241,7 @@ public class InteractorTest extends BaseAppTest {
 
     @Test
     public void canLeaveTheBuildingWithDifferentEntranceCoordinates() {
-        Building b = new Building("B1", 0);
+        Building b = addBuildingRequiringKeys("B1", 0);
         b.setEntranceCoordinates(1, 1);
         WithinBuildingLocation wbl = new WithinBuildingLocation(b, new Coordinates(1, 0));
         game.setLocation(wbl);

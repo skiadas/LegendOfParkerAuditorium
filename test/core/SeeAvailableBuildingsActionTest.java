@@ -17,8 +17,8 @@ public class SeeAvailableBuildingsActionTest extends BaseAppTest {
         UserAction action = ActionFactory.seeAvailableBuildings();
         AvailableBuildingsPresenterSpy mockPresenter = new AvailableBuildingsPresenterSpy();
         interactor.setPresenter(mockPresenter);
-        game.addBuilding(new Building("building1", 0));
-        game.addBuilding(new Building("building2", 1));
+        addBuildingRequiringKeys("building1", 0);
+        addBuildingRequiringKeys("building2", 1);
         interactor.perform(action);
         List<Building> availableBuildings2 = game.produceAvailableBuildings();
         assertTrue(mockPresenter.showAvailableBuildingsWasCalled);

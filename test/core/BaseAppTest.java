@@ -14,10 +14,20 @@ public class BaseAppTest {
         interactor.setGame(game);
     }
 
-    protected void addBuildingAndMoveToItsEntrance() {
-        Building b = new Building("building1");
-        game.addBuilding(b);
+    protected void addBuildingAndMoveToItsEntrance(String name) {
+        Building b = addBuilding(name);
         game.setLocation(WithinBuildingLocation.atEntranceOf(b));
     }
 
+    public Building addBuilding(String name) {
+        Building building = new Building(name);
+        game.addBuilding(building);
+        return building;
+    }
+
+    public Building addBuildingRequiringKeys(String name, int requiredKeys) {
+        Building building = new Building(name, requiredKeys);
+        game.addBuilding(building);
+        return building;
+    }
 }

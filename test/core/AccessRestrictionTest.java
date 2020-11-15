@@ -24,13 +24,9 @@ public class AccessRestrictionTest extends BaseAppTest {
     }
 
     public boolean hasEnoughKeysToAccess(int requiredKeys, int availableKeys) {
-        Building building = new Building("building", requiredKeys);
-        setupGame(building, availableKeys);
+        Building building = addBuildingRequiringKeys("building", requiredKeys);
+        game.setInventory(availableKeys);
         return game.hasAccessTo(building);
     }
 
-    private void setupGame(Building building, int amountOfKeys) {
-        game.addBuilding(building);
-        game.setInventory(amountOfKeys);
-    }
 }
