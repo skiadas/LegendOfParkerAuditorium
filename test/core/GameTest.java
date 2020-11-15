@@ -7,10 +7,7 @@ import java.util.List;
 
 import static org.junit.Assert.*;
 
-public class GameTest {
-
-
-    private Game game = new Game();
+public class GameTest extends BaseAppTest {
 
     @Test
     public void canAddBuildings() {

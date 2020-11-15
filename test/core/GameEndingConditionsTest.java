@@ -4,8 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
 
-public class GameEndingConditionsTest {
-    private final Game game = new Game();
+public class GameEndingConditionsTest extends BaseAppTest {
 
     @Test
     public void canSetFinalBuilding() {

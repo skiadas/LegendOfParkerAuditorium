@@ -105,6 +105,10 @@ public class Interactor implements ActionHandler {
         return game;
     }
 
+    public void setNoGame() {
+        setGame(null);
+    }
+
     public void setGame(Game game) {
         this.game = game;
     }

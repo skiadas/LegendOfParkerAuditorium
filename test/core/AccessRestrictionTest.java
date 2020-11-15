@@ -5,10 +5,9 @@ import java.util.concurrent.ThreadLocalRandom;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-public class AccessRestrictionTest {
+public class AccessRestrictionTest extends BaseAppTest {
 
     private final int randomAmountOfKeys = ThreadLocalRandom.current().nextInt(0, 10 + 1);
-    private final Game game = new Game();
     private final Building buildingNeedingThreeKeys = new Building("buildingNeedingThreeKeys", 3);
     private final Building buildingNeedingOneKey = new Building("buildingNeedingOneKey", 1);
     private final Building buildingNeedingRandomAmountOfKeys = new Building("buildingNeedingRandomAmountOfKeys", randomAmountOfKeys);
