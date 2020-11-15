@@ -7,28 +7,26 @@ import static org.junit.Assert.assertTrue;
 
 public class AccessRestrictionTest extends BaseAppTest {
 
-    private final int randomAmountOfKeys = ThreadLocalRandom.current().nextInt(0, 10 + 1);
-    private final Building buildingNeedingThreeKeys = new Building("buildingNeedingThreeKeys", 3);
-    private final Building buildingNeedingOneKey = new Building("buildingNeedingOneKey", 1);
-    private final Building buildingNeedingRandomAmountOfKeys = new Building("buildingNeedingRandomAmountOfKeys", randomAmountOfKeys);
-
     @Test
     public void canEnterBuildingWithEnoughKeys() {
-        setupGame(buildingNeedingRandomAmountOfKeys, randomAmountOfKeys);
-        assertTrue(game.hasAccessTo(buildingNeedingRandomAmountOfKeys));
-
+        int randomKeys = ThreadLocalRandom.current().nextInt(0, 10 + 1);
+        assertTrue(hasEnoughKeysToAccess(randomKeys, randomKeys));
     }
 
     @Test
     public void canEnterBuildingWithMoreThanEnoughKeys() {
-        setupGame(buildingNeedingOneKey, 3);
-        assertTrue(game.hasAccessTo(buildingNeedingOneKey));
+        assertTrue(hasEnoughKeysToAccess(1, 3));
     }
 
     @Test
     public void cannotEnterBuildingWithoutEnoughKeys() {
-        setupGame(buildingNeedingThreeKeys, 0);
-        assertFalse(game.hasAccessTo(buildingNeedingThreeKeys));
+        assertFalse(hasEnoughKeysToAccess(3, 0));
+    }
+
+    public boolean hasEnoughKeysToAccess(int requiredKeys, int availableKeys) {
+        Building building = new Building("building", requiredKeys);
+        setupGame(building, availableKeys);
+        return game.hasAccessTo(building);
     }
 
     private void setupGame(Building building, int amountOfKeys) {
