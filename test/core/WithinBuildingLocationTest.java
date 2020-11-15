@@ -7,9 +7,16 @@ import static org.junit.Assert.*;
 
 public class WithinBuildingLocationTest {
 
-    private Building building = new Building("A", 0);
-    private Coordinates coordinates = new Coordinates(1, 1);
-    private WithinBuildingLocation wbl = new WithinBuildingLocation(building, coordinates);
+    private Building building;
+    private Coordinates coordinates;
+    private WithinBuildingLocation wbl;
+
+    @Before
+    public void setUp() {
+        building = new Building("A", 0);
+        coordinates = new Coordinates(1, 1);
+        wbl = new WithinBuildingLocation(building, coordinates);
+    }
 
     @Test
     public void CreatingWithinBuilidingLocationWith_atEntranceOf() {
