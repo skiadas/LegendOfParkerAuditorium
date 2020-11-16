@@ -25,4 +25,5 @@ public class LocatedItemTest {
         Game game = new Game();
         game.getInventory().addKey();
     }
+
 }

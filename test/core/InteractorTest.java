@@ -215,6 +215,24 @@ public class InteractorTest extends BaseAppTest {
         assertTrue(mockPresenter.showWinScreenWasCalled);
         assertTrue(mockPresenter.showMainMenuWasCalled);
     }
+    @Test
+    public void playerDoesNotWinWhenExitingNonFinalBuilding() {
+        Game game1 = new Game();
+        GameWinningConditionsSpy mockPresenter = new GameWinningConditionsSpy();
+        Building b1 = new Building("building1");
+        Building b2 = new Building("building2");
+        Building b3 = new Building("building3");
+        game1.addBuilding(b1);
+        game1.addBuilding(b2);
+        game1.addBuilding(b3);
+        game1.getBuildingNamed("building3").setFinalBuilding();
+        game1.setLocation(WithinBuildingLocation.atEntranceOf(b1));
+        interactor.setPresenter(mockPresenter);
+        interactor.perform(ActionFactory.moveUp());
+        interactor.perform(ActionFactory.moveDown());
+        assertFalse(mockPresenter.showWinScreenWasCalled);
+        assertFalse(mockPresenter.showMainMenuWasCalled);
+    }
 
     @Test
     public void cannotSeeAvailableBuildingsIfGameHasNotStarted() {
