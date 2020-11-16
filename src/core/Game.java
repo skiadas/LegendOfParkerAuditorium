@@ -103,8 +103,7 @@ public class Game {
     void updatePosition(Direction direction) {
         if (isValidLocation(direction)) {
             setCoordinates(getRequestedMove(direction));
-        }
-        else {
+        } else {
             throw GameErrorException.playerCannotMove();
         }
     }
@@ -118,8 +117,8 @@ public class Game {
     }
 
     public boolean hasBuildingNamed(String name) {
-        for (Building building: buildings) {
-            if(building.isNamed(name))
+        for (Building building : buildings) {
+            if (building.isNamed(name))
                 return true;
         }
         return false;
@@ -131,41 +130,42 @@ public class Game {
         }
         if (!isSelectedBuildingInBuildingsList(name))
             throw GameErrorException.buildingDoesNotExist();
-        for (Building building: produceAvailableBuildings()) {
-            if(building.isNamed(name))
+        for (Building building : produceAvailableBuildings()) {
+            if (building.isNamed(name))
                 return building;
         }
         throw GameErrorException.notInAvailableBuildingsList();
     }
 
     public boolean isSelectedBuildingInAvailableBuildingsList(String name) {
-        for (Building chosenBuilding: produceAvailableBuildings()) {
-            if(chosenBuilding.isNamed(name))
+        for (Building chosenBuilding : produceAvailableBuildings()) {
+            if (chosenBuilding.isNamed(name))
                 return true;
         }
         return false;
     }
 
     public boolean isSelectedBuildingInBuildingsList(String name) {
-        for (Building chosenBuilding: buildings) {
-            if(chosenBuilding.isNamed(name))
+        for (Building chosenBuilding : buildings) {
+            if (chosenBuilding.isNamed(name))
                 return true;
         }
         return false;
     }
 
-    public boolean canExitBuilding(){
+    public boolean canExitBuilding() {
         return isWithinABuilding() && getCoords().equals(getCurrentBuilding().getEntranceCoordinates());
     }
 
-    boolean hasAccessTo(Building b){
+    boolean hasAccessTo(Building b) {
         return inventory.getNumberOfKeys() >= b.getRequiredNumOfKeys();
     }
 
-    void setInventory(int amountOfKeys) { inventory.addKeys(amountOfKeys);}
+    void setInventory(int amountOfKeys) {
+        inventory.addKeys(amountOfKeys);
+    }
 
     public void addKeyToBuildingItemList(Building building, Coordinates coords) {
         building.addLocatedItem(coords);
     }
-
 }

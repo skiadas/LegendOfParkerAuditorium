@@ -60,6 +60,7 @@ public class Interactor implements ActionHandler {
         }
     }
 
+
     private void showDeathScreenIfPlayerOnEnemySquare() {
         List<Enemy> enemies = game.getCurrentBuilding().getListOfEnemies();
         for (Enemy enemy : enemies) {

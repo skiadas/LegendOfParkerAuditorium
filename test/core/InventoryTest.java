@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class InventoryTest {
+public class InventoryTest extends BaseAppTest{
     @Test
     public void canCreateInventory(){
         Inventory i = new Inventory();

@@ -6,6 +6,7 @@ public class Inventory {
     public Inventory() {
         this(0);
     }
+
     public Inventory(int numberOfKeys) {
         this.numberOfKeys = numberOfKeys;
     }

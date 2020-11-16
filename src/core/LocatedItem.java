@@ -9,7 +9,8 @@ public class LocatedItem<S> {
         this.key = new Key();
     }
 
-    public Coordinates getCoords() {
+    public Coordinates getItemCoords() {
         return coords;
     }
+
 }
