@@ -49,6 +49,11 @@ public class Interactor implements ActionHandler {
         presenter.showUpdatedInsideLocation(game.getCoords());
         showDeathScreenIfPlayerOnEnemySquare();
         exitBuildingIfPLayerOnExitCell();
+        addItemToInventoryIfOnLocatedItemCell();
+    }
+
+    private void addItemToInventoryIfOnLocatedItemCell() {
+        if (game.getCurrentBuilding().hasKeyAt(game.getCoords())) { game.getInventory().addKey(); }
     }
 
     public void exitBuildingIfPLayerOnExitCell() {
