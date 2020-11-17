@@ -100,10 +100,10 @@ public class Building {
         this.lowerRight = new Coordinates(20,-20);
     }
 
-    public void addEnemy(Enemy enemy, Coordinates cords) throws Exception {
+    public void addEnemy(Enemy newEnemy, Coordinates cords) throws Exception {
         // TODO: throw exception if coordinates are in a wall
-        for(Enemy enemy1 : enemies){
-            if(enemy1.getEnemyCords().equals(cords)){
+        for(Enemy enemy : enemies){
+            if(enemy.getEnemyCords().equals(cords)){
                 throw new Exception ("These Coordinates are used by another enemy");
             }
         }
@@ -114,8 +114,8 @@ public class Building {
             throw new Exception("These Coordinates are not within the building");
         }
         else {
-            this.enemies.add(enemy);
-            enemy.setCords(cords);
+            this.enemies.add(newEnemy);
+            newEnemy.setCords(cords);
         }
     }
 
