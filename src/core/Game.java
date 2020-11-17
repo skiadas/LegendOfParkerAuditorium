@@ -8,8 +8,8 @@ import java.util.List;
 public class Game {
     private final List<Building> buildings;
     private final Inventory inventory = new Inventory();
-    private Location location = new MapLocation();
     public Boolean gameStarted;
+    private Location location = new MapLocation();
 
     public Game() {
         this.buildings = new ArrayList<>();
@@ -58,6 +58,10 @@ public class Game {
 
     public Inventory getInventory() {
         return inventory;
+    }
+
+    void setInventory(int amountOfKeys) {
+        inventory.addKeys(amountOfKeys);
     }
 
     public List<Building> produceAvailableBuildings() {
@@ -151,15 +155,11 @@ public class Game {
     }
 
     public boolean canExitBuilding() {
-        return isWithinABuilding() && getCoords().equals(getCurrentBuilding().getEntranceCoordinates());
+        return isWithinABuilding() && ((WithinBuildingLocation) location).isOnTheEntranceCell();
     }
 
     boolean hasAccessTo(Building b) {
         return inventory.getNumberOfKeys() >= b.getRequiredNumOfKeys();
-    }
-
-    void setInventory(int amountOfKeys) {
-        inventory.addKeys(amountOfKeys);
     }
 
     public void addKeyToBuildingItemList(Building building, Coordinates coords) {

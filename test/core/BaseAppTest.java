@@ -7,7 +7,7 @@ public class BaseAppTest {
     protected Interactor interactor;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         MessageFactory.setInstance(new StandardMessageFactory());
         interactor = new Interactor();
         game = new Game();

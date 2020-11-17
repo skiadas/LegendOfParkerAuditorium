@@ -39,6 +39,10 @@ public class WithinBuildingLocation implements Location {
         return this;
     }
 
+    public boolean isOnTheEntranceCell() {
+        return getCoords().equals(getCurrentBuilding().getEntranceCoordinates());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -61,7 +61,8 @@ public class GameTest extends BaseAppTest {
 
     @Test
     public void canCheckIfThePlayerIsNotOnTheEntranceCell() {
-        Building b = addBuildingRequiringKeys("b1",0);
+        Building b = new Building("building");
+        b.setEntranceCoordinates(0,0);
         game.setLocation(new WithinBuildingLocation(b, new Coordinates(1,1)));
         assertFalse(game.canExitBuilding());
     }
