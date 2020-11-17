@@ -2,6 +2,7 @@ package core;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -69,5 +70,16 @@ public class GameTest extends BaseAppTest {
     public void canCheckIfThePlayerIsOnTheMap() {
         game.setLocation(new MapLocation());
         assertFalse(game.canExitBuilding());
+    }
+
+    @Test
+    public void testForGetBuildingsList() {
+        Building building1 = addBuildingRequiringKeys("building1", 1);
+        Building building2 = addBuildingRequiringKeys("building2", 1);
+        List<Building> buildings = new ArrayList<>();
+        buildings.add(building1);
+        buildings.add(building2);
+        assertEquals(buildings.get(0), game.getBuildings().get(0));
+        assertEquals(buildings.get(1), game.getBuildings().get(1));
     }
 }

@@ -75,12 +75,9 @@ public class Game {
         return buildings.size();
     }
 
-    public Result enterBuilding(Building building) {
+    public void enterBuilding(Building building) {
         if (hasAccessTo(building)) {
             location = WithinBuildingLocation.atEntranceOf(building);
-            return new OkResult();
-        } else {
-            return new NegativeResult();
         }
     }
 

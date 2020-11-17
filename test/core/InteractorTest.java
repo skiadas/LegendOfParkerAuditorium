@@ -147,8 +147,8 @@ public class InteractorTest extends BaseAppTest {
         UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
         interactor.setPresenter(presenterSpy);
         interactor.perform(ActionFactory.moveUp());
-        assertEquals(false, presenterSpy.showUpdatePositionWasCalled);
-        assertEquals(true, presenterSpy.showErrorWasCalled);
+        assertFalse(presenterSpy.showUpdatePositionWasCalled);
+        assertTrue(presenterSpy.showErrorWasCalled);
         assertEquals("Should not access the current building for non-building", presenterSpy.errorMessage);
     }
 
