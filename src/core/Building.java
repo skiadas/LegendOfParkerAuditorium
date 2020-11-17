@@ -8,7 +8,8 @@ import java.util.Objects;
 public class Building {
     private String name;
     private int requiredNumOfKeys;
-    private List<LocatedItem<Integer>> keys = new ArrayList<>() {};
+    private List<LocatedItem<Integer>> keys = new ArrayList<>() {
+    };
     private List<Enemy> enemies = new ArrayList<>();
     private Coordinates upperLeft;
     private Coordinates lowerRight;
@@ -17,7 +18,6 @@ public class Building {
 
     Building(String name) {
         this(name, 0);
-        this.setBuildingBoundaries();
     }
 
     Building(String name, int requiredNumOfKeys) {
@@ -26,26 +26,18 @@ public class Building {
         this.setBuildingBoundaries();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Building building = (Building) o;
-        return requiredNumOfKeys == building.requiredNumOfKeys &&
-                Objects.equals(name, building.name) &&
-                Objects.equals(upperLeft, building.upperLeft) &&
-                Objects.equals(lowerRight, building.lowerRight);
-    }
-
     String getBuildingName() {
         return name;
     }
-    Boolean getIsFinalBuilding(){
+
+    Boolean getIsFinalBuilding() {
         return isFinalBuilding;
     }
+
     int getRequiredNumOfKeys() {
         return requiredNumOfKeys;
     }
+
     Coordinates getEntranceCoordinates() {
         return buildingEntrance;
     }
@@ -61,7 +53,9 @@ public class Building {
     }
 
     public boolean hasKeyAt(Coordinates coords) {
-        if (keys.size() == 0) { return false; }
+        if (keys.size() == 0) {
+            return false;
+        }
         for (int i = 0; i < keys.size(); i++) {
             if (hasLocatedItemWithMatchingCoords(coords, i)) {
                 return true;
@@ -95,25 +89,24 @@ public class Building {
                 && (requestedMove.xValue <= lowerRight.xValue && requestedMove.yValue >= lowerRight.yValue);
     }
 
-    private void setBuildingBoundaries(){
-        this.upperLeft = new Coordinates(-20,20);
-        this.lowerRight = new Coordinates(20,-20);
+    private void setBuildingBoundaries() {
+        this.upperLeft = new Coordinates(-20, 20);
+        this.lowerRight = new Coordinates(20, -20);
     }
 
     public void addEnemy(Enemy newEnemy, Coordinates cords) throws Exception {
         // TODO: throw exception if coordinates are in a wall
-        for(Enemy enemy : enemies){
-            if(enemy.getEnemyCords().equals(cords)){
-                throw new Exception ("These Coordinates are used by another enemy");
+        for (Enemy enemy : enemies) {
+            if (enemy.getEnemyCords().equals(cords)) {
+                throw new Exception("These Coordinates are used by another enemy");
             }
         }
-        if (getEntranceCoordinates().equals(cords)){
-            throw new Exception ("These Coordinates are used for a door");
+        if (getEntranceCoordinates().equals(cords)) {
+            throw new Exception("These Coordinates are used for a door");
         }
-        if (!isInsideBuilding(cords)){
+        if (!isInsideBuilding(cords)) {
             throw new Exception("These Coordinates are not within the building");
-        }
-        else {
+        } else {
             this.enemies.add(newEnemy);
             newEnemy.setCords(cords);
         }
@@ -127,7 +120,9 @@ public class Building {
         return this.enemies.get(index);
     }
 
-    public List<Enemy> getListOfEnemies() { return enemies;}
+    public List<Enemy> getListOfEnemies() {
+        return enemies;
+    }
 
     public boolean isNamed(String name) {
         return this.name.equals(name);

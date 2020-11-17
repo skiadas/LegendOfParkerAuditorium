@@ -45,7 +45,10 @@ public class Game {
     }
 
     public void addBuilding(Building building) {
-        this.buildings.add(building);
+        if (!isSelectedBuildingInBuildingsList(building.getBuildingName())){
+            this.buildings.add(building);
+        }
+        return;
     }
 
     public Building getBuildingAtIndex(int index) {

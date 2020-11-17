@@ -1,10 +1,11 @@
 package core;
 
+import core.exceptions.GameErrorException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class BuildingTest {
+public class BuildingTest extends BaseAppTest {
 
     @Test
     public void canAddEnemyToBuilding() throws Exception {
@@ -13,6 +14,14 @@ public class BuildingTest {
         Enemy enemy1 = new Enemy();
         building1.addEnemy(enemy1, cords);
         assertEquals(enemy1, building1.getEnemyAtIndex(0));
+    }
+
+    @Test
+    public void cannotAddTwoEquivalentBuildings() {
+        Building building1 = new Building("building1", 0);
+        game.addBuilding(building1);
+        game.addBuilding(building1);
+        assertEquals(1, game.sizeOfBuildingList());
     }
 
     @Test (expected = Exception.class)
