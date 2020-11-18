@@ -4,6 +4,7 @@ import core.action.ActionFactory;
 import core.action.MovementAction;
 import core.action.SelectBuildingAction;
 import mocks.AvailableBuildingsPresenterSpy;
+import mocks.UpdateWithinBuildingLocationSpy;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -29,14 +30,16 @@ public class LocatedItemTest extends BaseAppTest{
         assertTrue(building.hasKeyAt(coords));
     }
 
-    @Ignore
+   @Ignore
     @Test
     public void canAddLocatedItemToInventory_ByWalkingOnItem() {
+        UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
+        interactor.setPresenter(presenterSpy);
         Building b = addBuildingRequiringKeys("B1", 0);
         b.setEntranceCoordinates(1, 1);
         game.addBuilding(b);
-        interactor.perform(ActionFactory.selectBuildingAction("B1"));
         b.addLocatedItem(new Coordinates(1, 0));
+        interactor.perform(ActionFactory.selectBuildingAction("B1"));
         interactor.perform(ActionFactory.moveDown());
         assertEquals(1, game.getInventory().getNumberOfKeys());
     }

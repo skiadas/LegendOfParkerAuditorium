@@ -45,10 +45,12 @@ public class Game {
     }
 
     public void addBuilding(Building building) {
-        if (!isSelectedBuildingInBuildingsList(building.getBuildingName())){
-            this.buildings.add(building);
+        for (Building buildingInList: buildings) {
+            if (buildingInList.equals(building)) {
+                return;
+            }
         }
-        return;
+        this.buildings.add(building);
     }
 
     public Building getBuildingAtIndex(int index) {

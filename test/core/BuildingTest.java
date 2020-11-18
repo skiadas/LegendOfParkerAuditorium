@@ -24,6 +24,15 @@ public class BuildingTest extends BaseAppTest {
         assertEquals(1, game.sizeOfBuildingList());
     }
 
+    @Test
+    public void canAddBuildingsWithSameName() {
+        Building building1 = new Building("building1", 0);
+        Building building2 = new Building("building1", 0);
+        game.addBuilding(building1);
+        game.addBuilding(building2);
+        assertEquals(2, game.sizeOfBuildingList());
+    }
+
     @Test (expected = Exception.class)
     public void canNotAddEnemyBecauseCordinatesOutsideBuilding() throws Exception{
         Building building1 = new Building("building1", 0);
