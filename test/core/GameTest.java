@@ -48,10 +48,6 @@ public class GameTest extends BaseAppTest {
         game.addKeyToBuildingItemList(buildingWithKeyAtX0Y1, coords);
         assertTrue(buildingWithKeyAtX0Y1.hasKeyAt(coords));
     }
-    @Test
-    public void canAddKeyToInventoryByWalkingOnATileWithAKey() {
-
-    }
 
     @Test
     public void canCheckIfThePlayerIsOnTheEntranceCell() {
