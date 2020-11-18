@@ -1,5 +1,7 @@
 package core;
 
+import core.exceptions.GameErrorException;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -94,18 +96,18 @@ public class Building {
         this.lowerRight = new Coordinates(20, -20);
     }
 
-    public void addEnemy(Enemy newEnemy, Coordinates cords) throws Exception {
+    public void addEnemy(Enemy newEnemy, Coordinates cords) throws GameErrorException {
         // TODO: throw exception if coordinates are in a wall
         for (Enemy enemy : enemies) {
             if (enemy.getEnemyCords().equals(cords)) {
-                throw new Exception("These Coordinates are used by another enemy");
+                throw new GameErrorException("These Coordinates are used by another enemy");
             }
         }
         if (getEntranceCoordinates().equals(cords)) {
-            throw new Exception("These Coordinates are used for a door");
+            throw new GameErrorException("These Coordinates are used for a door");
         }
         if (!isInsideBuilding(cords)) {
-            throw new Exception("These Coordinates are not within the building");
+            throw new GameErrorException("These Coordinates are not within the building");
         } else {
             this.enemies.add(newEnemy);
             newEnemy.setCords(cords);
