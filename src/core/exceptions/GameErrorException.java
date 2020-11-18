@@ -30,4 +30,7 @@ public class GameErrorException extends RuntimeException {
     public static GameErrorException gameNotStarted() {
         return new GameErrorException(MessageFactory.getInstance().gameNotStarted());
     }
+    public static GameErrorException invalidCoordinates() {
+        return new GameErrorException(MessageFactory.getInstance().invalidCoordinates());
+    }
 }

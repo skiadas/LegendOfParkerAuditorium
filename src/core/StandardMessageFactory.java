@@ -44,4 +44,8 @@ public class StandardMessageFactory extends MessageFactory {
         return "You won the game";
     }
 
+    public String invalidCoordinates() {
+        return "Those coordinates are invalid.";
+    }
+
 }

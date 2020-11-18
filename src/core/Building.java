@@ -100,14 +100,14 @@ public class Building {
         // TODO: throw exception if coordinates are in a wall
         for (Enemy enemy : enemies) {
             if (enemy.getEnemyCords().equals(cords)) {
-                throw new GameErrorException("These Coordinates are used by another enemy");
+                throw GameErrorException.invalidCoordinates();
             }
         }
         if (getEntranceCoordinates().equals(cords)) {
-            throw new GameErrorException("These Coordinates are used for a door");
+            throw GameErrorException.invalidCoordinates();
         }
         if (!isInsideBuilding(cords)) {
-            throw new GameErrorException("These Coordinates are not within the building");
+            throw GameErrorException.invalidCoordinates();
         } else {
             this.enemies.add(newEnemy);
             newEnemy.setCords(cords);
