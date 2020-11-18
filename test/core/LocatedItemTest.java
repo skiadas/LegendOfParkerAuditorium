@@ -30,7 +30,7 @@ public class LocatedItemTest extends BaseAppTest{
         assertTrue(building.hasKeyAt(coords));
     }
 
-   @Ignore
+   //@Ignore
     @Test
     public void canAddLocatedItemToInventory_ByWalkingOnItem() {
         UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
@@ -41,6 +41,8 @@ public class LocatedItemTest extends BaseAppTest{
         b.addLocatedItem(new Coordinates(1, 0));
         interactor.perform(ActionFactory.selectBuildingAction("B1"));
         interactor.perform(ActionFactory.moveDown());
+        assertEquals(new Coordinates(1,0), game.getCoords());
+        assertTrue(game.getCurrentBuilding().hasKeyAt(game.getCoords()));
         assertEquals(1, game.getInventory().getNumberOfKeys());
     }
 

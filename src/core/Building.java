@@ -67,7 +67,7 @@ public class Building {
     }
 
     private boolean hasLocatedItemWithMatchingCoords(Coordinates coords, int i) {
-        return keys.get(i).getItemCoords() == coords;
+        return keys.get(i).getItemCoords().equals(coords);
     }
 
     boolean isValidMovement(Coordinates requestedMove) {
