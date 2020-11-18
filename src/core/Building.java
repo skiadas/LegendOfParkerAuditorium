@@ -20,6 +20,8 @@ public class Building {
 
     Building(String name) {
         this(name, 0);
+        this.upperLeft = new Coordinates(-20, 20);
+        this.lowerRight = new Coordinates(20, -20);
     }
 
     Building(String name, int requiredNumOfKeys) {
@@ -86,7 +88,7 @@ public class Building {
         return upperLeft;
     }
 
-    private boolean isInsideBuilding(Coordinates requestedMove) {
+    boolean isInsideBuilding(Coordinates requestedMove) {
         return (requestedMove.xValue >= upperLeft.xValue && requestedMove.yValue <= upperLeft.yValue)
                 && (requestedMove.xValue <= lowerRight.xValue && requestedMove.yValue >= lowerRight.yValue);
     }

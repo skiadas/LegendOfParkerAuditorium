@@ -3,7 +3,7 @@ package core;
 import core.exceptions.GameErrorException;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class BuildingTest extends BaseAppTest {
 
@@ -14,6 +14,38 @@ public class BuildingTest extends BaseAppTest {
         Enemy enemy1 = new Enemy();
         building1.addEnemy(enemy1, cords);
         assertEquals(enemy1, building1.getEnemyAtIndex(0));
+    }
+
+    @Test
+    public void falseWhenNotInBoundaries() {
+        Building building1 = new Building("building1", 0);
+        Coordinates cords = new Coordinates(-21, 0);
+        Coordinates cords1 = new Coordinates(-21, -21);
+        Coordinates cords2 = new Coordinates(0, 21);
+        Coordinates cords3 = new Coordinates(21, 0);
+        Coordinates cords4 = new Coordinates(21, 21);
+        Coordinates cords5 = new Coordinates(0, -21);
+        assertFalse(building1.isInsideBuilding(cords));
+        assertFalse(building1.isInsideBuilding(cords1));
+        assertFalse(building1.isInsideBuilding(cords2));
+        assertFalse(building1.isInsideBuilding(cords3));
+        assertFalse(building1.isInsideBuilding(cords4));
+        assertFalse(building1.isInsideBuilding(cords5));
+    }
+
+    @Test
+    public void trueWhenInBoundaries() {
+        Building building1 = new Building("building1", 0);
+        Coordinates cords = new Coordinates(0, 0);
+        Coordinates cords1 = new Coordinates(-20, 0);
+        Coordinates cords2 = new Coordinates(-20, -20);
+        Coordinates cords3 = new Coordinates(20, 0);
+        Coordinates cords4 = new Coordinates(20, 20);
+        assertTrue(building1.isInsideBuilding(cords));
+        assertTrue(building1.isInsideBuilding(cords1));
+        assertTrue(building1.isInsideBuilding(cords2));
+        assertTrue(building1.isInsideBuilding(cords3));
+        assertTrue(building1.isInsideBuilding(cords4));
     }
 
     @Test
