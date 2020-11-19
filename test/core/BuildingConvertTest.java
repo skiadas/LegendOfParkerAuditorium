@@ -1,5 +1,6 @@
 package core;
 
+import core.location.Coordinates;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class BuildingConvertTest {
     public void getBuildingViewInfoTest() {
         String name = "b1";
         int numOfkeys = 2;
-        Coordinates upperLeft = new Coordinates(-20,20);
+        Coordinates upperLeft = new Coordinates(-20, 20);
         Coordinates lowerRight = new Coordinates(20,-20);
         Coordinates entrance = new Coordinates(0,0);
         Building building = new Building(name, numOfkeys);

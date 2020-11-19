@@ -1,5 +1,7 @@
 package core;
 
+import core.location.Coordinates;
+
 public class LocatedItem<S> {
     private Key key;
     private Coordinates coords;

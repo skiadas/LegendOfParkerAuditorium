@@ -1,6 +1,10 @@
 package core;
 
 import core.exceptions.GameErrorException;
+import core.location.Coordinates;
+import core.location.Location;
+import core.location.MapLocation;
+import core.location.WithinBuildingLocation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -130,10 +134,7 @@ public class Game {
         return false;
     }
 
-    public Building getBuildingNamed(String name) {
-        if (isWithinABuilding()) {
-            throw GameErrorException.mustExitBuilding();
-        }
+    public Building getBuilding(String name) {
         if (!isSelectedBuildingInBuildingsList(name))
             throw GameErrorException.buildingDoesNotExist();
         for (Building building : produceAvailableBuildings()) {

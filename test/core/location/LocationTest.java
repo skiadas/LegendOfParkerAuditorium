@@ -1,4 +1,4 @@
-package core;
+package core.location;
 
 import org.junit.Test;
 

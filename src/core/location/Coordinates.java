@@ -1,5 +1,7 @@
-package core;
+package core.location;
 
+
+import core.Direction;
 
 import java.util.Objects;
 

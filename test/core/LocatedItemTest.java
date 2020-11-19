@@ -1,11 +1,8 @@
 package core;
 
 import core.action.ActionFactory;
-import core.action.MovementAction;
-import core.action.SelectBuildingAction;
-import mocks.AvailableBuildingsPresenterSpy;
+import core.location.Coordinates;
 import mocks.UpdateWithinBuildingLocationSpy;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -13,7 +10,7 @@ import static org.junit.Assert.*;
 public class LocatedItemTest extends BaseAppTest{
     @Test
     public void canCreateLocatedItem() {
-        LocatedItem locatedItem = new LocatedItem(new Coordinates(0,0));
+        LocatedItem locatedItem = new LocatedItem(new Coordinates(0, 0));
     }
 
     @Test

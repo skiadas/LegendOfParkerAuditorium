@@ -1,4 +1,7 @@
-package core;
+package core.location;
+
+import core.Building;
+import core.Direction;
 
 import java.util.Objects;
 
@@ -11,12 +14,12 @@ public class WithinBuildingLocation implements Location {
         this.coordinates = coordinates;
     }
 
-    static WithinBuildingLocation atEntranceOf(Building building) {
+    public static WithinBuildingLocation atEntranceOf(Building building) {
         return new WithinBuildingLocation(building,
-                                          building.getEntranceCoordinates());
+                                          building.getEntrance());
     }
 
-    Coordinates getCoords() {
+    public Coordinates getCoords() {
         return coordinates;
     }
 
@@ -40,7 +43,7 @@ public class WithinBuildingLocation implements Location {
     }
 
     public boolean isOnTheEntranceCell() {
-        return getCoords().equals(getCurrentBuilding().getEntranceCoordinates());
+        return getCoords().equals(getCurrentBuilding().getEntrance());
     }
 
     @Override

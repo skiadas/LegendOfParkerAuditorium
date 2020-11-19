@@ -1,5 +1,7 @@
 package core;
 
+import core.location.Coordinates;
+
 import java.util.List;
 import java.util.Objects;
 

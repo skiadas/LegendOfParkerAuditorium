@@ -2,6 +2,8 @@ package core;
 
 import core.action.ActionFactory;
 import core.action.UserAction;
+import core.location.Coordinates;
+import core.location.WithinBuildingLocation;
 import mocks.*;
 import org.junit.Test;
 
@@ -217,16 +219,11 @@ public class InteractorTest extends BaseAppTest {
     }
     @Test
     public void playerDoesNotWinWhenExitingNonFinalBuilding() {
-        Game game1 = new Game();
         GameWinningConditionsSpy mockPresenter = new GameWinningConditionsSpy();
-        Building b1 = new Building("building1");
-        Building b2 = new Building("building2");
-        Building b3 = new Building("building3");
-        game1.addBuilding(b1);
-        game1.addBuilding(b2);
-        game1.addBuilding(b3);
-        game1.getBuildingNamed("building3").setFinalBuilding();
-        game1.setLocation(WithinBuildingLocation.atEntranceOf(b1));
+        addBuildingAndMoveToItsEntrance("building1");
+        addBuilding("building2");
+        addBuilding("building3");
+        game.getBuilding("building3").setFinalBuilding();
         interactor.setPresenter(mockPresenter);
         interactor.perform(ActionFactory.moveUp());
         interactor.perform(ActionFactory.moveDown());
@@ -261,15 +258,14 @@ public class InteractorTest extends BaseAppTest {
     public void canLeaveTheBuildingWithDifferentEntranceCoordinates() {
         Building b = addBuildingRequiringKeys("B1", 0);
         b.setEntranceCoordinates(1, 1);
-        WithinBuildingLocation wbl = new WithinBuildingLocation(b, new Coordinates(1, 0));
-        game.setLocation(wbl);
+        game.setLocation(createBuildingLocation(b, 1, 0));
         AvailableBuildingsPresenterSpy mockPresenter = new AvailableBuildingsPresenterSpy();
         interactor.setPresenter(mockPresenter);
         interactor.perform(ActionFactory.moveUp());
         if (interactor.playerExitsFinalBuilding()) {
             interactor.perform(ActionFactory.gameWonAction());
         } else if (interactor.game.canExitBuilding()) {
-            interactor.game.setLocation(new MapLocation());
+            interactor.game.setLocation(createMapLocation());
             interactor.perform(ActionFactory.seeAvailableBuildings());
         }
         assertFalse(game.isWithinABuilding());

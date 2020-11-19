@@ -17,7 +17,7 @@ public class BuildingSelectionTest extends BaseAppTest {
     @Test
     public void canGetBuildingBasedOnItsName() {
         addBuilding("Donner");
-        Building building = game.getBuildingNamed("Donner");
+        Building building = game.getBuilding("Donner");
         assertEquals("Donner", building.getBuildingName());
     }
 
@@ -25,7 +25,7 @@ public class BuildingSelectionTest extends BaseAppTest {
     public void canSelectBuildingNumberOutOfMoreBuildings() {
         addBuilding("Outside");
         addBuilding("Donner");
-        assertEquals("Outside", game.getBuildingNamed("Outside").getBuildingName());
+        assertEquals("Outside", game.getBuilding("Outside").getBuildingName());
     }
 
 

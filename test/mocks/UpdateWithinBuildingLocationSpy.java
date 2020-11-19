@@ -1,6 +1,6 @@
 package mocks;
 
-import core.Coordinates;
+import core.location.Coordinates;
 import core.MenuOption;
 
 import java.util.List;

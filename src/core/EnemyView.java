@@ -1,5 +1,7 @@
 package core;
 
+import core.location.Coordinates;
+
 public class EnemyView {
 
     private final Coordinates cords;

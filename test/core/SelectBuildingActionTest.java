@@ -42,7 +42,7 @@ public class SelectBuildingActionTest extends BaseAppTest {
         assertTrue(mockPresenter.showUpdatedLocationCalled);
         BuildingView bv = BuildingConvert.getBuildingViewInfo(building);
         assertEquals(bv, chosenBuilding);
-        assertEquals(building.getEntranceCoordinates(), mockPresenter.showUpdatedLocation);
+        assertEquals(building.getEntrance(), mockPresenter.showUpdatedLocation);
     }
 
     @Test
@@ -56,7 +56,7 @@ public class SelectBuildingActionTest extends BaseAppTest {
         BuildingView chosenBuilding = mockPresenter.chosenBuilding;
         assertNotEquals(BuildingConvert.getBuildingViewInfo(building), chosenBuilding);
         assertEquals(BuildingConvert.getBuildingViewInfo(building2), chosenBuilding);
-        assertEquals(building2.getEntranceCoordinates(), mockPresenter.showUpdatedLocation);
+        assertEquals(building2.getEntrance(), mockPresenter.showUpdatedLocation);
     }
 
     @Test

@@ -4,6 +4,7 @@ import core.action.*;
 import core.boundary.ActionHandler;
 import core.boundary.Presenter;
 import core.exceptions.GameErrorException;
+import core.location.MapLocation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +37,10 @@ public class Interactor implements ActionHandler {
     public void perform(SelectBuildingAction action) {
         String buildingName = action.buildingName;
         Game game = getGameOrFail();
-        Building building = game.getBuildingNamed(buildingName);
+        if (game.isWithinABuilding()) {
+            throw GameErrorException.mustExitBuilding();
+        }
+        Building building = game.getBuilding(buildingName);
         BuildingView buildingInfo = BuildingConvert.getBuildingViewInfo(building);
         game.enterBuilding(building);
         presenter.showChoiceOfBuilding(buildingInfo);

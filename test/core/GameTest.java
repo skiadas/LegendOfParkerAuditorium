@@ -1,5 +1,6 @@
 package core;
 
+import core.location.Coordinates;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -59,13 +60,13 @@ public class GameTest extends BaseAppTest {
     public void canCheckIfThePlayerIsNotOnTheEntranceCell() {
         Building b = new Building("building");
         b.setEntranceCoordinates(0,0);
-        game.setLocation(new WithinBuildingLocation(b, new Coordinates(1,1)));
+        game.setLocation(createBuildingLocation(b, 1, 1));
         assertFalse(game.canExitBuilding());
     }
 
     @Test
     public void canCheckIfThePlayerIsOnTheMap() {
-        game.setLocation(new MapLocation());
+        game.setLocation(createMapLocation());
         assertFalse(game.canExitBuilding());
     }
 

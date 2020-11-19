@@ -1,7 +1,7 @@
 package mocks;
 
 import core.BuildingView;
-import core.Coordinates;
+import core.location.Coordinates;
 
 public class BuildingSelectPresenterSpy extends PresenterStub{
     public boolean showChoiceOfBuildingCalled = false;
@@ -20,7 +20,7 @@ public class BuildingSelectPresenterSpy extends PresenterStub{
         showErrorMessageCalled = true;
         this.message = message;
     }
-    
+
     public void showUpdatedInsideLocation(Coordinates insideLocation){
         showUpdatedLocationCalled = true;
         this.showUpdatedLocation = insideLocation;

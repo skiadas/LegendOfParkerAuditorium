@@ -1,5 +1,9 @@
 package core;
 
+import core.location.Coordinates;
+import core.location.Location;
+import core.location.MapLocation;
+import core.location.WithinBuildingLocation;
 import org.junit.Before;
 
 public class BaseAppTest {
@@ -14,9 +18,10 @@ public class BaseAppTest {
         interactor.setGame(game);
     }
 
-    protected void addBuildingAndMoveToItsEntrance(String name) {
+    protected Building addBuildingAndMoveToItsEntrance(String name) {
         Building b = addBuilding(name);
         game.setLocation(WithinBuildingLocation.atEntranceOf(b));
+        return b;
     }
 
     public Building addBuilding(String name) {
@@ -29,5 +34,13 @@ public class BaseAppTest {
         Building building = new Building(name, requiredKeys);
         game.addBuilding(building);
         return building;
+    }
+
+    public Location createMapLocation() {
+        return new MapLocation();
+    }
+
+    public WithinBuildingLocation createBuildingLocation(Building building, int xValue, int yValue) {
+        return new WithinBuildingLocation(building, new Coordinates(xValue, yValue));
     }
 }

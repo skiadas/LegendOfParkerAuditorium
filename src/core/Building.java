@@ -1,11 +1,10 @@
 package core;
 
 import core.exceptions.GameErrorException;
+import core.location.Coordinates;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import java.util.Objects;
 
 public class Building {
     private String name;
@@ -24,7 +23,7 @@ public class Building {
         this.lowerRight = new Coordinates(20, -20);
     }
 
-    Building(String name, int requiredNumOfKeys) {
+    public Building(String name, int requiredNumOfKeys) {
         this.name = name;
         this.requiredNumOfKeys = requiredNumOfKeys;
         this.setBuildingBoundaries();
@@ -42,7 +41,7 @@ public class Building {
         return requiredNumOfKeys;
     }
 
-    Coordinates getEntranceCoordinates() {
+    public Coordinates getEntrance() {
         return buildingEntrance;
     }
 
@@ -105,7 +104,7 @@ public class Building {
                 throw GameErrorException.invalidCoordinates();
             }
         }
-        if (getEntranceCoordinates().equals(cords)) {
+        if (getEntrance().equals(cords)) {
             throw GameErrorException.invalidCoordinates();
         }
         if (!isInsideBuilding(cords)) {

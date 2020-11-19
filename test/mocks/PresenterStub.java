@@ -1,7 +1,7 @@
 package mocks;
 
 import core.BuildingView;
-import core.Coordinates;
+import core.location.Coordinates;
 import core.MenuOption;
 import core.action.UserAction;
 import core.boundary.Presenter;

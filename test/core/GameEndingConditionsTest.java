@@ -9,8 +9,8 @@ public class GameEndingConditionsTest extends BaseAppTest {
     @Test
     public void canSetFinalBuilding() {
         addBuilding("building");
-        game.getBuildingNamed("building").setFinalBuilding();
-        assertTrue(game.getBuildingNamed("building").getIsFinalBuilding());
+        game.getBuilding("building").setFinalBuilding();
+        assertTrue(game.getBuilding("building").getIsFinalBuilding());
 
     }
 

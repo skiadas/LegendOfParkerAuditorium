@@ -1,4 +1,4 @@
-package core;
+package core.location;
 
 
 public class MapLocation implements Location {

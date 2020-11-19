@@ -1,5 +1,7 @@
-package core;
+package core.location;
 
+import core.Building;
+import core.Direction;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,7 +24,7 @@ public class WithinBuildingLocationTest {
     public void CreatingWithinBuilidingLocationWith_atEntranceOf() {
         WithinBuildingLocation wbl = WithinBuildingLocation.atEntranceOf(building);
         assertEquals(building, wbl.getCurrentBuilding());
-        assertEquals(building.getEntranceCoordinates(), wbl.getCoords());
+        assertEquals(building.getEntrance(), wbl.getCoords());
     }
 
     @Test
