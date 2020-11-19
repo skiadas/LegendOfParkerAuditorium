@@ -47,33 +47,36 @@ public class Interactor implements ActionHandler {
         Game game = getGameOrFail();
         game.updatePosition(action.direction);
         presenter.showUpdatedInsideLocation(game.getCoords());
-        showDeathScreenIfPlayerOnEnemySquare();
-        exitBuildingIfPLayerOnExitCell();
-        addItemToInventoryIfOnLocatedItemCell();
+        handleAfterMovementAction();
     }
 
-    private void addItemToInventoryIfOnLocatedItemCell() {
-        if (game.getCurrentBuilding().hasKeyAt(game.getCoords())) { game.getInventory().addKey(); }
-    }
-
-    public void exitBuildingIfPLayerOnExitCell() {
-        if (game.canExitBuilding() && game.getCurrentBuilding().getIsFinalBuilding()) {
+    public void handleAfterMovementAction() {
+        List<Enemy> enemies = game.getCurrentBuilding().getListOfEnemies();
+        for (Enemy enemy : enemies) {
+            if (enemyOnPlayerSquare(enemy)) {
+                showDeathScreen();
+            }
+        }
+        if (playerExitsFinalBuilding()) {
             perform(ActionFactory.gameWonAction());
         } else if (game.canExitBuilding()) {
             game.setLocation(new MapLocation());
             perform(ActionFactory.seeAvailableBuildings());
-        }
+        } else if (game.getCurrentBuilding().hasKeyAt(game.getCoords())) {
+            game.getInventory().addKey(); }
     }
 
+    public boolean playerExitsFinalBuilding() {
+        return game.canExitBuilding() && game.getCurrentBuilding().getIsFinalBuilding();
+    }
 
-    private void showDeathScreenIfPlayerOnEnemySquare() {
-        List<Enemy> enemies = game.getCurrentBuilding().getListOfEnemies();
-        for (Enemy enemy : enemies) {
-            if (enemy.getEnemyCords().equals(game.getCoords())) {
-                presenter.showDeathScreen(MessageFactory.getInstance().characterIsDead());
-            }
-        }
+    private void showDeathScreen() {
+        presenter.showDeathScreen(MessageFactory.getInstance().characterIsDead());
         perform(ActionFactory.appLoadAction());
+    }
+
+    private boolean enemyOnPlayerSquare(Enemy enemy) {
+        return enemy.getEnemyCords().equals(game.getCoords());
     }
 
     public void perform(AppLoadAction action) {

@@ -266,7 +266,12 @@ public class InteractorTest extends BaseAppTest {
         AvailableBuildingsPresenterSpy mockPresenter = new AvailableBuildingsPresenterSpy();
         interactor.setPresenter(mockPresenter);
         interactor.perform(ActionFactory.moveUp());
-        interactor.exitBuildingIfPLayerOnExitCell();
+        if (interactor.playerExitsFinalBuilding()) {
+            interactor.perform(ActionFactory.gameWonAction());
+        } else if (interactor.game.canExitBuilding()) {
+            interactor.game.setLocation(new MapLocation());
+            interactor.perform(ActionFactory.seeAvailableBuildings());
+        }
         assertFalse(game.isWithinABuilding());
         assertTrue(mockPresenter.showAvailableBuildingsWasCalled);
     }
