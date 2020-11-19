@@ -50,11 +50,4 @@ public class WithinBuildingLocationTest {
         assertTrue(wbl.isBuildingLocation());
     }
 
-    @Test
-    public void canGetRequestedMove() {
-       WithinBuildingLocation wbl2 = new WithinBuildingLocation(building,
-               new Coordinates(0,1));
-       wbl2.getRequestedMove(Direction.right);
-       assertEquals(wbl, wbl2);
-    }
 }

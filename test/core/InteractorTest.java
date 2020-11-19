@@ -3,7 +3,6 @@ package core;
 import core.action.ActionFactory;
 import core.action.UserAction;
 import core.location.Coordinates;
-import core.location.WithinBuildingLocation;
 import mocks.*;
 import org.junit.Test;
 
@@ -244,8 +243,8 @@ public class InteractorTest extends BaseAppTest {
 
     @Test
     public void canLeaveTheBuildingBySteppingOnTheEntrance() {
-        WithinBuildingLocation wbl = WithinBuildingLocation.atEntranceOf(addBuildingRequiringKeys("B1", 0));
-        game.setLocation(wbl.getRequestedMove(Direction.up));
+        addBuildingAndMoveToItsEntrance("b1");
+        game.updatePosition(Direction.up);
         AvailableBuildingsPresenterSpy mockPresenter = new AvailableBuildingsPresenterSpy();
         interactor.setPresenter(mockPresenter);
         interactor.perform(ActionFactory.moveDown());

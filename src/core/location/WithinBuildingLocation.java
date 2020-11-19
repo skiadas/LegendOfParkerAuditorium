@@ -37,11 +37,6 @@ public class WithinBuildingLocation implements Location {
     }
 
 
-    public Location getRequestedMove(Direction direction) {
-        this.coordinates = coordinates.getRequestedMove(direction);
-        return this;
-    }
-
     public boolean isOnTheEntranceCell() {
         return getCoords().equals(getCurrentBuilding().getEntrance());
     }
