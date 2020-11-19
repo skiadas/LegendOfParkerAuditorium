@@ -28,7 +28,7 @@ public class Interactor implements ActionHandler {
         if (game != null) {
             presenter.showError(MessageFactory.getInstance().gameAlreadyStarted());
         } else {
-            this.game = new Game();
+            this.game = (new GameCreator().createGame());
             presenter.showTransition(AssetReader.fileToString("MessageFiles/StartMessage.txt"), ActionFactory.seeAvailableBuildings());
         }
     }
