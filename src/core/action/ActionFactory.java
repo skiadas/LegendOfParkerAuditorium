@@ -1,6 +1,7 @@
 package core.action;
 
 import core.Direction;
+import core.boundary.UserAction;
 
 public class ActionFactory {
     public static UserAction seeAvailableBuildings() {

@@ -1,7 +1,7 @@
 package core;
 
 import core.action.ActionFactory;
-import core.location.Coordinates;
+import core.boundary.Coordinates;
 import mocks.UpdateWithinBuildingLocationSpy;
 import org.junit.Test;
 

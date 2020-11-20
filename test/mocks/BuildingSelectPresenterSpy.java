@@ -1,7 +1,7 @@
 package mocks;
 
-import core.BuildingView;
-import core.location.Coordinates;
+import core.boundary.BuildingView;
+import core.boundary.Coordinates;
 
 public class BuildingSelectPresenterSpy extends PresenterStub{
     public boolean showChoiceOfBuildingCalled = false;

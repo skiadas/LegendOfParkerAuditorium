@@ -1,6 +1,4 @@
-package core.action;
-
-import core.boundary.ActionVisitor;
+package core.boundary;
 
 public interface UserAction {
     void accept(ActionVisitor visitor);

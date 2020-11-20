@@ -1,7 +1,7 @@
 package core;
 
 import core.action.StartGameAction;
-import core.action.UserAction;
+import core.boundary.UserAction;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

@@ -1,6 +1,8 @@
 package core;
 
-import core.location.Coordinates;
+import core.boundary.BuildingView;
+import core.boundary.Coordinates;
+import core.boundary.EnemyView;
 import org.junit.Test;
 
 import java.util.ArrayList;

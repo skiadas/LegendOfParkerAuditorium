@@ -1,6 +1,6 @@
-package core;
+package core.boundary;
 
-import core.location.Coordinates;
+import core.boundary.Coordinates;
 
 public class EnemyView {
 

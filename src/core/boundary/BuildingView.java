@@ -1,6 +1,6 @@
-package core;
+package core.boundary;
 
-import core.location.Coordinates;
+import core.Enemy;
 
 import java.util.List;
 import java.util.Objects;

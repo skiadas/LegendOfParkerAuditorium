@@ -1,5 +1,8 @@
 package core;
 
+import core.boundary.BuildingView;
+import core.boundary.EnemyView;
+
 public class BuildingConvert{
 
     public static BuildingView getBuildingViewInfo(Building building) {

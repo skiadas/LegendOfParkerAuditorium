@@ -1,9 +1,9 @@
 package mocks;
 
-import core.BuildingView;
-import core.location.Coordinates;
-import core.MenuOption;
-import core.action.UserAction;
+import core.boundary.BuildingView;
+import core.boundary.Coordinates;
+import core.boundary.MenuOption;
+import core.boundary.UserAction;
 import core.boundary.Presenter;
 
 import java.util.List;

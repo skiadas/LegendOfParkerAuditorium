@@ -1,7 +1,7 @@
 package core;
 
 
-import core.location.Coordinates;
+import core.boundary.Coordinates;
 
 public class Enemy{
     public Coordinates cords;

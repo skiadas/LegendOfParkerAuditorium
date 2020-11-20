@@ -1,6 +1,6 @@
 package mocks;
 
-import core.action.UserAction;
+import core.boundary.UserAction;
 
 public class StartGameActionSpy extends PresenterStub{
     public boolean transitionScreenIsCalled = false;

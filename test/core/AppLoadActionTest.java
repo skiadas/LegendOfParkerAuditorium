@@ -1,10 +1,8 @@
 package core;
 
-import core.action.AppLoadAction;
-import core.action.NewGameAction;
-import core.action.SaveGameAction;
-import core.action.StartGameAction;
 import core.action.*;
+import core.boundary.MenuOption;
+import core.boundary.UserAction;
 import mocks.AppLoadPresenterSpy;
 import org.junit.Test;
 

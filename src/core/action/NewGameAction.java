@@ -1,6 +1,7 @@
 package core.action;
 
 import core.boundary.ActionVisitor;
+import core.boundary.UserAction;
 
 public class NewGameAction implements UserAction {
     public NewGameAction() {

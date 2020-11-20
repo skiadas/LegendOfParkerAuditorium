@@ -1,7 +1,6 @@
 package ui.impl;
 
 import ui.framework.*;
-import core.MenuOption;
 import ui.framework.Button;
 import ui.framework.Menu;
 

@@ -1,7 +1,7 @@
 package core;
 
 import core.action.ActionFactory;
-import core.action.UserAction;
+import core.boundary.UserAction;
 import org.junit.Test;
 
 public class UnlockBuildingsTest {

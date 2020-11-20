@@ -2,6 +2,7 @@ package core.action;
 
 import core.Direction;
 import core.boundary.ActionVisitor;
+import core.boundary.UserAction;
 
 public class MovementAction implements UserAction {
     public void accept(ActionVisitor visitor) {

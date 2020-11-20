@@ -1,10 +1,5 @@
 package core.boundary;
 
-import core.BuildingView;
-import core.location.Coordinates;
-import core.MenuOption;
-import core.action.UserAction;
-
 import java.util.List;
 
 public interface Presenter {

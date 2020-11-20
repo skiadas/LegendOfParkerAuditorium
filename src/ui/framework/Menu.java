@@ -1,7 +1,5 @@
 package ui.framework;
 
-import core.MenuOption;
-
 import java.util.List;
 
 public interface Menu extends Element, Container {

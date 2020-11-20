@@ -1,6 +1,4 @@
-package core;
-
-import core.action.UserAction;
+package core.boundary;
 
 import java.util.Objects;
 

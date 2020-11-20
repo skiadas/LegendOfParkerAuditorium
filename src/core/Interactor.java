@@ -1,8 +1,7 @@
 package core;
 
 import core.action.*;
-import core.boundary.ActionHandler;
-import core.boundary.Presenter;
+import core.boundary.*;
 import core.exceptions.GameErrorException;
 import core.location.MapLocation;
 

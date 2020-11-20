@@ -1,6 +1,6 @@
 package mocks;
 
-import core.MenuOption;
+import core.boundary.MenuOption;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package core.location;
+package core.boundary;
 
 
 import core.Direction;

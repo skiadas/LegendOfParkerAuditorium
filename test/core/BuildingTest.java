@@ -1,6 +1,6 @@
 package core;
 
-import core.location.Coordinates;
+import core.boundary.Coordinates;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

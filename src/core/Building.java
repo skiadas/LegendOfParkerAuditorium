@@ -1,7 +1,7 @@
 package core;
 
 import core.exceptions.GameErrorException;
-import core.location.Coordinates;
+import core.boundary.Coordinates;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,8 +1,8 @@
 package core;
 
 import core.action.ActionFactory;
-import core.action.UserAction;
-import core.location.Coordinates;
+import core.boundary.UserAction;
+import core.boundary.Coordinates;
 import mocks.*;
 import org.junit.Test;
 

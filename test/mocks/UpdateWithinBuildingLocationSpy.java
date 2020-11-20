@@ -1,7 +1,7 @@
 package mocks;
 
-import core.location.Coordinates;
-import core.MenuOption;
+import core.boundary.Coordinates;
+import core.boundary.MenuOption;
 
 import java.util.List;
 

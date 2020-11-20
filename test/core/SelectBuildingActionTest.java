@@ -1,7 +1,8 @@
 package core;
 
 import core.action.ActionFactory;
-import core.action.UserAction;
+import core.boundary.BuildingView;
+import core.boundary.UserAction;
 import mocks.BuildingSelectPresenterSpy;
 import mocks.PresenterStub;
 import org.junit.Before;

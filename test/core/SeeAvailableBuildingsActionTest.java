@@ -1,7 +1,8 @@
 package core;
 
 import core.action.ActionFactory;
-import core.action.UserAction;
+import core.boundary.MenuOption;
+import core.boundary.UserAction;
 import mocks.AvailableBuildingsPresenterSpy;
 import org.junit.Test;
 

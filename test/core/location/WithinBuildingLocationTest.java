@@ -1,7 +1,7 @@
 package core.location;
 
 import core.Building;
-import core.Direction;
+import core.boundary.Coordinates;
 import org.junit.Before;
 import org.junit.Test;
 

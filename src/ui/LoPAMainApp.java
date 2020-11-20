@@ -1,11 +1,6 @@
 package ui;
 
-import core.BuildingView;
-import core.location.Coordinates;
-import core.MenuOption;
-import core.action.UserAction;
-import core.boundary.ActionRouter;
-import core.boundary.Presenter;
+import core.boundary.*;
 import ui.framework.*;
 import ui.impl.MyUIFactory;
 

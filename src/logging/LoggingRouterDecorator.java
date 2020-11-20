@@ -1,6 +1,6 @@
 package logging;
 
-import core.action.UserAction;
+import core.boundary.UserAction;
 import core.boundary.ActionRouter;
 
 public class LoggingRouterDecorator implements ActionRouter {
