@@ -134,4 +134,12 @@ public class Building {
     public void setBuildingEntrance(Coordinates buildingEntrance) {
         this.buildingEntrance = buildingEntrance;
     }
+
+    public void removeLocatedItem(Coordinates coords) {
+        for (int i = 0; i < keys.size(); i++) {
+            if (hasKeyAt(coords) && hasLocatedItemWithMatchingCoords(coords, i)){
+                keys.remove(keys.get(i));
+            }
+        }
+    }
 }

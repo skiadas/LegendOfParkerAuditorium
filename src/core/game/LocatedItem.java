@@ -14,5 +14,4 @@ public class LocatedItem<S> {
     public Coordinates getItemCoords() {
         return coords;
     }
-
 }

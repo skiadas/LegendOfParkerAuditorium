@@ -61,15 +61,19 @@ public class Interactor implements ActionHandler {
         for (Enemy enemy : enemies) {
             if (enemyOnPlayerSquare(enemy)) {
                 showDeathScreen();
+                return;
             }
         }
         if (playerExitsFinalBuilding()) {
             perform(ActionFactory.gameWonAction());
+            return;
         } else if (game.canExitBuilding()) {
             game.setLocation(new MapLocation());
             perform(ActionFactory.seeAvailableBuildings());
         } else if (game.getCurrentBuilding().hasKeyAt(game.getCoords())) {
-            game.getInventory().addKey(); }
+            game.getInventory().addKey();
+            game.getCurrentBuilding().removeLocatedItem(game.getCoords());
+        }
     }
 
     public boolean playerExitsFinalBuilding() {
