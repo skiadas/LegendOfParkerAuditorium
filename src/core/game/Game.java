@@ -168,10 +168,6 @@ public class Game {
         return inventory.getNumberOfKeys() >= b.getRequiredNumOfKeys();
     }
 
-    public void addKeyToBuildingItemList(Building building, Coordinates coords) {
-        building.addLocatedItem(coords);
-    }
-
     public Boolean isFinalBuilding() {
         return getCurrentBuilding().getIsFinalBuilding();
     }

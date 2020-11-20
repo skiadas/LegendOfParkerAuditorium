@@ -142,4 +142,8 @@ public class Building {
             }
         }
     }
+
+    public void addKeyToBuildingItemList(Coordinates coords) {
+        addLocatedItem(coords);
+    }
 }
