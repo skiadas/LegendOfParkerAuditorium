@@ -47,7 +47,7 @@ public class Building {
 
     // Some buildings could have different entrances?
     //      By default the entrance should still be 0, 0
-    public void setEntranceCoordinates(int x, int y) {
+    public void setEntrance(int x, int y) {
         buildingEntrance = new Coordinates(x, y);
     }
 
@@ -143,7 +143,7 @@ public class Building {
         }
     }
 
-    public void addKeyToBuildingItemList(Coordinates coords) {
+    public void addKey(Coordinates coords) {
         addLocatedItem(coords);
     }
 }

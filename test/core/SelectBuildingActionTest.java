@@ -50,7 +50,7 @@ public class SelectBuildingActionTest extends BaseAppTest {
     @Test
     public void whenSelectingBuildingOutOfMoreThanOneBuilding_ANewImageOnScreenIsShow() {
         Building building = addBuildingRequiringKeys("Parker", 0);
-        building.setEntranceCoordinates(1,5);
+        building.setEntrance(1,5);
         Building building2 = addBuildingRequiringKeys("Donner", 0);
         interactor.perform(action);
         assertTrue(mockPresenter.showChoiceOfBuildingCalled);

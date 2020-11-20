@@ -259,7 +259,7 @@ public class InteractorTest extends BaseAppTest {
     @Test
     public void canLeaveTheBuildingWithDifferentEntranceCoordinates() {
         Building b = addBuildingRequiringKeys("B1", 0);
-        b.setEntranceCoordinates(1, 1);
+        b.setEntrance(1, 1);
         game.setLocation(createBuildingLocation(b, 1, 0));
         AvailableBuildingsPresenterSpy mockPresenter = new AvailableBuildingsPresenterSpy();
         interactor.setPresenter(mockPresenter);

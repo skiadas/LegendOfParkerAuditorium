@@ -2,11 +2,8 @@ package core.game;
 
 import core.BaseAppTest;
 import core.MessageFactory;
-import core.StandardMessageFactory;
 import core.action.ActionFactory;
-import core.action.AppLoadAction;
 import core.boundary.Coordinates;
-import core.exceptions.GameErrorException;
 import mocks.AppLoadPresenterSpy;
 import mocks.UpdateWithinBuildingLocationSpy;
 import org.junit.Test;
@@ -14,6 +11,9 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class LocatedItemTest extends BaseAppTest {
+
+    private final Coordinates coordsAtOneAndZero = new Coordinates(1, 0);
+
     @Test
     public void canCreateLocatedItem() {
         LocatedItem locatedItem = new LocatedItem(new Coordinates(0, 0));
@@ -38,12 +38,12 @@ public class LocatedItemTest extends BaseAppTest {
         UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
         interactor.setPresenter(presenterSpy);
         Building b = addBuildingRequiringKeys("B1", 0);
-        b.setEntranceCoordinates(1, 1);
+        b.setEntrance(1, 1);
         game.addBuilding(b);
-        b.addLocatedItem(new Coordinates(1, 0));
+        b.addLocatedItem(coordsAtOneAndZero);
         interactor.perform(ActionFactory.selectBuildingAction("B1"));
         interactor.perform(ActionFactory.moveDown());
-        assertEquals(new Coordinates(1,0), game.getCoords());
+        assertEquals(coordsAtOneAndZero, game.getCoords());
         assertFalse(game.getCurrentBuilding().hasKeyAt(game.getCoords()));
     }
 
@@ -52,12 +52,12 @@ public class LocatedItemTest extends BaseAppTest {
         UpdateWithinBuildingLocationSpy presenterSpy = new UpdateWithinBuildingLocationSpy();
         interactor.setPresenter(presenterSpy);
         Building b = addBuildingRequiringKeys("B1", 0);
-        b.setEntranceCoordinates(1, 1);
+        b.setEntrance(1, 1);
         game.addBuilding(b);
-        b.addLocatedItem(new Coordinates(1, 0));
+        b.addLocatedItem(coordsAtOneAndZero);
         interactor.perform(ActionFactory.selectBuildingAction("B1"));
         interactor.perform(ActionFactory.moveDown());
-        assertEquals(new Coordinates(1,0), game.getCoords());
+        assertEquals(coordsAtOneAndZero, game.getCoords());
         assertFalse(game.getCurrentBuilding().hasKeyAt(game.getCoords()));
         assertEquals(1, game.getInventory().getNumberOfKeys());
     }
@@ -68,14 +68,14 @@ public class LocatedItemTest extends BaseAppTest {
         interactor.setPresenter(presenterSpy);
         Building b = addBuildingRequiringKeys("B1", 0);
         Building b2 = addBuildingRequiringKeys("B2", 1);
-        b.setEntranceCoordinates(1, 1);
+        b.setEntrance(1, 1);
         game.addBuilding(b);
         game.addBuilding(b2);
-        b.addLocatedItem(new Coordinates(1, 0));
+        b.addLocatedItem(coordsAtOneAndZero);
         interactor.perform(ActionFactory.selectBuildingAction("B1"));
         interactor.perform(ActionFactory.moveDown());
         interactor.perform(ActionFactory.moveUp());
-        assertFalse(b.hasKeyAt(new Coordinates(1, 0)));
+        assertFalse(b.hasKeyAt(coordsAtOneAndZero));
         interactor.perform(ActionFactory.selectBuildingAction("B2"));
         assertEquals(b2, game.getCurrentBuilding());
         assertEquals(1, game.getInventory().getNumberOfKeys());
@@ -86,13 +86,13 @@ public class LocatedItemTest extends BaseAppTest {
         AppLoadPresenterSpy presenterSpy = new AppLoadPresenterSpy();
         interactor.setPresenter(presenterSpy);
         Building b = addBuildingRequiringKeys("B1", 0);
-        b.setEntranceCoordinates(1, 1);
+        b.setEntrance(1, 1);
         game.addBuilding(b);
-        b.addEnemy(new Enemy(), new Coordinates(1, 0));
-        b.addLocatedItem(new Coordinates(1, 0));
+        b.addEnemy(new Enemy(), coordsAtOneAndZero);
+        b.addLocatedItem(coordsAtOneAndZero);
         interactor.perform(ActionFactory.selectBuildingAction("B1"));
         interactor.perform(ActionFactory.moveDown());
-        assertEquals(new Coordinates(1,0), game.getCoords());
+        assertEquals(coordsAtOneAndZero, game.getCoords());
         assertTrue(b.hasKeyAt(game.getCoords()));
         assertTrue(presenterSpy.showDeathScreenWasCalled);
         assertEquals(MessageFactory.getInstance().characterIsDead(), presenterSpy.message);

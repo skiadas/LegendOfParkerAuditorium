@@ -77,7 +77,7 @@ public class BuildingTest extends BaseAppTest {
     @Test (expected = Exception.class)
     public void canNotAddEnemyBecauseCordinatesAreADoor() throws Exception{
         Building building1 = new Building("building1", 0);
-        building1.setEntranceCoordinates(2,0);
+        building1.setEntrance(2,0);
         Coordinates cords = new Coordinates(2, 0);
         Enemy enemy1 = new Enemy();
         building1.addEnemy(enemy1,cords);

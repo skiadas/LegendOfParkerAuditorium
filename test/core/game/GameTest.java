@@ -39,7 +39,7 @@ public class GameTest extends BaseAppTest {
     @Test
     public void doesNotHaveKeyAtSpecifiedCoords() {
         Building buildingWithKeyAtX0Y1 = addBuildingRequiringKeys("buildingWithKeyAtX0Y1", 0);
-        buildingWithKeyAtX0Y1.addKeyToBuildingItemList(new Coordinates(0, 1));
+        buildingWithKeyAtX0Y1.addKey(new Coordinates(0, 1));
         assertFalse(buildingWithKeyAtX0Y1.hasKeyAt(new Coordinates(0,0)));
     }
 
@@ -47,7 +47,7 @@ public class GameTest extends BaseAppTest {
     public void canSetKeyListInBuilding() {
         Building buildingWithKeyAtX0Y1 = addBuildingRequiringKeys("buildingWithKeyAtX0Y1", 0);
         Coordinates coords = new Coordinates(0, 1);
-        buildingWithKeyAtX0Y1.addKeyToBuildingItemList(coords);
+        buildingWithKeyAtX0Y1.addKey(coords);
         assertTrue(buildingWithKeyAtX0Y1.hasKeyAt(coords));
     }
 
@@ -60,7 +60,7 @@ public class GameTest extends BaseAppTest {
     @Test
     public void canCheckIfThePlayerIsNotOnTheEntranceCell() {
         Building b = new Building("building");
-        b.setEntranceCoordinates(0,0);
+        b.setEntrance(0,0);
         game.setLocation(createBuildingLocation(b, 1, 1));
         assertFalse(game.canExitBuilding());
     }
