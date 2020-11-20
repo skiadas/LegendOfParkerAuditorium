@@ -1,6 +1,6 @@
 package core.action;
 
-import core.Direction;
+import core.game.Direction;
 import core.boundary.UserAction;
 
 public class ActionFactory {

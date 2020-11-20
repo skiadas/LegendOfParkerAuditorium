@@ -1,7 +1,7 @@
 package core.boundary;
 
 
-import core.Direction;
+import core.game.Direction;
 
 import java.util.Objects;
 

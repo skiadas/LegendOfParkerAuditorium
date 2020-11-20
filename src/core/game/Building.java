@@ -1,4 +1,4 @@
-package core;
+package core.game;
 
 import core.exceptions.GameErrorException;
 import core.boundary.Coordinates;
@@ -17,7 +17,7 @@ public class Building {
     private Coordinates buildingEntrance = new Coordinates(0, 0);
     private Boolean isFinalBuilding = false;
 
-    Building(String name) {
+    public Building(String name) {
         this(name, 0);
         this.upperLeft = new Coordinates(-20, 20);
         this.lowerRight = new Coordinates(20, -20);
@@ -29,7 +29,7 @@ public class Building {
         this.setBuildingBoundaries();
     }
 
-    String getBuildingName() {
+    public String getBuildingName() {
         return name;
     }
 
@@ -47,7 +47,7 @@ public class Building {
 
     // Some buildings could have different entrances?
     //      By default the entrance should still be 0, 0
-    void setEntranceCoordinates(int x, int y) {
+    public void setEntranceCoordinates(int x, int y) {
         buildingEntrance = new Coordinates(x, y);
     }
 

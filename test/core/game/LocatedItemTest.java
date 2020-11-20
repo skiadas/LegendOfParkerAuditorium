@@ -1,5 +1,6 @@
-package core;
+package core.game;
 
+import core.BaseAppTest;
 import core.action.ActionFactory;
 import core.boundary.Coordinates;
 import mocks.UpdateWithinBuildingLocationSpy;
@@ -7,7 +8,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class LocatedItemTest extends BaseAppTest{
+public class LocatedItemTest extends BaseAppTest {
     @Test
     public void canCreateLocatedItem() {
         LocatedItem locatedItem = new LocatedItem(new Coordinates(0, 0));

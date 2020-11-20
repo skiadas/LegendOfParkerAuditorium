@@ -1,5 +1,6 @@
-package core;
+package core.game;
 
+import core.BaseAppTest;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;

@@ -1,10 +1,11 @@
-package core;
+package core.game;
 
+import core.BaseAppTest;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class InventoryTest extends BaseAppTest{
+public class InventoryTest extends BaseAppTest {
     @Test
     public void canCreateInventory(){
         Inventory i = new Inventory();

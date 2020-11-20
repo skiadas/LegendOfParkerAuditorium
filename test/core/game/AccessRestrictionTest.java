@@ -1,7 +1,10 @@
-package core;
+package core.game;
 
+import core.BaseAppTest;
 import org.junit.Test;
+
 import java.util.concurrent.ThreadLocalRandom;
+
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 

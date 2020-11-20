@@ -1,6 +1,6 @@
 package core.location;
 
-import core.Building;
+import core.game.Building;
 import core.boundary.Coordinates;
 
 import java.util.Objects;

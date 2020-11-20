@@ -3,6 +3,9 @@ package core;
 import core.action.ActionFactory;
 import core.boundary.UserAction;
 import core.boundary.Coordinates;
+import core.game.Building;
+import core.game.Direction;
+import core.game.Enemy;
 import mocks.*;
 import org.junit.Test;
 

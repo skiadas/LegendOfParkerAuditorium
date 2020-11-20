@@ -1,5 +1,6 @@
-package core;
+package core.game;
 
+import core.BaseAppTest;
 import core.action.ActionFactory;
 import core.action.SelectBuildingAction;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package core;
+package core.game;
 
 import core.exceptions.GameErrorException;
 import core.boundary.Coordinates;
@@ -20,7 +20,7 @@ public class Game {
         this.gameStarted = true;
     }
 
-    void setLocation(Location location) {
+    public void setLocation(Location location) {
         this.location = location;
     }
 
@@ -98,19 +98,19 @@ public class Game {
         return !location.isBuildingLocation();
     }
 
-    boolean isWithinABuilding() {
+    public boolean isWithinABuilding() {
         return location.isBuildingLocation();
     }
 
-    int getYValue() {
+    public int getYValue() {
         return getCoords().yValue;
     }
 
-    int getXValue() {
+    public int getXValue() {
         return getCoords().xValue;
     }
 
-    void updatePosition(Direction direction) {
+    public void updatePosition(Direction direction) {
         if (isValidLocation(direction)) {
             setCoordinates(getRequestedMove(direction));
         } else {
@@ -170,5 +170,9 @@ public class Game {
 
     public void addKeyToBuildingItemList(Building building, Coordinates coords) {
         building.addLocatedItem(coords);
+    }
+
+    public Boolean isFinalBuilding() {
+        return getCurrentBuilding().getIsFinalBuilding();
     }
 }

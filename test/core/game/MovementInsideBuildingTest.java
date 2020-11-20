@@ -1,4 +1,4 @@
-package core;
+package core.game;
 
 import core.action.ActionFactory;
 import core.action.MovementAction;

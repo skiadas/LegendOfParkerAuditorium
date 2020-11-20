@@ -3,6 +3,9 @@ package core;
 import core.action.*;
 import core.boundary.*;
 import core.exceptions.GameErrorException;
+import core.game.Building;
+import core.game.Enemy;
+import core.game.Game;
 import core.location.MapLocation;
 
 import java.util.ArrayList;
@@ -70,7 +73,7 @@ public class Interactor implements ActionHandler {
     }
 
     public boolean playerExitsFinalBuilding() {
-        return game.canExitBuilding() && game.getCurrentBuilding().getIsFinalBuilding();
+        return game.canExitBuilding() && game.isFinalBuilding();
     }
 
     private void showDeathScreen() {

@@ -1,5 +1,6 @@
-package core;
+package core.game;
 
+import core.BaseAppTest;
 import core.boundary.Coordinates;
 import org.junit.Test;
 

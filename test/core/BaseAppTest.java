@@ -1,6 +1,8 @@
 package core;
 
 import core.boundary.Coordinates;
+import core.game.Building;
+import core.game.Game;
 import core.location.Location;
 import core.location.MapLocation;
 import core.location.WithinBuildingLocation;

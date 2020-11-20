@@ -3,6 +3,8 @@ package core;
 import core.boundary.BuildingView;
 import core.boundary.Coordinates;
 import core.boundary.EnemyView;
+import core.game.Building;
+import core.game.Enemy;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -21,7 +23,6 @@ public class BuildingConvertTest {
         Building building = new Building(name, numOfkeys);
         BuildingView bv = BuildingConvert.getBuildingViewInfo(building);
         assertEquals(name, bv.getName());
-        assertEquals(numOfkeys, bv.getRequiredNumOfKey());
         assertEquals(entrance, bv.getEntranceCoordinates());
         assertEquals(upperLeft, bv.getUpperLeft());
         assertEquals(lowerRight, bv.getLowerRight());

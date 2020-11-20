@@ -1,4 +1,4 @@
-package core;
+package core.game;
 
 public enum Direction {
     down, left, right, up;
