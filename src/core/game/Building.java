@@ -15,7 +15,7 @@ public class Building {
     private Coordinates upperLeft;
     private Coordinates lowerRight;
     private Coordinates buildingEntrance = new Coordinates(0, 0);
-    private Boolean isFinalBuilding = false;
+    Boolean isFinalBuilding = false;
 
     public Building(String name) {
         this(name, 0);
@@ -33,9 +33,6 @@ public class Building {
         return name;
     }
 
-    Boolean getIsFinalBuilding() {
-        return isFinalBuilding;
-    }
 
     int getRequiredNumOfKeys() {
         return requiredNumOfKeys;
@@ -115,9 +112,6 @@ public class Building {
         }
     }
 
-    public void setFinalBuilding() {
-        this.isFinalBuilding = true;
-    }
 
     public Enemy getEnemyAtIndex(int index) {
         return this.enemies.get(index);

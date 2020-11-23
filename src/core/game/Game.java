@@ -169,6 +169,24 @@ public class Game {
     }
 
     public Boolean isFinalBuilding() {
-        return getCurrentBuilding().getIsFinalBuilding();
+        return getIsFinalBuilding(getCurrentBuilding());
+    }
+
+    public void setFinalBuilding(Building building) {
+        building.isFinalBuilding = true;
+    }
+
+    Boolean getIsFinalBuilding(Building building) {
+        return building.isFinalBuilding;
+    }
+
+    public void determineFinalBuilding() {
+        Building currentFinal = new Building("");
+        for (Building building: buildings) {
+            if(building.getRequiredNumOfKeys() > currentFinal.getRequiredNumOfKeys()); {
+                currentFinal = building;
+            }
+        }
+        setFinalBuilding(currentFinal);
     }
 }

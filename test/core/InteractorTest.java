@@ -212,7 +212,7 @@ public class InteractorTest extends BaseAppTest {
     public void playerWinsWhenOnExitInFinalBuilding() {
         GameWinningConditionsSpy mockPresenter = new GameWinningConditionsSpy();
         addBuildingAndMoveToItsEntrance("building1");
-        game.getCurrentBuilding().setFinalBuilding();
+        game.setFinalBuilding(game.getCurrentBuilding());
         interactor.setPresenter(mockPresenter);
         interactor.perform(ActionFactory.moveUp());
         interactor.perform(ActionFactory.moveDown());
@@ -225,7 +225,7 @@ public class InteractorTest extends BaseAppTest {
         addBuildingAndMoveToItsEntrance("building1");
         addBuilding("building2");
         addBuilding("building3");
-        game.getBuilding("building3").setFinalBuilding();
+        game.setFinalBuilding(game.getBuilding("building3"));
         interactor.setPresenter(mockPresenter);
         interactor.perform(ActionFactory.moveUp());
         interactor.perform(ActionFactory.moveDown());

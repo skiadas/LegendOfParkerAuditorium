@@ -81,4 +81,18 @@ public class GameTest extends BaseAppTest {
         assertEquals(buildings.get(0), game.getBuildings().get(0));
         assertEquals(buildings.get(1), game.getBuildings().get(1));
     }
+    @Test
+    public void canDetermineFinalBuilding() {
+        Building building1 = addBuildingRequiringKeys("building1", 1);
+        Building building2 = addBuildingRequiringKeys("building2", 2);
+        Building building3 = addBuildingRequiringKeys("building3", 3);
+        List<Building> buildings = new ArrayList<>();
+        buildings.add(building1);
+        buildings.add(building2);
+        buildings.add(building3);
+        game.determineFinalBuilding();
+        assertTrue(building3.isFinalBuilding);
+        assertFalse(building1.isFinalBuilding);
+        assertFalse(building2.isFinalBuilding);
+    }
 }
