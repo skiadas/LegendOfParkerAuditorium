@@ -10,11 +10,15 @@ import java.util.stream.Collectors;
 public class LoPAMainApp implements Presenter {
     private ActionRouter actionRouter;
     private MainView view;
+    private BuildingPane buildingPane;
 
     public LoPAMainApp(ActionRouter actionRouter) {
         UIFactory.setInstance(new MyUIFactory());
-        this.view = UIFactory.getInstance().createMainView("Legend of Parker Auditorium", 1000, 700);
         this.actionRouter = actionRouter;
+    }
+
+    public void initializeView() {
+        this.view = UIFactory.getInstance().createMainView("Legend of Parker Auditorium", 1000, 700);
     }
 
 
@@ -41,12 +45,13 @@ public class LoPAMainApp implements Presenter {
 
     @Override
     public void showAvailableBuildings(List<MenuOption> availableBuildings) {
-        // TODO: We need some actual buildings now
+        // TODO: if building visible, hide it
+        view.add(createMainMenuWithOptions(availableBuildings));
     }
 
     @Override
     public void showUpdatedInsideLocation(Coordinates insideLocation) {
-
+        buildingPane.updateLocation(insideLocation);
     }
 
     public void showTransition(String message, UserAction action) {
@@ -62,7 +67,9 @@ public class LoPAMainApp implements Presenter {
 
     @Override
     public void showChoiceOfBuilding(BuildingView buildingView) {
-
+        buildingPane = UIFactory.getInstance().createBuildingPane(buildingView);
+        view.add(buildingPane);
+        buildingPane.setRouter(actionRouter);
     }
 
     @Override
@@ -81,6 +88,7 @@ public class LoPAMainApp implements Presenter {
     }
 
     public void open() {
+        initializeView();
         actionRouter.performStartAction();
     }
 

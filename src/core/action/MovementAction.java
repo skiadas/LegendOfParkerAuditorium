@@ -14,4 +14,7 @@ public class MovementAction implements UserAction {
         this.direction = direction;
     }
 
+    public String toString() {
+        return "MovementAction{" + direction + '}';
+    }
 }

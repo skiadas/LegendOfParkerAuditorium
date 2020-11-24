@@ -10,4 +10,9 @@ public class AppLoadAction implements UserAction {
     public void accept(ActionVisitor visitor) {
         visitor.perform(this);
     }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        return o != null && getClass() == o.getClass();
+    }
 }

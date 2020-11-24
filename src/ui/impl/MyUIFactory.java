@@ -1,5 +1,6 @@
 package ui.impl;
 
+import core.boundary.BuildingView;
 import ui.framework.*;
 
 public class MyUIFactory extends UIFactory {
@@ -19,5 +20,9 @@ public class MyUIFactory extends UIFactory {
 
     public TransitionScreen createTransitionScreen(String message) {
         return new MyTransitionScreen(message);
+    }
+
+    public BuildingPane createBuildingPane(BuildingView buildingView) {
+        return new MyBuildingPane(buildingView);
     }
 }

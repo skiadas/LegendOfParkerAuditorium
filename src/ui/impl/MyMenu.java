@@ -30,28 +30,11 @@ class MyMenu extends MyElement implements Menu {
         innerPanel.add(Box.createHorizontalGlue());
     }
 
-    public MyMenu(List<NamedCommand> options) {
-        this();
-    }
-
-    public void addItems(List<NamedCommand> options) {
-        addButtons(getButtons(options));
-    }
-
-
-    public List<Button> getButtons(List<NamedCommand> options) {
-        List<Button> buttons = new ArrayList<>();
-        for (NamedCommand option : options) {
-            buttons.add(UIFactory.getInstance().createButton(option.name, option.command));
-        }
-        return buttons;
-    }
-
     public void add(Element e) {
         buttonPanel.add(((MyElement) e).getJComponent());
     }
 
-    public void remove(Element elem) {
-        buttonPanel.remove(((MyElement) elem).getJComponent());
+    public void remove(Element e) {
+        buttonPanel.remove(((MyElement) e).getJComponent());
     }
 }

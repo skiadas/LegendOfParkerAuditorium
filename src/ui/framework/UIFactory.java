@@ -1,5 +1,7 @@
 package ui.framework;
 
+import core.boundary.BuildingView;
+
 public abstract class UIFactory {
     private static UIFactory instance;
 
@@ -18,5 +20,11 @@ public abstract class UIFactory {
     public abstract Menu createMainMenu();
     public abstract Button createButton(String name, Command command);
 
+    Button createButton(NamedCommand command) {
+        return createButton(command.name, command.command);
+    }
+
     public abstract TransitionScreen createTransitionScreen(String message);
+
+    public abstract BuildingPane createBuildingPane(BuildingView buildingView);
 }

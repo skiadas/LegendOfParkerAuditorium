@@ -1,13 +1,11 @@
 package ui.impl;
 
+import ui.ImageManager;
 import ui.framework.Element;
 import ui.framework.MainView;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
-import java.net.URL;
 
 // This class represents essentially a whole application's window (via JFrame)
 class MyMainView extends JFrame implements MainView {
@@ -54,17 +52,12 @@ class MyMainView extends JFrame implements MainView {
         mainPane = new JPanel(new BorderLayout()) {
             protected void paintComponent(Graphics g) {
                 super.paintComponent(g);
-                URL url = getClass().getResource("/minidraw-images/parker.jpg");
-                try {
-                    Image img = ImageIO.read(url);
-                    Graphics2D g2d = (Graphics2D) g;
-                    int x = (this.getWidth() - img.getWidth(null)) / 2;
-                    int y = (this.getHeight() - img.getHeight(null)) / 2;
-                    g2d.drawImage(img, x, y, null);
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+                Graphics2D g2d = (Graphics2D) g;
+                int x = (this.getWidth() - new ImageManager().getImage("parker").getWidth(null)) / 2;
+                int y = (this.getHeight() - new ImageManager().getImage("parker").getHeight(null)) / 2;
+                g2d.drawImage(new ImageManager().getImage("parker"), x, y, null);
             }
+
         };
         mainPane.setPreferredSize(new Dimension(width, height));
         mainPane.setVisible(true);

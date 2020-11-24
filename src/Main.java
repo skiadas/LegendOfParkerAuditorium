@@ -20,10 +20,10 @@ public class Main {
     }
 
     protected ActionRouter setupInteractor(ActionRouter router) {
-            return router;
+        return router;
     }
 
     protected Presenter setupPresenter(Presenter presenter) {
-            return presenter;
+        return presenter;
     }
 }
