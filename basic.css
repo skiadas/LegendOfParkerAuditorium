@@ -1,0 +1,96 @@
+main {
+  text-align: center;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+#board {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+.nine-by-nine {
+  width: 27em;
+}
+
+.cell {
+  width: 3em;
+  height: 3.3em;
+}
+
+.cell-top {
+  text-align: left;
+  padding: 0.1em;
+  font-size: 0.8em;
+  height: 1em;
+}
+
+.cell-value span {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.filled .options {
+  display: none;
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  font-size: 0.8em;
+  margin-top: 0.3em;
+}
+
+.options li {
+  width: 33%;
+  line-height: 0.9;
+  opacity: 0;
+}
+
+.options li.shown {
+  opacity: 1;
+}
+
+/* Borders */
+
+.cell {
+  border-top: 1px solid lightgrey;
+  border-left: 1px solid lightgrey;
+}
+
+.nine-by-nine .cell:nth-of-type(n + 73) {
+  border-bottom: 1px solid lightgrey;
+}
+
+.nine-by-nine .cell:nth-of-type(9n) {
+  border-right: 1px solid lightgrey;
+}
+
+.cell.t {
+  border-top-color: black;
+}
+
+.cell.l {
+  border-left-color: black;
+}
+
+.nine-by-nine .cell:nth-of-type(n + 73).b {
+  border-bottom-color: black;
+}
+
+.nine-by-nine .cell:nth-of-type(9n) {
+  border-right-color: black;
+}

@@ -1,0 +1,1393 @@
+<!doctype html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="basic.css">
+</head>
+
+<body>
+  <main>
+    <h1>Calcudoku</h1>
+    <ul id="board" class="nine-by-nine">
+      <li class="cell t b l r">
+        <div class="cell-top">2</div>
+        <div class="cell-value filled">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span>2</span>
+        </div>
+      </li>
+      <li class="cell t b l">
+        <div class="cell-top">120x</div>
+        <div class="cell-value filled">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span>3</span>
+        </div>
+      </li>
+      <li class="cell t r">
+        <div class="cell-top"></div>
+        <div class="cell-value filled">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span>8</span>
+        </div>
+      </li>
+      <li class="cell t b l">
+        <div class="cell-top">120x</div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l">
+        <div class="cell-top">63x</div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li class="shown">7</li>
+            <li>8</li>
+            <li class="shown">9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t l r">
+        <div class="cell-top"></div>
+        <div class="cell-value filled">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span>1</span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+      <li class="cell t b l r">
+        <div class="cell-top"></div>
+        <div class="cell-value">
+          <ul class="options">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+          </ul>
+          <span></span>
+        </div>
+      </li>
+    </ul>
+  </main>
+</body>
+
+</html>
